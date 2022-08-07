@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-learning',
   template: `
-    <h2 *ngFor="let c of colors">{{ c }}</h2>
+    {{ parentData }}
   `,
   styles: [`
     .text-success {
@@ -12,6 +12,8 @@ import { Component, OnInit } from '@angular/core';
   `]
 })
 export class LearningComponent implements OnInit {
+  
+  @Input() public parentData:string = "no parent data yet"
 
   public colors = ['red', 'blue', 'green']
   constructor() { }
