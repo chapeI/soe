@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   template: `
     <div [class.text-danger]="error">italisized</div>
     <div [ngClass]="y">test</div>
-    <div [style.color]="x">orangeme</div>
+    <div [ngStyle]="x">multiple styles w ngStyle</div>
   `,
   styles: [`
     .make-text-italized {
@@ -21,7 +21,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LearningComponent implements OnInit {
 
-  public x = "yellow"
+  public x = {
+    color: "blue",
+    fontStyle: "italic"
+  }
   public error = false
   public emphasize = true
   public okay = true;
