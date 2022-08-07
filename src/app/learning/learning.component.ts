@@ -4,12 +4,15 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-learning',
   template: `
   learning grounds
-  <input [id]="test" value="anoop">
-  <div [class.text-danger]="x">italisized</div>
+  <div [class.text-danger]="error">italisized</div>
+  <div [ngClass]="x">test</div>
   `,
   styles: [`
     .make-text-italized {
       font-style: italic;
+    }
+    .text-success {
+      color: green
     }
     .text-danger {
       color: red
@@ -18,8 +21,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LearningComponent implements OnInit {
 
-  public x = true
-  public test = "works"
+  public error = false
+  public emphasize = true
+  public okay = true;
+  public x = {
+    "text-success": this.okay,
+    "text-error": this.error,
+    "make-text-italized": this.emphasize,
+  
+  }
   constructor() { }
 
   ngOnInit(): void {
