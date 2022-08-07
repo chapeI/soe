@@ -1,22 +1,14 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-learning',
   template: `
-    {{ parentData }}
+    <button (click)="this.e.emit('sending')">send</button>
   `,
-  styles: [`
-    .text-success {
-      color: green
-    }
-  `]
-})
+  styles: [``]
+  })
 export class LearningComponent implements OnInit {
-  
-  @Input() public parentData:string = "no parent data yet"
-
-  public colors = ['red', 'blue', 'green']
-  constructor() { }
-  ngOnInit(): void {
-  }
+  @Output() public e = new EventEmitter()
+  constructor() {}
+  ngOnInit(): void {}
 }
