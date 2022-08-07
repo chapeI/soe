@@ -3,8 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-learning',
   template: `
-    <input [(ngModel)]="x">
-    {{ x }}
+    <h2 *ngFor="let c of colors">{{ c }}</h2>
   `,
   styles: [`
     .text-success {
@@ -14,7 +13,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LearningComponent implements OnInit {
 
-  public x = " "
+  public colors = ['red', 'blue', 'green']
   constructor() { }
   ngOnInit(): void {
   }
