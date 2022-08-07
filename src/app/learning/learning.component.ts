@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-learning',
   template: `
     <button (click)="hello()">click</button>
+    {{greeting}}
     <div [class.text-danger]="error">italisized</div>
     <div [ngClass]="y">test</div>
     <div [ngStyle]="x">multiple styles w ngStyle</div>
@@ -26,6 +27,7 @@ export class LearningComponent implements OnInit {
     color: "blue",
     fontStyle: "italic"
   }
+  public greeting = ""
   public error = false
   public emphasize = true
   public okay = true;
@@ -33,7 +35,6 @@ export class LearningComponent implements OnInit {
     "text-success": this.okay,
     "text-error": this.error,
     "make-text-italized": this.emphasize,
-  
   }
   constructor() { }
 
@@ -41,6 +42,6 @@ export class LearningComponent implements OnInit {
   }
 
   hello() {
-    console.log('hi');
+    this.greeting = "hi's"
   }
 }
