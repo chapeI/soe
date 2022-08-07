@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   learning grounds
   <div [class.text-danger]="error">italisized</div>
   <div [ngClass]="x">test</div>
+  <div [style.color]="'orange'">orangeme</div>
   `,
   styles: [`
     .make-text-italized {
