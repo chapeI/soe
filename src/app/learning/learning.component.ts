@@ -5,20 +5,20 @@ import { Component, OnInit } from '@angular/core';
   template: `
   learning grounds
   <input [id]="test" value="anoop">
-  <div [class]="x">italisized</div>
+  <div [class.text-danger]="x">italisized</div>
   `,
   styles: [`
-    div {
-      color: red;
-    }
     .make-text-italized {
       font-style: italic;
+    }
+    .text-danger {
+      color: red
     }
   `]
 })
 export class LearningComponent implements OnInit {
 
-  public x = "make-text-italized"
+  public x = true
   public test = "works"
   constructor() { }
 
