@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-inlines',
+  selector: 'app-learning',
   template: `
-    <div>inlines works</div>
+  learning grounds
   `,
   styles: [`
     div {
       color: red;
     }
-    `
-  ]
+  `]
 })
-export class InlinesComponent implements OnInit {
+export class LearningComponent implements OnInit {
 
   constructor() { }
 
