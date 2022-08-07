@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   template: `
   learning grounds
   <input [id]="test" value="anoop">
-  <div class="make-text-italized">italisized</div>
+  <div [class]="x">italisized</div>
   `,
   styles: [`
     div {
@@ -18,6 +18,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LearningComponent implements OnInit {
 
+  public x = "make-text-italized"
   public test = "works"
   constructor() { }
 
