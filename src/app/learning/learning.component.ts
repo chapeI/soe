@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
     <div [class.text-danger]="error">italisized</div>
     <div [ngClass]="y">test</div>
     <div [ngStyle]="x">multiple styles w ngStyle</div>
+    <input #myInput>
+    <button (click)="log(myInput)">log</button>
   `,
   styles: [`
     .make-text-italized {
@@ -43,5 +45,9 @@ export class LearningComponent implements OnInit {
 
   hello() {
     this.greeting = "hi's"
+  }
+
+  log(x: any) {
+    console.log(x.value);
   }
 }
