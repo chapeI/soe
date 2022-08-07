@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-learning',
   template: `
+    <button (click)="hello()">click</button>
     <div [class.text-danger]="error">italisized</div>
     <div [ngClass]="y">test</div>
     <div [ngStyle]="x">multiple styles w ngStyle</div>
@@ -39,4 +40,7 @@ export class LearningComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  hello() {
+    console.log('hi');
+  }
 }
