@@ -5,10 +5,14 @@ import { Component, OnInit } from '@angular/core';
   template: `
   learning grounds
   <input [id]="test" value="anoop">
+  <div class="make-text-italized">italisized</div>
   `,
   styles: [`
     div {
       color: red;
+    }
+    .make-text-italized {
+      font-style: italic;
     }
   `]
 })
