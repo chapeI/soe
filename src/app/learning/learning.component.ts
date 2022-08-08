@@ -11,7 +11,9 @@ import { NamesService } from '../names.service';
 export class LearningComponent implements OnInit {
   public names: string[] = [];
   constructor(private _nameService: NamesService) {}
-  ngOnInit(): void {
-    this.names = this._nameService.getNames();
+    ngOnInit(): void {
+      this._nameService.getNames().subscribe(
+        (data => this.names = data)
+      )
   }
 }
