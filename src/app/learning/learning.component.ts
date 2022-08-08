@@ -1,14 +1,17 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { NamesService } from '../names.service';
 
 @Component({
   selector: 'app-learning',
   template: `
-    <button (click)="this.e.emit('sending')">send</button>
+  <div *ngFor="let n of names">{{ n }}</div>
   `,
   styles: [``]
   })
 export class LearningComponent implements OnInit {
-  @Output() public e = new EventEmitter()
-  constructor() {}
-  ngOnInit(): void {}
+  public names: string[] = [];
+  constructor(private _nameService: NamesService) {}
+  ngOnInit(): void {
+    this.names = this._nameService.getNames();
+  }
 }

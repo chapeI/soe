@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LearningComponent } from './learning/learning.component';
 import { FormsModule } from '@angular/forms';
+import { NamesService } from './names.service';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,9 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    NamesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
