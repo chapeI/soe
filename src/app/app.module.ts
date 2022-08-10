@@ -4,20 +4,18 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LearningComponent } from './learning/learning.component';
 import { FormsModule } from '@angular/forms';
 import { NamesService } from './names.service';
-import { EmployeesComponent } from './employees/employees.component';
-import { DepartmentsComponent } from './departments/departments.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { DevInfoComponent } from './dev-info/dev-info.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LearningComponent,
-    EmployeesComponent,
-    DepartmentsComponent
+    DevInfoComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

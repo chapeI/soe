@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DepartmentsComponent } from './departments/departments.component';
-import { EmployeesComponent } from './employees/employees.component';
+import { DevInfoComponent } from './dev-info/dev-info.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  {path: 'employees', component: EmployeesComponent},
-  {path: 'departments', component: DepartmentsComponent},
-
+  {path: 'dev-info', component: DevInfoComponent},
+  {path: '**', component: PageNotFoundComponent},
 ];
 
 @NgModule({
