@@ -1,1 +1,25 @@
-<p>scheduler works!</p>
+<div class="dragdrop-container">
+    <h2>To do</h2>
+    <div
+        cdkDropList
+        #todoList="cdkDropList"
+        [cdkDropListData]="todo"
+        [cdkDropListConnectedTo]="[doneList]"
+        class="dragdrop-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="dragdrop-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+    </div>
+</div>
+
+<div class="dragdrop-container">
+    <h2>Done</h2>
+    <div
+        cdkDropList
+        #doneList="cdkDropList"
+        [cdkDropListData]="done"
+        [cdkDropListConnectedTo]="[todoList]"
+        class="dragdrop-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="dragdrop-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+    </div>
+</div>

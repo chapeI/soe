@@ -11,6 +11,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { DevInfoComponent } from './dev-info/dev-info.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SchedulerComponent } from './scheduler/scheduler.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,9 @@ import { SchedulerComponent } from './scheduler/scheduler.component';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    DragDropModule,
+    
   ],
   providers: [
     NamesService
