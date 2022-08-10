@@ -10,12 +10,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { DevInfoComponent } from './dev-info/dev-info.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SchedulerComponent } from './scheduler/scheduler.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DevInfoComponent,
     PageNotFoundComponent,
+    SchedulerComponent,
   ],
   imports: [
     BrowserModule,
