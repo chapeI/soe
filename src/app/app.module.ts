@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { NamesService } from './names.service';
 import { EmployeesComponent } from './employees/employees.component';
 import { DepartmentsComponent } from './departments/departments.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { DepartmentsComponent } from './departments/departments.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     NamesService
