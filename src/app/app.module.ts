@@ -10,6 +10,7 @@ import { NamesService } from './names.service';
 import { EmployeesComponent } from './employees/employees.component';
 import { DepartmentsComponent } from './departments/departments.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    MatToolbarModule
   ],
   providers: [
     NamesService
