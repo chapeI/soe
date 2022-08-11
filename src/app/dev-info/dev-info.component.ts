@@ -10,7 +10,5 @@ export class DevInfoComponent implements OnInit {
 
   constructor(private localService: LocalService) { }
 
-  ngOnInit() {
-    this.localService.persistTest(["t3", "t4"])
-  }
+  ngOnInit() { }
 }

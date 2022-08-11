@@ -15,11 +15,4 @@ export class LocalService {
     return localStorage.getItem(k) 
   }
 
-  persistTest(data: any) {
-    let json = JSON.stringify(data)
-    this.saveData('me', json)
-
-    var x = this.getData('me')
-    console.log(JSON.parse(x))
-  }
 }
