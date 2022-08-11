@@ -8,7 +8,9 @@ import { Component } from '@angular/core';
       <span class="fill-remaining-space"></span>
       <span routerLink="/dev-info" routerLinkActive="active">dev</span>
     </mat-toolbar>
-    <router-outlet></router-outlet>
+    <div style="padding: 30px;">
+      <router-outlet></router-outlet>
+    </div>
   `,
   styles: [`
     .fill-remaining-space {
