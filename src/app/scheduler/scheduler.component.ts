@@ -14,7 +14,7 @@ export class SchedulerComponent implements OnInit {
 
   constructor(private localService: LocalService) { }
 
-  ngOnInit() { this.setCalendarAndRequirements() }
+  ngOnInit() { this.loadCalendarAndRequirements() }
 
   drop(event: CdkDragDrop<string[]>) {
     transferArrayItem(event.previousContainer.data,
@@ -35,7 +35,7 @@ export class SchedulerComponent implements OnInit {
     this.localService.saveData('requirements', requirements_stringifyd)
   }
 
-  setCalendarAndRequirements() {
+  loadCalendarAndRequirements() {
     if(this.checkIfNullCalendarOrRequirements()) {
       this.setDefaultCalendarAndRequirements()
     } else {
