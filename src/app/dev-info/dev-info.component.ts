@@ -8,16 +8,9 @@ import { LocalService } from '../local.service';
 })
 export class DevInfoComponent implements OnInit {
 
-  public value: string | null = "null";
+  constructor(private localService: LocalService) { }
 
-  constructor(private localStorage: LocalService) { }
-
-  ngOnInit(): void {
-    this.value = this.localStorage.getData('anoop')
+  ngOnInit() {
+    this.localService.persistTest(["t3", "t4"])
   }
-
-  save() {
-    this.localStorage.saveData('anoop', this.value ?? 'debug dev-info.save()')
-  }
-
 }

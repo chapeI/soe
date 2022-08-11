@@ -7,11 +7,19 @@ export class LocalService {
 
   constructor() { }
 
-  public saveData(k: string, v: string) {
+  saveData(k: string, v: any) {
     localStorage.setItem(k, v);
   }
 
-  public getData(k: string) : string | null {
+  getData(k: string) : any {
     return localStorage.getItem(k) 
+  }
+
+  persistTest(data: any) {
+    let json = JSON.stringify(data)
+    this.saveData('me', json)
+
+    var x = this.getData('me')
+    console.log(JSON.parse(x))
   }
 }
