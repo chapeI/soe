@@ -21,10 +21,16 @@ export class SchedulerComponent implements OnInit {
                       event.container.data,
                       event.previousIndex,
                       event.currentIndex);
+    this.locallySaveCalendar();
+    this.locallySaveRequirements();
+  }
 
+  locallySaveCalendar() {
     let calendar_stringifyd = JSON.stringify(this.calendar)
     this.localService.saveData('calendar', calendar_stringifyd)    
+  }
 
+  locallySaveRequirements() {
     let requirements_stringifyd = JSON.stringify(this.requirements)
     this.localService.saveData('requirements', requirements_stringifyd)
   }
