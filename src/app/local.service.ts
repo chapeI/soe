@@ -11,7 +11,7 @@ export class LocalService {
     localStorage.setItem(k, v);
   }
 
-  public getData(k: string) {
-    return localStorage.getItem(k)
+  public getData(k: string) : string | null {
+    return localStorage.getItem(k) 
   }
 }

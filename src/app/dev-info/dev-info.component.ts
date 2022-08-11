@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LocalService } from '../local.service';
 
 @Component({
   selector: 'app-dev-info',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DevInfoComponent implements OnInit {
 
-  constructor() { }
+  public value: string | null = "null";
+
+  constructor(private localStorage: LocalService) { }
 
   ngOnInit(): void {
+    this.value = this.localStorage.getData('anoop')
+  }
+
+  save(value: string) {
+    this.localStorage.saveData('anoop', value)
   }
 
 }
