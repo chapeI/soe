@@ -13,14 +13,15 @@ export class SchedulerComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  todo = [
+  calendar = [
+    'move into this calendar'
+  ];
+
+  requirements = [
     'Get to work',
     'Pick up groceries',
     'Go home',
-    'Fall asleep'
-  ];
-
-  done = [
+    'Fall asleep',
     'Get up',
     'Brush teeth',
     'Take a shower',

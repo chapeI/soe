@@ -1,25 +1,25 @@
 <div class="dragdrop-container">
-    <h2>To do</h2>
+    <h2>Calendar</h2>
     <div
         cdkDropList
-        #todoList="cdkDropList"
-        [cdkDropListData]="todo"
-        [cdkDropListConnectedTo]="[doneList]"
+        #calendarList="cdkDropList"
+        [cdkDropListData]="calendar"
+        [cdkDropListConnectedTo]="[requirementsList]"
         class="dragdrop-list"
         (cdkDropListDropped)="drop($event)">
-        <div class="dragdrop-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+        <div class="dragdrop-box" *ngFor="let item of calendar" cdkDrag>{{item}}</div>
     </div>
 </div>
 
 <div class="dragdrop-container">
-    <h2>Done</h2>
+    <h2>requirements</h2>
     <div
         cdkDropList
-        #doneList="cdkDropList"
-        [cdkDropListData]="done"
-        [cdkDropListConnectedTo]="[todoList]"
+        #requirementsList="cdkDropList"
+        [cdkDropListData]="requirements"
+        [cdkDropListConnectedTo]="[calendarList]"
         class="dragdrop-list"
         (cdkDropListDropped)="drop($event)">
-        <div class="dragdrop-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+        <div class="dragdrop-box" *ngFor="let item of requirements" cdkDrag>{{item}}</div>
     </div>
 </div>
