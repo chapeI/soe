@@ -1,5 +1,6 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
+import { LocalService } from '../local.service';
 
 @Component({
   selector: 'app-scheduler',
@@ -8,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SchedulerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private localService: LocalService) { }
 
   ngOnInit(): void {
+    if(this.localService.getData('calendar') != null) {
+      let calendar_parsed = JSON.parse(this.localService.getData('calendar'))
+      this.calendar = calendar_parsed
+    }
   }
 
   calendar = [
@@ -30,13 +35,11 @@ export class SchedulerComponent implements OnInit {
   ];
 
   drop(event: CdkDragDrop<string[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      transferArrayItem(event.previousContainer.data,
-                        event.container.data,
-                        event.previousIndex,
-                        event.currentIndex);
-    }
+    transferArrayItem(event.previousContainer.data,
+                      event.container.data,
+                      event.previousIndex,
+                      event.currentIndex);
+    let calendar_stringifyd = JSON.stringify(this.calendar)
+    this.localService.saveData('calendar', calendar_stringifyd)    
   }
 }
