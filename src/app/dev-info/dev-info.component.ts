@@ -16,8 +16,8 @@ export class DevInfoComponent implements OnInit {
     this.value = this.localStorage.getData('anoop')
   }
 
-  save(value: string) {
-    this.localStorage.saveData('anoop', value)
+  save() {
+    this.localStorage.saveData('anoop', this.value ?? 'debug dev-info.save()')
   }
 
 }
