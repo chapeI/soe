@@ -25,6 +25,15 @@ export class SchedulerComponent implements OnInit {
     this.locallySaveRequirements();
   }
 
+  resetCalendar() {
+    this.localService.clear()
+    this.refreshPage()
+  }
+
+  refreshPage() {
+    window.location.reload()
+  }
+
   locallySaveCalendar() {
     let calendar_stringifyd = JSON.stringify(this.calendar)
     this.localService.saveData('calendar', calendar_stringifyd)    
