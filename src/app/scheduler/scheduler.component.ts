@@ -21,7 +21,6 @@ export class SchedulerComponent implements OnInit {
                       event.container.data,
                       event.previousIndex,
                       event.currentIndex);
-    this.locallySave()
   }
 
   resetCalendar() {
@@ -33,9 +32,9 @@ export class SchedulerComponent implements OnInit {
     window.location.reload()
   }
 
-  locallySave() {
+  save() {
     this.locallySaveCalendar();
-    this.locallySaveRequirements();
+    this.locallySaveCoreRequirements();
   }
 
   locallySaveCalendar() {
@@ -43,9 +42,9 @@ export class SchedulerComponent implements OnInit {
     this.localService.saveData('calendar', calendar_stringifyd)
   }
 
-  locallySaveRequirements() {
-    let requirements_stringifyd = JSON.stringify(this.core)
-    this.localService.saveData('requirements', requirements_stringifyd)
+  locallySaveCoreRequirements() {
+    let core_requirements_stringifyd = JSON.stringify(this.core)
+    this.localService.saveData('core', core_requirements_stringifyd)
   }
 
   loadCalendarAndRequirements() {
@@ -57,7 +56,7 @@ export class SchedulerComponent implements OnInit {
   }
 
   checkIfNullCalendarOrRequirements(): boolean {
-    return (this.localService.getData('calendar') == null || this.localService.getData('requirements') == null)
+    return (this.localService.getData('calendar') == null)
   }
 
   setDefaultCalendarAndRequirements() {
@@ -79,7 +78,7 @@ export class SchedulerComponent implements OnInit {
 
   loadLocallySavedCalendarAndRequirements() {
     this.setLocalCalendar()
-    this.setLocalRequirements()
+    this.setLocalCoreRequirements()
   }
 
   setLocalCalendar(){
@@ -87,9 +86,9 @@ export class SchedulerComponent implements OnInit {
     this.calendar = calendar_parsed
   }
 
-  setLocalRequirements(){
-    let requirements_parsed = JSON.parse(this.localService.getData('requirements'))
-    this.core = requirements_parsed
+  setLocalCoreRequirements(){
+    let core_requirements_parsed = JSON.parse(this.localService.getData('core'))
+    this.core = core_requirements_parsed
   }
 
 }
