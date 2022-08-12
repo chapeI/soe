@@ -16,14 +16,14 @@ export class SchedulerComponent implements OnInit {
 
   constructor(private localService: LocalService) { }
 
-  ngOnInit() { this.loadCalendarAndRequirements() }
+  ngOnInit() { this.setCalendarAndRequirements() }
 
   drop(event: CdkDragDrop<string[]>) {
     transferArrayItem(event.previousContainer.data,
                       event.container.data,
                       event.previousIndex,
                       event.currentIndex);
-    this.save()
+    this.persistAllLists()
   }
 
   resetCalendar() {
@@ -35,43 +35,52 @@ export class SchedulerComponent implements OnInit {
     window.location.reload()
   }
 
-  save() {
-    this.locallySaveCalendar();
-    this.locallySaveCoreRequirements();
-    this.locallySaveElectiveRequirements();
+  persistAllLists() {
+    this.localSave('calendar', this.calendar)
+    this.localSave('core', this.core)
+    this.localSave('electives', this.electives)
   }
 
-  locallySaveCalendar() {
-    let calendar_stringifyd = JSON.stringify(this.calendar)
-    this.localService.saveData('calendar', calendar_stringifyd)
+  localSave(name: string, list: string[]) {
+    let stringifyd = JSON.stringify(list)
+    this.localService.save(name, stringifyd)
   }
 
-  locallySaveCoreRequirements() {
-    let core_requirements_stringifyd = JSON.stringify(this.core)
-    this.localService.saveData('core', core_requirements_stringifyd)
-  }
-
-  locallySaveElectiveRequirements() {
-    let elective_requirements_stringifyd = JSON.stringify(this.electives)
-    this.localService.saveData('electives', elective_requirements_stringifyd)
-  }
-
-  loadCalendarAndRequirements() {
-    if(this.checkIfNullCalendarOrRequirements()) {
-      this.setDefaultCalendarAndRequirements()
+  setCalendarAndRequirements() {
+    if(this.nullCalendar()) {
+      this.setDefaults()
     } else {
-      this.loadLocallySavedCalendarAndRequirements()
+      this.loadLocal()
     }
   }
 
-  checkIfNullCalendarOrRequirements(): boolean {
-    return (this.localService.getData('calendar') == null)
+  nullCalendar(): boolean {
+    return (this.localService.get('calendar') == null)
   }
 
-  setDefaultCalendarAndRequirements() {
-    this.calendar = [
-      'move into this calendar'
-    ];
+  loadLocal() {
+    this.loadLocalCalendar()
+    this.loadLocalCores()
+    this.loadLocalElectives()
+  }
+
+  loadLocalCalendar(){
+    let parsed = JSON.parse(this.localService.get('calendar'))
+    this.calendar = parsed
+  }
+
+  loadLocalCores(){
+    let parsed = JSON.parse(this.localService.get('core'))
+    this.core = parsed
+  }
+
+  loadLocalElectives(){
+    let parsed = JSON.parse(this.localService.get('electives'))
+    this.electives = parsed
+  }
+
+  setDefaults() {
+    this.calendar = [];
 
     this.core = [
       'Hardware',
@@ -92,26 +101,4 @@ export class SchedulerComponent implements OnInit {
       'Software Architecture and Design',
     ]
   }
-
-  loadLocallySavedCalendarAndRequirements() {
-    this.setLocalCalendar()
-    this.setLocalCoreRequirements()
-    this.setLocalElectiveRequirements()
-  }
-
-  setLocalCalendar(){
-    let calendar_parsed = JSON.parse(this.localService.getData('calendar'))
-    this.calendar = calendar_parsed
-  }
-
-  setLocalCoreRequirements(){
-    let core_requirements_parsed = JSON.parse(this.localService.getData('core'))
-    this.core = core_requirements_parsed
-  }
-
-  setLocalElectiveRequirements(){
-    let electives_requirements_parsed = JSON.parse(this.localService.getData('electives'))
-    this.electives = electives_requirements_parsed
-  }
-
 }

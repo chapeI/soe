@@ -7,12 +7,12 @@ export class LocalService {
 
   constructor() { }
 
-  saveData(k: string, v: any) {
+  save(k: string, v: any) {
     localStorage.setItem(k, v)
   }
 
-  getData(k: string) : any {
-    return localStorage.getItem(k) 
+  get(k: string) : any {
+    return localStorage.getItem(k)
   }
 
   clear() {
