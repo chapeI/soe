@@ -22,7 +22,7 @@ export class SchedulerComponent implements OnInit {
     if(this.nullCalendar()) {
       this.setDefaults()
     } else {
-      this.loadLocallySavedData()
+      this.loadLocalData()
     }
   }
 
@@ -32,7 +32,7 @@ export class SchedulerComponent implements OnInit {
 
   // LOCALLY SAVED DATA
 
-  loadLocallySavedData() {
+  loadLocalData() {
     this.loadS1()
     this.loadS2()
     this.loadCores()

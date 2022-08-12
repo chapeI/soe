@@ -24,36 +24,40 @@
   </div>
 </div>
 
-<div class="dragdrop-container">
-  <div style="padding: 5px 10px;" >
-    <span style="font-weight: bold;">Core</span>
-    <mat-progress-spinner style="float: right;" strokeWidth=2 diameter=20  [value]=s1.length*10></mat-progress-spinner>
-  </div>
-  <div
-    cdkDropList
-    #coreList="cdkDropList"
-    [cdkDropListData]="core"
-    [cdkDropListConnectedTo]="[s1List, s2List]"
-    class="dragdrop-list"
-    (cdkDropListDropped)="drop($event)">
-    <div class="dragdrop-box" *ngFor="let item of core" cdkDrag>{{item}}</div>
-  </div>
-</div>
 
-<div class="dragdrop-container">
-  <div style="padding: 5px 10px;" >
-    <span style="font-weight: bold;">Electives</span>
-    <mat-progress-spinner style="float: right;" strokeWidth=2 diameter=20  [value]=s1.length*10></mat-progress-spinner>
+<div class="rb">
+  <div class="dragdrop-container">
+    <div style="padding: 5px 10px;" >
+      <span style="font-weight: bold;">Core</span>
+      <mat-progress-spinner style="float: right;" strokeWidth=2 diameter=20  [value]=s1.length*10></mat-progress-spinner>
+    </div>
+    <div
+      cdkDropList
+      #coreList="cdkDropList"
+      [cdkDropListData]="core"
+      [cdkDropListConnectedTo]="[s1List, s2List]"
+      class="dragdrop-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="dragdrop-box" *ngFor="let item of core" cdkDrag>{{item}}</div>
+    </div>
   </div>
-  <div
-    cdkDropList
-    #elevtiveList="cdkDropList"
-    [cdkDropListData]="electives"
-    [cdkDropListConnectedTo]="[s1List, s2List]"
-    class="dragdrop-list"
-    (cdkDropListDropped)="drop($event)">
-    <div class="dragdrop-box" *ngFor="let item of electives" cdkDrag>{{item}}</div>
+
+  <div class="dragdrop-container">
+    <div style="padding: 5px 10px;" >
+      <span style="font-weight: bold;">Electives</span>
+      <mat-progress-spinner style="float: right;" strokeWidth=2 diameter=20  [value]=s1.length*10></mat-progress-spinner>
+    </div>
+    <div
+      cdkDropList
+      #elevtiveList="cdkDropList"
+      [cdkDropListData]="electives"
+      [cdkDropListConnectedTo]="[s1List, s2List]"
+      class="dragdrop-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="dragdrop-box" *ngFor="let item of electives" cdkDrag>{{item}}</div>
+    </div>
   </div>
+
 </div>
 
 <button (click)="resetCalendar()">reset</button>
