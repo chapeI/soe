@@ -8,13 +8,13 @@ import { LocalService } from '../local.service';
 })
 export class DevInfoComponent implements OnInit {
 
-  public x = 10
+  list = ['i1', 'item2']
 
   constructor(private localService: LocalService) { }
 
   ngOnInit() { }
 
   increment() {
-    this.x += 10
+    this.list.push('i3')
   }
 }
