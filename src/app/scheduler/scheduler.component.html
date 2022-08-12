@@ -1,5 +1,5 @@
 <div class="dragdrop-container">
-  <h2>Calendar</h2>
+  <div style="font-weight: bold; padding: 5px 10px;">Calendar</div>
   <div
     cdkDropList
     #calendarList="cdkDropList"
@@ -12,9 +12,9 @@
 </div>
 
 <div class="dragdrop-container">
-  <div class="red-border">hello
-    <h2 class="red-border">Requirements</h2>
-    <mat-progress-spinner strokeWidth=2 diameter=20  [value]=calendar.length*10></mat-progress-spinner>
+  <div style="padding: 5px 10px;" >
+    <span style="font-weight: bold;">Requirements</span>
+    <mat-progress-spinner style="float: right;" strokeWidth=2 diameter=20  [value]=calendar.length*10></mat-progress-spinner>
   </div>
   <div
     cdkDropList
