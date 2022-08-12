@@ -29,53 +29,67 @@
   </div>
 </div>
 
-<div class="rb">
-  <div class="dragdrop-container rb">
-    <div style="padding: 5px 10px;" >
-      <span style="font-weight: bold;">CS Core</span>
-      <mat-progress-spinner style="float: right;" strokeWidth=2 diameter=20  [value]=s1.length*10></mat-progress-spinner>
-    </div>
-    <div
-      cdkDropList
-      #coreList="cdkDropList"
-      [cdkDropListData]="core"
-      [cdkDropListConnectedTo]="[s1List, s2List]"
-      class="dragdrop-list"
-      (cdkDropListDropped)="drop($event)">
-      <div class="dragdrop-box" *ngFor="let item of core" cdkDrag>{{item}}</div>
-    </div>
-  </div>
+  <mat-accordion>
 
-  <div class="dragdrop-container rb">
-    <div style="padding: 5px 10px;" >
-      <span style="font-weight: bold;">CS Electives</span>
-      <mat-progress-spinner style="float: right;" strokeWidth=2 diameter=20  [value]=s1.length*10></mat-progress-spinner>
-    </div>
-    <div
-      cdkDropList
-      #electiveList="cdkDropList"
-      [cdkDropListData]="electives"
-      [cdkDropListConnectedTo]="[s1List, s2List]"
-      class="dragdrop-list"
-      (cdkDropListDropped)="drop($event)">
-      <div class="dragdrop-box" *ngFor="let item of electives" cdkDrag>{{item}}</div>
-    </div>
-  </div>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Core</mat-panel-title>
+        <mat-panel-description>
+          <mat-progress-bar [value]=s1.length*10></mat-progress-bar>
+          33 credits
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      complete all core courses
+      <div
+        cdkDropList
+        #coreList="cdkDropList"
+        [cdkDropListData]="core"
+        [cdkDropListConnectedTo]="[s1List, s2List]"
+        class="dragdrop-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="dragdrop-box" *ngFor="let item of core" cdkDrag>{{item}}</div>
+      </div>
+    </mat-expansion-panel>
 
-  <div class="dragdrop-container rb">
-    <div style="padding: 5px 10px;" >
-      <span style="font-weight: bold;">Math</span>
-      <mat-progress-spinner style="float: right;" strokeWidth=2 diameter=20  [value]=s1.length*10></mat-progress-spinner>
-    </div>
-    <div
-      cdkDropList
-      #mathList="cdkDropList"
-      [cdkDropListData]="maths"
-      [cdkDropListConnectedTo]="[s1List, s2List]"
-      class="dragdrop-list"
-      (cdkDropListDropped)="drop($event)">
-      <div class="dragdrop-box" *ngFor="let item of maths" cdkDrag>{{item}}</div>
-    </div>
-  </div>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          CS Electives
+        </mat-panel-title>
+        <mat-panel-description>
+          33 credits
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      filter by specialization
+      <div
+        cdkDropList
+        #electiveList="cdkDropList"
+        [cdkDropListData]="electives"
+        [cdkDropListConnectedTo]="[s1List, s2List]"
+        class="dragdrop-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="dragdrop-box" *ngFor="let item of electives" cdkDrag>{{item}}</div>
+      </div>
+    </mat-expansion-panel>
 
-</div>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Math Electives
+        </mat-panel-title>
+        <mat-panel-description>
+          6 credits
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+        only need two math courses
+      <div
+        cdkDropList
+        #mathList="cdkDropList"
+        [cdkDropListData]="maths"
+        [cdkDropListConnectedTo]="[s1List, s2List]"
+        class="dragdrop-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="dragdrop-box" *ngFor="let item of maths" cdkDrag>{{item}}</div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
