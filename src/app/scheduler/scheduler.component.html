@@ -1,27 +1,30 @@
-<div class="dragdrop-container red-border">
-    <h2>Calendar</h2>
-    <div
-        cdkDropList
-        #calendarList="cdkDropList"
-        [cdkDropListData]="calendar"
-        [cdkDropListConnectedTo]="[requirementsList]"
-        class="dragdrop-list"
-        (cdkDropListDropped)="drop($event)">
-        <div class="dragdrop-box" *ngFor="let item of calendar" cdkDrag>{{item}}</div>
-    </div>
+<div class="dragdrop-container">
+  <h2>Calendar</h2>
+  <div
+    cdkDropList
+    #calendarList="cdkDropList"
+    [cdkDropListData]="calendar"
+    [cdkDropListConnectedTo]="[requirementsList]"
+    class="dragdrop-list"
+    (cdkDropListDropped)="drop($event)">
+    <div class="dragdrop-box" *ngFor="let item of calendar" cdkDrag>{{item}}</div>
+  </div>
 </div>
 
-<div class="dragdrop-container red-border">
-    <h2>requirements</h2>
-    <div
-        cdkDropList
-        #requirementsList="cdkDropList"
-        [cdkDropListData]="requirements"
-        [cdkDropListConnectedTo]="[calendarList]"
-        class="dragdrop-list"
-        (cdkDropListDropped)="drop($event)">
-        <div class="dragdrop-box" *ngFor="let item of requirements" cdkDrag>{{item}}</div>
-    </div>
+<div class="dragdrop-container">
+  <div class="red-border">hello
+    <h2 class="red-border">Requirements</h2>
+    <mat-progress-spinner strokeWidth=2 diameter=20  [value]=calendar.length*10></mat-progress-spinner>
+  </div>
+  <div
+    cdkDropList
+    #requirementsList="cdkDropList"
+    [cdkDropListData]="requirements"
+    [cdkDropListConnectedTo]="[calendarList]"
+    class="dragdrop-list"
+    (cdkDropListDropped)="drop($event)">
+    <div class="dragdrop-box" *ngFor="let item of requirements" cdkDrag>{{item}}</div>
+  </div>
 </div>
 
 <button (click)="resetCalendar()">reset calendar</button>
