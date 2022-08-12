@@ -10,8 +10,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { DevInfoComponent } from './dev-info/dev-info.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SchedulerComponent } from './scheduler/scheduler.component';
-import {DragDropModule} from '@angular/cdk/drag-drop';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { LocalService } from './local.service';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { LocalService } from './local.service';
     BrowserAnimationsModule,
     MatToolbarModule,
     DragDropModule,
-    
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
   ],
   providers: [
     LocalService
