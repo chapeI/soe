@@ -22,6 +22,7 @@ export class SchedulerComponent implements OnInit {
                       event.container.data,
                       event.previousIndex,
                       event.currentIndex);
+    this.save()
   }
 
   resetCalendar() {
@@ -36,6 +37,7 @@ export class SchedulerComponent implements OnInit {
   save() {
     this.locallySaveCalendar();
     this.locallySaveCoreRequirements();
+    this.locallySaveElectiveRequirements();
   }
 
   locallySaveCalendar() {
@@ -46,6 +48,11 @@ export class SchedulerComponent implements OnInit {
   locallySaveCoreRequirements() {
     let core_requirements_stringifyd = JSON.stringify(this.core)
     this.localService.saveData('core', core_requirements_stringifyd)
+  }
+
+  locallySaveElectiveRequirements() {
+    let elective_requirements_stringifyd = JSON.stringify(this.electives)
+    this.localService.saveData('electives', elective_requirements_stringifyd)
   }
 
   loadCalendarAndRequirements() {
@@ -88,6 +95,7 @@ export class SchedulerComponent implements OnInit {
   loadLocallySavedCalendarAndRequirements() {
     this.setLocalCalendar()
     this.setLocalCoreRequirements()
+    this.setLocalElectiveRequirements()
   }
 
   setLocalCalendar(){
@@ -98,6 +106,11 @@ export class SchedulerComponent implements OnInit {
   setLocalCoreRequirements(){
     let core_requirements_parsed = JSON.parse(this.localService.getData('core'))
     this.core = core_requirements_parsed
+  }
+
+  setLocalElectiveRequirements(){
+    let electives_requirements_parsed = JSON.parse(this.localService.getData('electives'))
+    this.electives = electives_requirements_parsed
   }
 
 }
