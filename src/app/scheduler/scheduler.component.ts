@@ -10,6 +10,7 @@ import { LocalService } from '../local.service';
 export class SchedulerComponent implements OnInit {
 
   core: string[] = []
+  electives: string[] = []
   calendar: string[] = []
 
   constructor(private localService: LocalService) { }
@@ -74,6 +75,14 @@ export class SchedulerComponent implements OnInit {
       'Data Structures and Algorithms',
       'Intro to Software Engineering',
     ];
+
+    this.electives = [
+      'Web Programming',
+      'Information Systems Security',
+      'Formal Methods for Software Engineering',
+      'Software Processes and Practices',
+      'Software Architecture and Design',
+    ]
   }
 
   loadLocallySavedCalendarAndRequirements() {
