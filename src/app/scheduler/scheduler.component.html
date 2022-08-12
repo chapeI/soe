@@ -1,23 +1,23 @@
-<div class="dragdrop-container">
-  <div style="font-weight: bold; padding: 5px 10px;">Calendar</div>
+<div class="dragdrop-container rb">
+  <div style="font-weight: bold; padding: 5px 10px;">Semester 1</div>
   <div
     cdkDropList
-    #calendarList="cdkDropList"
-    [cdkDropListData]="calendar"
+    #s1List="cdkDropList"
+    [cdkDropListData]="s1"
     [cdkDropListConnectedTo]="[s2List, coreList, elevtiveList]"
     class="dragdrop-list"
     (cdkDropListDropped)="drop($event)">
-    <div class="dragdrop-box" *ngFor="let item of calendar" cdkDrag>{{item}}</div>
+    <div class="dragdrop-box" *ngFor="let item of s1" cdkDrag>{{item}}</div>
   </div>
 </div>
 
-<div class="dragdrop-container">
-  <div style="font-weight: bold; padding: 5px 10px;">Summer</div>
+<div class="dragdrop-container rb">
+  <div style="font-weight: bold; padding: 5px 10px;">Semester 2</div>
   <div
     cdkDropList
     #s2List="cdkDropList"
     [cdkDropListData]="s2"
-    [cdkDropListConnectedTo]="[calendarList, coreList, elevtiveList]"
+    [cdkDropListConnectedTo]="[s1List, coreList, elevtiveList]"
     class="dragdrop-list"
     (cdkDropListDropped)="drop($event)">
     <div class="dragdrop-box" *ngFor="let item of s2" cdkDrag>{{item}}</div>
@@ -27,13 +27,13 @@
 <div class="dragdrop-container">
   <div style="padding: 5px 10px;" >
     <span style="font-weight: bold;">Core</span>
-    <mat-progress-spinner style="float: right;" strokeWidth=2 diameter=20  [value]=calendar.length*10></mat-progress-spinner>
+    <mat-progress-spinner style="float: right;" strokeWidth=2 diameter=20  [value]=s1.length*10></mat-progress-spinner>
   </div>
   <div
     cdkDropList
     #coreList="cdkDropList"
     [cdkDropListData]="core"
-    [cdkDropListConnectedTo]="[calendarList, s2List]"
+    [cdkDropListConnectedTo]="[s1List, s2List]"
     class="dragdrop-list"
     (cdkDropListDropped)="drop($event)">
     <div class="dragdrop-box" *ngFor="let item of core" cdkDrag>{{item}}</div>
@@ -43,13 +43,13 @@
 <div class="dragdrop-container">
   <div style="padding: 5px 10px;" >
     <span style="font-weight: bold;">Electives</span>
-    <mat-progress-spinner style="float: right;" strokeWidth=2 diameter=20  [value]=calendar.length*10></mat-progress-spinner>
+    <mat-progress-spinner style="float: right;" strokeWidth=2 diameter=20  [value]=s1.length*10></mat-progress-spinner>
   </div>
   <div
     cdkDropList
     #elevtiveList="cdkDropList"
     [cdkDropListData]="electives"
-    [cdkDropListConnectedTo]="[calendarList, s2List]"
+    [cdkDropListConnectedTo]="[s1List, s2List]"
     class="dragdrop-list"
     (cdkDropListDropped)="drop($event)">
     <div class="dragdrop-box" *ngFor="let item of electives" cdkDrag>{{item}}</div>

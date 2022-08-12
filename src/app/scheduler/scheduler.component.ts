@@ -11,7 +11,7 @@ export class SchedulerComponent implements OnInit {
 
   core: string[] = []
   electives: string[] = []
-  calendar: string[] = []
+  s1: string[] = []
   s2: string[] = []
 
   constructor(private localService: LocalService) { }
@@ -27,19 +27,21 @@ export class SchedulerComponent implements OnInit {
   }
 
   nullCalendar(): boolean {
-    return (this.localService.get('calendar') == null)
+    return (this.localService.get('s1') == null && this.localService.get('s2') == null)
   }
 
+  // LOCALLY SAVED DATA
+
   loadLocallySavedData() {
-    this.loadCalendar()
+    this.loadS1()
     this.loadS2()
     this.loadCores()
     this.loadElectives()
   }
 
-  loadCalendar(){
-    let parsed = JSON.parse(this.localService.get('calendar'))
-    this.calendar = parsed
+  loadS1(){
+    let parsed = JSON.parse(this.localService.get('s1'))
+    this.s1 = parsed
   }
 
   loadS2(){
@@ -57,6 +59,8 @@ export class SchedulerComponent implements OnInit {
     this.electives = parsed
   }
 
+  // LOCALLY SAVED
+
   drop(event: CdkDragDrop<string[]>) {
     transferArrayItem(event.previousContainer.data,
                       event.container.data,
@@ -66,7 +70,7 @@ export class SchedulerComponent implements OnInit {
   }
 
   persistLists() {
-    this.localSave('calendar', this.calendar)
+    this.localSave('s1', this.s1)
     this.localSave('s2', this.s2)
     this.localSave('core', this.core)
     this.localSave('electives', this.electives)
@@ -77,9 +81,8 @@ export class SchedulerComponent implements OnInit {
     this.localService.save(name, stringifyd)
   }
 
-
   setDefaults() {
-    this.calendar = [];
+    this.s1 = [];
 
     this.core = [
       'Hardware',
