@@ -11,6 +11,7 @@ export class SchedulerComponent implements OnInit {
 
   core: string[] = []
   electives: string[] = []
+  maths: string[] = []
   s1: string[] = []
   s2: string[] = []
 
@@ -37,6 +38,7 @@ export class SchedulerComponent implements OnInit {
     this.loadS2()
     this.loadCores()
     this.loadElectives()
+    this.loadMaths()
   }
 
   loadS1(){
@@ -59,6 +61,11 @@ export class SchedulerComponent implements OnInit {
     this.electives = parsed
   }
 
+  loadMaths() {
+    let parsed = JSON.parse(this.localService.get('maths'))
+    this.maths = parsed
+  }
+
   // LOCALLY SAVED
 
   drop(event: CdkDragDrop<string[]>) {
@@ -74,6 +81,7 @@ export class SchedulerComponent implements OnInit {
     this.localSave('s2', this.s2)
     this.localSave('core', this.core)
     this.localSave('electives', this.electives)
+    this.localSave('maths', this.maths)
   }
 
   localSave(name: string, list: string[]) {
@@ -101,6 +109,13 @@ export class SchedulerComponent implements OnInit {
       'Formal Methods for Software Engineering',
       'Software Processes and Practices',
       'Software Architecture and Design',
+    ]
+
+    this.maths = [
+      'Probability and Statistics',
+      'Discrete Math',
+      'Numerical Methods',
+      'Differentials'
     ]
   }
 
