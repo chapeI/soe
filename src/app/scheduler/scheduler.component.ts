@@ -1,4 +1,4 @@
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { LocalService } from '../local.service';
 
@@ -21,8 +21,7 @@ export class SchedulerComponent implements OnInit {
                       event.container.data,
                       event.previousIndex,
                       event.currentIndex);
-    this.locallySaveCalendar();
-    this.locallySaveRequirements();
+    this.locallySave()
   }
 
   resetCalendar() {
@@ -34,9 +33,14 @@ export class SchedulerComponent implements OnInit {
     window.location.reload()
   }
 
+  locallySave() {
+    this.locallySaveCalendar();
+    this.locallySaveRequirements();
+  }
+
   locallySaveCalendar() {
     let calendar_stringifyd = JSON.stringify(this.calendar)
-    this.localService.saveData('calendar', calendar_stringifyd)    
+    this.localService.saveData('calendar', calendar_stringifyd)
   }
 
   locallySaveRequirements() {
@@ -72,8 +76,8 @@ export class SchedulerComponent implements OnInit {
       'Check e-mail',
       'Walk dog'
     ];
-  } 
-  
+  }
+
   loadLocallySavedCalendarAndRequirements() {
     this.setLocalCalendar()
     this.setLocalRequirements()
