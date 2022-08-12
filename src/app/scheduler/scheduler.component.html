@@ -4,7 +4,7 @@
     cdkDropList
     #calendarList="cdkDropList"
     [cdkDropListData]="calendar"
-    [cdkDropListConnectedTo]="[requirementsList]"
+    [cdkDropListConnectedTo]="[coreList]"
     class="dragdrop-list"
     (cdkDropListDropped)="drop($event)">
     <div class="dragdrop-box" *ngFor="let item of calendar" cdkDrag>{{item}}</div>
@@ -13,17 +13,17 @@
 
 <div class="dragdrop-container">
   <div style="padding: 5px 10px;" >
-    <span style="font-weight: bold;">Requirements</span>
+    <span style="font-weight: bold;">Core</span>
     <mat-progress-spinner style="float: right;" strokeWidth=2 diameter=20  [value]=calendar.length*10></mat-progress-spinner>
   </div>
   <div
     cdkDropList
-    #requirementsList="cdkDropList"
-    [cdkDropListData]="requirements"
+    #coreList="cdkDropList"
+    [cdkDropListData]="core"
     [cdkDropListConnectedTo]="[calendarList]"
     class="dragdrop-list"
     (cdkDropListDropped)="drop($event)">
-    <div class="dragdrop-box" *ngFor="let item of requirements" cdkDrag>{{item}}</div>
+    <div class="dragdrop-box" *ngFor="let item of core" cdkDrag>{{item}}</div>
   </div>
 </div>
 

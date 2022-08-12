@@ -9,7 +9,7 @@ import { LocalService } from '../local.service';
 })
 export class SchedulerComponent implements OnInit {
 
-  requirements: string[] = []
+  core: string[] = []
   calendar: string[] = []
 
   constructor(private localService: LocalService) { }
@@ -44,7 +44,7 @@ export class SchedulerComponent implements OnInit {
   }
 
   locallySaveRequirements() {
-    let requirements_stringifyd = JSON.stringify(this.requirements)
+    let requirements_stringifyd = JSON.stringify(this.core)
     this.localService.saveData('requirements', requirements_stringifyd)
   }
 
@@ -65,16 +65,15 @@ export class SchedulerComponent implements OnInit {
       'move into this calendar'
     ];
 
-    this.requirements = [
-      'Get to work',
-      'Pick up groceries',
-      'Go home',
-      'Fall asleep',
-      'Get up',
-      'Brush teeth',
-      'Take a shower',
-      'Check e-mail',
-      'Walk dog'
+    this.core = [
+      'Hardware',
+      'OOP I',
+      'OOP II',
+      'Theory of CS',
+      'Operating Systems',
+      'Programming Languages',
+      'Data Structures and Algorithms',
+      'Intro to Software Engineering',
     ];
   }
 
@@ -90,7 +89,7 @@ export class SchedulerComponent implements OnInit {
 
   setLocalRequirements(){
     let requirements_parsed = JSON.parse(this.localService.getData('requirements'))
-    this.requirements = requirements_parsed
+    this.core = requirements_parsed
   }
 
 }
