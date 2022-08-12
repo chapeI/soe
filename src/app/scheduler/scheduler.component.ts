@@ -18,34 +18,6 @@ export class SchedulerComponent implements OnInit {
 
   ngOnInit() { this.setCalendarAndRequirements() }
 
-  drop(event: CdkDragDrop<string[]>) {
-    transferArrayItem(event.previousContainer.data,
-                      event.container.data,
-                      event.previousIndex,
-                      event.currentIndex);
-    this.persistAllLists()
-  }
-
-  resetCalendar() {
-    this.localService.clear()
-    this.refreshPage()
-  }
-
-  refreshPage() {
-    window.location.reload()
-  }
-
-  persistAllLists() {
-    this.localSave('calendar', this.calendar)
-    this.localSave('core', this.core)
-    this.localSave('electives', this.electives)
-  }
-
-  localSave(name: string, list: string[]) {
-    let stringifyd = JSON.stringify(list)
-    this.localService.save(name, stringifyd)
-  }
-
   setCalendarAndRequirements() {
     if(this.nullCalendar()) {
       this.setDefaults()
@@ -79,6 +51,26 @@ export class SchedulerComponent implements OnInit {
     this.electives = parsed
   }
 
+  drop(event: CdkDragDrop<string[]>) {
+    transferArrayItem(event.previousContainer.data,
+                      event.container.data,
+                      event.previousIndex,
+                      event.currentIndex);
+    this.persistLists()
+  }
+
+  persistLists() {
+    this.localSave('calendar', this.calendar)
+    this.localSave('core', this.core)
+    this.localSave('electives', this.electives)
+  }
+
+  localSave(name: string, list: string[]) {
+    let stringifyd = JSON.stringify(list)
+    this.localService.save(name, stringifyd)
+  }
+
+
   setDefaults() {
     this.calendar = [];
 
@@ -100,5 +92,14 @@ export class SchedulerComponent implements OnInit {
       'Software Processes and Practices',
       'Software Architecture and Design',
     ]
+  }
+
+  resetCalendar() {
+    this.localService.clear()
+    this.refreshPage()
+  }
+
+  refreshPage() {
+    window.location.reload()
   }
 }
