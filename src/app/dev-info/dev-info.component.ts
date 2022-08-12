@@ -14,7 +14,11 @@ export class DevInfoComponent implements OnInit {
 
   ngOnInit() { }
 
-  increment() {
+  push() {
     this.list.push('i3')
+  }
+
+  pop() {
+    this.list.pop()
   }
 }
