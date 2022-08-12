@@ -4,10 +4,23 @@
     cdkDropList
     #calendarList="cdkDropList"
     [cdkDropListData]="calendar"
-    [cdkDropListConnectedTo]="[coreList, elevtiveList]"
+    [cdkDropListConnectedTo]="[s2List, coreList, elevtiveList]"
     class="dragdrop-list"
     (cdkDropListDropped)="drop($event)">
     <div class="dragdrop-box" *ngFor="let item of calendar" cdkDrag>{{item}}</div>
+  </div>
+</div>
+
+<div class="dragdrop-container">
+  <div style="font-weight: bold; padding: 5px 10px;">Summer</div>
+  <div
+    cdkDropList
+    #s2List="cdkDropList"
+    [cdkDropListData]="s2"
+    [cdkDropListConnectedTo]="[calendarList, coreList, elevtiveList]"
+    class="dragdrop-list"
+    (cdkDropListDropped)="drop($event)">
+    <div class="dragdrop-box" *ngFor="let item of s2" cdkDrag>{{item}}</div>
   </div>
 </div>
 
@@ -20,7 +33,7 @@
     cdkDropList
     #coreList="cdkDropList"
     [cdkDropListData]="core"
-    [cdkDropListConnectedTo]="[calendarList]"
+    [cdkDropListConnectedTo]="[calendarList, s2List]"
     class="dragdrop-list"
     (cdkDropListDropped)="drop($event)">
     <div class="dragdrop-box" *ngFor="let item of core" cdkDrag>{{item}}</div>
@@ -36,7 +49,7 @@
     cdkDropList
     #elevtiveList="cdkDropList"
     [cdkDropListData]="electives"
-    [cdkDropListConnectedTo]="[calendarList]"
+    [cdkDropListConnectedTo]="[calendarList, s2List]"
     class="dragdrop-list"
     (cdkDropListDropped)="drop($event)">
     <div class="dragdrop-box" *ngFor="let item of electives" cdkDrag>{{item}}</div>

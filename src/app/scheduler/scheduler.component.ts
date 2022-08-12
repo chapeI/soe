@@ -12,6 +12,7 @@ export class SchedulerComponent implements OnInit {
   core: string[] = []
   electives: string[] = []
   calendar: string[] = []
+  s2: string[] = []
 
   constructor(private localService: LocalService) { }
 
