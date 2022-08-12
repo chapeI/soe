@@ -1,32 +1,33 @@
-<div class="dragdrop-container rb">
-  <div style="font-weight: bold; padding: 5px 10px;">Semester 1</div>
-  <div
-    cdkDropList
-    #s1List="cdkDropList"
-    [cdkDropListData]="s1"
-    [cdkDropListConnectedTo]="[s2List, coreList, elevtiveList]"
-    class="dragdrop-list"
-    (cdkDropListDropped)="drop($event)">
-    <div class="dragdrop-box" *ngFor="let item of s1" cdkDrag>{{item}}</div>
+<div class="rb">
+  <div class="dragdrop-container rb">
+    <div style="font-weight: bold; padding: 5px 10px;">Semester 1</div>
+    <div
+      cdkDropList
+      #s1List="cdkDropList"
+      [cdkDropListData]="s1"
+      [cdkDropListConnectedTo]="[s2List, coreList, elevtiveList]"
+      class="dragdrop-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="dragdrop-box" *ngFor="let item of s1" cdkDrag>{{item}}</div>
+    </div>
+  </div>
+
+  <div class="dragdrop-container rb">
+    <div style="font-weight: bold; padding: 5px 10px;">Semester 2</div>
+    <div
+      cdkDropList
+      #s2List="cdkDropList"
+      [cdkDropListData]="s2"
+      [cdkDropListConnectedTo]="[s1List, coreList, elevtiveList]"
+      class="dragdrop-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="dragdrop-box" *ngFor="let item of s2" cdkDrag>{{item}}</div>
+    </div>
   </div>
 </div>
-
-<div class="dragdrop-container rb">
-  <div style="font-weight: bold; padding: 5px 10px;">Semester 2</div>
-  <div
-    cdkDropList
-    #s2List="cdkDropList"
-    [cdkDropListData]="s2"
-    [cdkDropListConnectedTo]="[s1List, coreList, elevtiveList]"
-    class="dragdrop-list"
-    (cdkDropListDropped)="drop($event)">
-    <div class="dragdrop-box" *ngFor="let item of s2" cdkDrag>{{item}}</div>
-  </div>
-</div>
-
 
 <div class="rb">
-  <div class="dragdrop-container">
+  <div class="dragdrop-container rb">
     <div style="padding: 5px 10px;" >
       <span style="font-weight: bold;">Core</span>
       <mat-progress-spinner style="float: right;" strokeWidth=2 diameter=20  [value]=s1.length*10></mat-progress-spinner>
@@ -42,7 +43,7 @@
     </div>
   </div>
 
-  <div class="dragdrop-container">
+  <div class="dragdrop-container rb">
     <div style="padding: 5px 10px;" >
       <span style="font-weight: bold;">Electives</span>
       <mat-progress-spinner style="float: right;" strokeWidth=2 diameter=20  [value]=s1.length*10></mat-progress-spinner>
