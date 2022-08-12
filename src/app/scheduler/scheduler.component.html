@@ -1,3 +1,6 @@
+<button (click)="resetCalendar()">reset</button>
+<button (click)="addSemester()">Add semester</button>
+
 <div class="rb">
   <div class="dragdrop-container rb">
     <div style="font-weight: bold; padding: 5px 10px;">Semester 1</div>
@@ -5,7 +8,7 @@
       cdkDropList
       #s1List="cdkDropList"
       [cdkDropListData]="s1"
-      [cdkDropListConnectedTo]="[s2List, coreList, elevtiveList, mathList]"
+      [cdkDropListConnectedTo]="[s2List, coreList, electiveList, mathList]"
       class="dragdrop-list"
       (cdkDropListDropped)="drop($event)">
       <div class="dragdrop-box" *ngFor="let item of s1" cdkDrag>{{item}}</div>
@@ -18,7 +21,7 @@
       cdkDropList
       #s2List="cdkDropList"
       [cdkDropListData]="s2"
-      [cdkDropListConnectedTo]="[s1List, coreList, elevtiveList, mathList]"
+      [cdkDropListConnectedTo]="[s1List, coreList, electiveList, mathList]"
       class="dragdrop-list"
       (cdkDropListDropped)="drop($event)">
       <div class="dragdrop-box" *ngFor="let item of s2" cdkDrag>{{item}}</div>
@@ -29,7 +32,7 @@
 <div class="rb">
   <div class="dragdrop-container rb">
     <div style="padding: 5px 10px;" >
-      <span style="font-weight: bold;">Core</span>
+      <span style="font-weight: bold;">CS Core</span>
       <mat-progress-spinner style="float: right;" strokeWidth=2 diameter=20  [value]=s1.length*10></mat-progress-spinner>
     </div>
     <div
@@ -45,12 +48,12 @@
 
   <div class="dragdrop-container rb">
     <div style="padding: 5px 10px;" >
-      <span style="font-weight: bold;">Electives</span>
+      <span style="font-weight: bold;">CS Electives</span>
       <mat-progress-spinner style="float: right;" strokeWidth=2 diameter=20  [value]=s1.length*10></mat-progress-spinner>
     </div>
     <div
       cdkDropList
-      #elevtiveList="cdkDropList"
+      #electiveList="cdkDropList"
       [cdkDropListData]="electives"
       [cdkDropListConnectedTo]="[s1List, s2List]"
       class="dragdrop-list"
@@ -76,5 +79,3 @@
   </div>
 
 </div>
-
-<button (click)="resetCalendar()">reset</button>

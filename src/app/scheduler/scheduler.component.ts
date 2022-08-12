@@ -17,13 +17,13 @@ export class SchedulerComponent implements OnInit {
 
   constructor(private localService: LocalService) { }
 
-  ngOnInit() { this.setCalendarAndRequirements() }
+  ngOnInit() { this.setupCalendarAndRequirements() }
 
-  setCalendarAndRequirements() {
+  setupCalendarAndRequirements() {
     if(this.nullCalendar()) {
       this.setDefaults()
     } else {
-      this.loadLocalData()
+      this.loadSavedData()
     }
   }
 
@@ -31,9 +31,9 @@ export class SchedulerComponent implements OnInit {
     return (this.localService.get('s1') == null && this.localService.get('s2') == null)
   }
 
-  // LOCALLY SAVED DATA
+  // SAVED DATA
 
-  loadLocalData() {
+  loadSavedData() {
     this.loadS1()
     this.loadS2()
     this.loadCores()
@@ -66,7 +66,7 @@ export class SchedulerComponent implements OnInit {
     this.maths = parsed
   }
 
-  // LOCALLY SAVED
+  // SAVED DATA
 
   drop(event: CdkDragDrop<string[]>) {
     transferArrayItem(event.previousContainer.data,
@@ -101,6 +101,8 @@ export class SchedulerComponent implements OnInit {
       'Programming Languages',
       'Data Structures and Algorithms',
       'Intro to Software Engineering',
+      'Probability and Statistics',
+      'Discrete Math',
     ];
 
     this.electives = [
@@ -112,8 +114,6 @@ export class SchedulerComponent implements OnInit {
     ]
 
     this.maths = [
-      'Probability and Statistics',
-      'Discrete Math',
       'Numerical Methods',
       'Differentials'
     ]
@@ -126,5 +126,9 @@ export class SchedulerComponent implements OnInit {
 
   refreshPage() {
     window.location.reload()
+  }
+
+  addSemester() {
+
   }
 }
