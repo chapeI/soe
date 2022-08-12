@@ -22,7 +22,7 @@ export class SchedulerComponent implements OnInit {
     if(this.nullCalendar()) {
       this.setDefaults()
     } else {
-      this.loadLocal()
+      this.loadLocallySavedData()
     }
   }
 
@@ -30,23 +30,29 @@ export class SchedulerComponent implements OnInit {
     return (this.localService.get('calendar') == null)
   }
 
-  loadLocal() {
-    this.loadLocalCalendar()
-    this.loadLocalCores()
-    this.loadLocalElectives()
+  loadLocallySavedData() {
+    this.loadCalendar()
+    this.loadS2()
+    this.loadCores()
+    this.loadElectives()
   }
 
-  loadLocalCalendar(){
+  loadCalendar(){
     let parsed = JSON.parse(this.localService.get('calendar'))
     this.calendar = parsed
   }
 
-  loadLocalCores(){
+  loadS2(){
+    let parsed = JSON.parse(this.localService.get('s2'))
+    this.s2 = parsed
+  }
+
+  loadCores(){
     let parsed = JSON.parse(this.localService.get('core'))
     this.core = parsed
   }
 
-  loadLocalElectives(){
+  loadElectives(){
     let parsed = JSON.parse(this.localService.get('electives'))
     this.electives = parsed
   }
@@ -61,6 +67,7 @@ export class SchedulerComponent implements OnInit {
 
   persistLists() {
     this.localSave('calendar', this.calendar)
+    this.localSave('s2', this.s2)
     this.localSave('core', this.core)
     this.localSave('electives', this.electives)
   }
