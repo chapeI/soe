@@ -14,8 +14,7 @@ export class SchedulerComponent implements OnInit {
   maths: string[] = []
 
   terms = [
-    {'name': 'term 1', 'list': ['op']},
-    {'name': 'term 2', 'list': ['data structures']},
+    {'name': 'term 1', 'list': ['']},
   ]
 
   t1: string[] = []
@@ -27,7 +26,7 @@ export class SchedulerComponent implements OnInit {
 
   addTerm() {
     this.terms.push(
-      {'name': 'term 3', 'list': ['systems']},
+      {'name': 'term 2', 'list': ['systems']},
     )
   }
 
@@ -43,42 +42,6 @@ export class SchedulerComponent implements OnInit {
     return (this.localService.get('t1') == null && this.localService.get('t2') == null)
   }
 
-  // SAVED DATA
-
-  loadSavedData() {
-    this.loadT1()
-    this.loadT2()
-    this.loadCores()
-    this.loadElectives()
-    this.loadMaths()
-  }
-
-  loadT1(){
-    let parsed = JSON.parse(this.localService.get('t1'))
-    this.t1 = parsed
-  }
-
-  loadT2(){
-    let parsed = JSON.parse(this.localService.get('t2'))
-    this.t2 = parsed
-  }
-
-  loadCores(){
-    let parsed = JSON.parse(this.localService.get('core'))
-    this.core = parsed
-  }
-
-  loadElectives(){
-    let parsed = JSON.parse(this.localService.get('electives'))
-    this.electives = parsed
-  }
-
-  loadMaths() {
-    let parsed = JSON.parse(this.localService.get('maths'))
-    this.maths = parsed
-  }
-
-  // SAVED DATA
 
   drop(event: CdkDragDrop<string[]>) {
     transferArrayItem(event.previousContainer.data,
@@ -143,4 +106,41 @@ export class SchedulerComponent implements OnInit {
   addSemester() {
 
   }
+
+  // SAVED DATA
+
+  loadSavedData() {
+    this.loadT1()
+    this.loadT2()
+    this.loadCores()
+    this.loadElectives()
+    this.loadMaths()
+  }
+
+  loadT1(){
+    let parsed = JSON.parse(this.localService.get('t1'))
+    this.t1 = parsed
+  }
+
+  loadT2(){
+    let parsed = JSON.parse(this.localService.get('t2'))
+    this.t2 = parsed
+  }
+
+  loadCores(){
+    let parsed = JSON.parse(this.localService.get('core'))
+    this.core = parsed
+  }
+
+  loadElectives(){
+    let parsed = JSON.parse(this.localService.get('electives'))
+    this.electives = parsed
+  }
+
+  loadMaths() {
+    let parsed = JSON.parse(this.localService.get('maths'))
+    this.maths = parsed
+  }
+
+  // SAVED DATA
 }
