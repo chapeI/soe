@@ -5,12 +5,11 @@
     <button mat-fab (click)="resetCalendar()">
       <mat-icon>refresh</mat-icon>
     </button>
-    <button mat-fab>
+    <button mat-fab (click)="addTerm()">
       <mat-icon>add</mat-icon>
     </button>
   </div>
 </div>
-
 
 <div class="rb" style="display: flex;" >
   <div *ngFor="let term of terms">

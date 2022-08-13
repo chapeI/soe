@@ -25,6 +25,12 @@ export class SchedulerComponent implements OnInit {
 
   ngOnInit() { this.setupCalendarAndRequirements() }
 
+  addTerm() {
+    this.terms.push(
+      {'name': 'term 3', 'list': ['systems']},
+    )
+  }
+
   setupCalendarAndRequirements() {
     if(this.nullCalendar()) {
       this.setDefaults()
