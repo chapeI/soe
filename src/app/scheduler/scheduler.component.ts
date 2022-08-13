@@ -34,26 +34,26 @@ export class SchedulerComponent implements OnInit {
   }
 
   nullCalendar(): boolean {
-    return (this.localService.get('s1') == null && this.localService.get('s2') == null)
+    return (this.localService.get('t1') == null && this.localService.get('t2') == null)
   }
 
   // SAVED DATA
 
   loadSavedData() {
-    this.loadS1()
-    this.loadS2()
+    this.loadT1()
+    this.loadT2()
     this.loadCores()
     this.loadElectives()
     this.loadMaths()
   }
 
-  loadS1(){
-    let parsed = JSON.parse(this.localService.get('s1'))
+  loadT1(){
+    let parsed = JSON.parse(this.localService.get('t1'))
     this.t1 = parsed
   }
 
-  loadS2(){
-    let parsed = JSON.parse(this.localService.get('s2'))
+  loadT2(){
+    let parsed = JSON.parse(this.localService.get('t2'))
     this.t2 = parsed
   }
 
@@ -83,8 +83,8 @@ export class SchedulerComponent implements OnInit {
   }
 
   persistLists() {
-    this.localSave('s1', this.t1)
-    this.localSave('s2', this.t2)
+    this.localSave('t1', this.t1)
+    this.localSave('t2', this.t2)
     this.localSave('core', this.core)
     this.localSave('electives', this.electives)
     this.localSave('maths', this.maths)
