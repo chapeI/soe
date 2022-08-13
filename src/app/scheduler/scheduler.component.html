@@ -11,41 +11,19 @@
   </div>
 </div>
 
-<div class="rb" style="display: flex;" >
-  <div *ngFor="let term of terms">
-    <div class="dragdrop-container">
-      <div style="font-weight: bold; padding: 5px 10px;">{{ term.name }}</div>
-      <div
-        cdkDropList
-        [cdkDropListData]=term.list
-        class="dragdrop-list"
-        (cdkDropListDropped)="drop($event)">
-        <div class="dragdrop-box" *ngFor="let item of term.list" cdkDrag>{{item}}</div>
+<div class="rb" style="display: flex; justify-content: center;">
+  <div class="rb" style="display: flex;">
+   <div *ngFor="let term of terms, index as i">
+      <div class="dragdrop-container">
+        <div style="font-weight: bold; padding: 5px 10px; text-align: center;">Term {{i+1}}</div>
+        <div
+          cdkDropList
+          [cdkDropListData]=term.courses
+          class="dragdrop-list"
+          (cdkDropListDropped)="drop($event)">
+          <div class="dragdrop-box" *ngFor="let item of term.courses" cdkDrag>{{item}}</div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
-
-<div style="justify-content: center; display: flex;">
-  <div class="dragdrop-container">
-    <div style="font-weight: bold; padding: 5px 10px; color: red;">Term 1</div>
-    <div
-      cdkDropList
-      [cdkDropListData]="t1"
-      class="dragdrop-list"
-      (cdkDropListDropped)="drop($event)">
-      <div class="dragdrop-box" *ngFor="let item of t1" cdkDrag>{{item}}</div>
-    </div>
-  </div>
-
-  <div class="dragdrop-container">
-    <div style="font-weight: bold; padding: 5px 10px; color: red;">Term 2</div>
-    <div
-      cdkDropList
-      [cdkDropListData]="t2"
-      class="dragdrop-list"
-      (cdkDropListDropped)="drop($event)">
-      <div class="dragdrop-box" *ngFor="let item of t2" cdkDrag>{{item}}</div>
     </div>
   </div>
 
@@ -61,7 +39,7 @@
       <mat-expansion-panel-header>
         <mat-panel-title>
           Core
-          <mat-progress-bar [value]=t1.length*10></mat-progress-bar>
+          <mat-progress-bar [value]=10></mat-progress-bar>
         </mat-panel-title>
         <mat-panel-description>
           33 credits

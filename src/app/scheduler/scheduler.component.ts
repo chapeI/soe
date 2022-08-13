@@ -14,59 +14,77 @@ export class SchedulerComponent implements OnInit {
   maths: string[] = []
 
   terms = [
-    {'name': 'term 1', 'list': ['']},
+    {'courses': ['']},
   ]
-
-  t1: string[] = []
-  t2: string[] = []
 
   constructor(private localService: LocalService) { }
 
-  ngOnInit() { this.setupCalendarAndRequirements() }
+  ngOnInit() { this.setup() }
 
   addTerm() {
     this.terms.push(
-      {'name': 'term 2', 'list': ['systems']},
+      {'courses': ['']},
     )
+    this.saveUsersTerms()
+   }
+
+  saveUsersTerms() {
+    let stringed = JSON.stringify(this.terms)
+    this.localService.save('terms', stringed)
   }
 
-  setupCalendarAndRequirements() {
-    if(this.nullCalendar()) {
+  setup() {
+    if(this.noLocallySavedData()) {
       this.setDefaults()
     } else {
-      this.loadSavedData()
+      this.loadLocallySavedData()
     }
   }
 
-  nullCalendar(): boolean {
-    return (this.localService.get('t1') == null && this.localService.get('t2') == null)
+  loadLocallySavedData() {
+    this.loadUserDefinedTerms()
+    this.loadAdjustedRequirements()
   }
 
+  loadUserDefinedTerms(){
+    let parsed = JSON.parse(this.localService.get('terms'))
+    this.terms = parsed
+  }
+
+  noLocallySavedData(): boolean {
+    return (this.localService.get('terms') == null)
+  }
 
   drop(event: CdkDragDrop<string[]>) {
     transferArrayItem(event.previousContainer.data,
                       event.container.data,
                       event.previousIndex,
                       event.currentIndex);
-    this.persistLists()
+    this.persist()
   }
 
-  persistLists() {
-    this.localSave('t1', this.t1)
-    this.localSave('t2', this.t2)
-    this.localSave('core', this.core)
-    this.localSave('electives', this.electives)
-    this.localSave('maths', this.maths)
+  persist() {
+    this.saveUsersTerms()
+    this.save('core', this.core)
+    this.save('electives', this.electives)
+    this.save('maths', this.maths)
   }
 
-  localSave(name: string, list: string[]) {
+  save(name: string, list: string[]) {
     let stringifyd = JSON.stringify(list)
     this.localService.save(name, stringifyd)
   }
 
   setDefaults() {
-    this.t1 = [];
+    this.setTerm1()
+    this.setDefaultRequirements()
+  }
 
+  setTerm1() {
+    // variable definition does this by default
+  }
+
+  setDefaultRequirements() {
     this.core = [
       'Hardware',
       'OOP I',
@@ -109,22 +127,10 @@ export class SchedulerComponent implements OnInit {
 
   // SAVED DATA
 
-  loadSavedData() {
-    this.loadT1()
-    this.loadT2()
+  loadAdjustedRequirements() {
     this.loadCores()
     this.loadElectives()
     this.loadMaths()
-  }
-
-  loadT1(){
-    let parsed = JSON.parse(this.localService.get('t1'))
-    this.t1 = parsed
-  }
-
-  loadT2(){
-    let parsed = JSON.parse(this.localService.get('t2'))
-    this.t2 = parsed
   }
 
   loadCores(){
