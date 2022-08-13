@@ -12,8 +12,8 @@ export class SchedulerComponent implements OnInit {
   core: string[] = []
   electives: string[] = []
   maths: string[] = []
-  s1: string[] = []
-  s2: string[] = []
+  t1: string[] = []
+  t2: string[] = []
 
   constructor(private localService: LocalService) { }
 
@@ -43,12 +43,12 @@ export class SchedulerComponent implements OnInit {
 
   loadS1(){
     let parsed = JSON.parse(this.localService.get('s1'))
-    this.s1 = parsed
+    this.t1 = parsed
   }
 
   loadS2(){
     let parsed = JSON.parse(this.localService.get('s2'))
-    this.s2 = parsed
+    this.t2 = parsed
   }
 
   loadCores(){
@@ -77,8 +77,8 @@ export class SchedulerComponent implements OnInit {
   }
 
   persistLists() {
-    this.localSave('s1', this.s1)
-    this.localSave('s2', this.s2)
+    this.localSave('s1', this.t1)
+    this.localSave('s2', this.t2)
     this.localSave('core', this.core)
     this.localSave('electives', this.electives)
     this.localSave('maths', this.maths)
@@ -90,7 +90,7 @@ export class SchedulerComponent implements OnInit {
   }
 
   setDefaults() {
-    this.s1 = [];
+    this.t1 = [];
 
     this.core = [
       'Hardware',

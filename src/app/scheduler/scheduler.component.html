@@ -1,36 +1,38 @@
 
 <div class="dragdrop-container">
-  <div style="font-weight: bold; padding: 5px 10px;">Semester 1</div>
+  <div style="font-weight: bold; padding: 5px 10px;">Term 1</div>
   <div
     cdkDropList
-    #s1List="cdkDropList"
-    [cdkDropListData]="s1"
-    [cdkDropListConnectedTo]="[s2List, coreList, electiveList, mathList]"
+    #t1List="cdkDropList"
+    [cdkDropListData]="t1"
+    [cdkDropListConnectedTo]="[t2List, coreList, electiveList, mathList]"
     class="dragdrop-list"
     (cdkDropListDropped)="drop($event)">
-    <div class="dragdrop-box" *ngFor="let item of s1" cdkDrag>{{item}}</div>
+    <div class="dragdrop-box" *ngFor="let item of t1" cdkDrag>{{item}}</div>
   </div>
 </div>
 
 <div class="dragdrop-container">
-  <div style="font-weight: bold; padding: 5px 10px;">Semester 2</div>
+  <div style="font-weight: bold; padding: 5px 10px;">Term 2</div>
   <div
     cdkDropList
-    #s2List="cdkDropList"
-    [cdkDropListData]="s2"
-    [cdkDropListConnectedTo]="[s1List, coreList, electiveList, mathList]"
+    #t2List="cdkDropList"
+    [cdkDropListData]="t2"
+    [cdkDropListConnectedTo]="[t1List, coreList, electiveList, mathList]"
     class="dragdrop-list"
     (cdkDropListDropped)="drop($event)">
-    <div class="dragdrop-box" *ngFor="let item of s2" cdkDrag>{{item}}</div>
+    <div class="dragdrop-box" *ngFor="let item of t2" cdkDrag>{{item}}</div>
   </div>
 </div>
 
 <mat-accordion>
   <mat-expansion-panel>
     <mat-expansion-panel-header>
-      <mat-panel-title>Core</mat-panel-title>
+      <mat-panel-title>
+        Core
+        <mat-progress-bar [value]=t1.length*10></mat-progress-bar>
+      </mat-panel-title>
       <mat-panel-description>
-        <mat-progress-bar [value]=s1.length*10></mat-progress-bar>
         33 credits
       </mat-panel-description>
     </mat-expansion-panel-header>
@@ -38,7 +40,7 @@
       cdkDropList
       #coreList="cdkDropList"
       [cdkDropListData]="core"
-      [cdkDropListConnectedTo]="[s1List, s2List]"
+      [cdkDropListConnectedTo]="[t1List, t2List]"
       class="dragdrop-list"
       (cdkDropListDropped)="drop($event)">
       <div class="dragdrop-box" *ngFor="let item of core" cdkDrag>{{item}}</div>
@@ -59,7 +61,7 @@
       cdkDropList
       #electiveList="cdkDropList"
       [cdkDropListData]="electives"
-      [cdkDropListConnectedTo]="[s1List, s2List]"
+      [cdkDropListConnectedTo]="[t1List, t2List]"
       class="dragdrop-list"
       (cdkDropListDropped)="drop($event)">
       <div class="dragdrop-box" *ngFor="let item of electives" cdkDrag>{{item}}</div>
@@ -79,7 +81,7 @@
       cdkDropList
       #mathList="cdkDropList"
       [cdkDropListData]="maths"
-      [cdkDropListConnectedTo]="[s1List, s2List]"
+      [cdkDropListConnectedTo]="[t1List, t2List]"
       class="dragdrop-list"
       (cdkDropListDropped)="drop($event)">
       <div class="dragdrop-box" *ngFor="let item of maths" cdkDrag>{{item}}</div>
@@ -87,6 +89,5 @@
   </mat-expansion-panel>
 </mat-accordion>
 
-<div>space me</div>
-<button mat-raised-button color="primary" (click)="resetCalendar()">reset</button>
-<button mat-raised-button color="primary" (click)="addSemester()">add term</button>
+<button mat-raised-button (click)="resetCalendar()">reset</button>
+<button mat-raised-button (click)="addSemester()">add term</button>
