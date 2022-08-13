@@ -12,6 +12,12 @@ export class SchedulerComponent implements OnInit {
   core: string[] = []
   electives: string[] = []
   maths: string[] = []
+
+  terms = [
+    {'name': 'term 1', 'list': ['op']},
+    {'name': 'term 2', 'list': ['data structures']},
+  ]
+
   t1: string[] = []
   t2: string[] = []
 
