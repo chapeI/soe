@@ -1,95 +1,92 @@
-<button (click)="resetCalendar()">reset</button>
-<button (click)="addSemester()">Add semester</button>
 
-<div class="rb">
-  <div class="dragdrop-container rb">
-    <div style="font-weight: bold; padding: 5px 10px;">Semester 1</div>
-    <div
-      cdkDropList
-      #s1List="cdkDropList"
-      [cdkDropListData]="s1"
-      [cdkDropListConnectedTo]="[s2List, coreList, electiveList, mathList]"
-      class="dragdrop-list"
-      (cdkDropListDropped)="drop($event)">
-      <div class="dragdrop-box" *ngFor="let item of s1" cdkDrag>{{item}}</div>
-    </div>
-  </div>
-
-  <div class="dragdrop-container rb">
-    <div style="font-weight: bold; padding: 5px 10px;">Semester 2</div>
-    <div
-      cdkDropList
-      #s2List="cdkDropList"
-      [cdkDropListData]="s2"
-      [cdkDropListConnectedTo]="[s1List, coreList, electiveList, mathList]"
-      class="dragdrop-list"
-      (cdkDropListDropped)="drop($event)">
-      <div class="dragdrop-box" *ngFor="let item of s2" cdkDrag>{{item}}</div>
-    </div>
+<div class="dragdrop-container">
+  <div style="font-weight: bold; padding: 5px 10px;">Semester 1</div>
+  <div
+    cdkDropList
+    #s1List="cdkDropList"
+    [cdkDropListData]="s1"
+    [cdkDropListConnectedTo]="[s2List, coreList, electiveList, mathList]"
+    class="dragdrop-list"
+    (cdkDropListDropped)="drop($event)">
+    <div class="dragdrop-box" *ngFor="let item of s1" cdkDrag>{{item}}</div>
   </div>
 </div>
 
-  <mat-accordion>
+<div class="dragdrop-container">
+  <div style="font-weight: bold; padding: 5px 10px;">Semester 2</div>
+  <div
+    cdkDropList
+    #s2List="cdkDropList"
+    [cdkDropListData]="s2"
+    [cdkDropListConnectedTo]="[s1List, coreList, electiveList, mathList]"
+    class="dragdrop-list"
+    (cdkDropListDropped)="drop($event)">
+    <div class="dragdrop-box" *ngFor="let item of s2" cdkDrag>{{item}}</div>
+  </div>
+</div>
 
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>Core</mat-panel-title>
-        <mat-panel-description>
-          <mat-progress-bar [value]=s1.length*10></mat-progress-bar>
-          33 credits
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      complete all core courses
-      <div
-        cdkDropList
-        #coreList="cdkDropList"
-        [cdkDropListData]="core"
-        [cdkDropListConnectedTo]="[s1List, s2List]"
-        class="dragdrop-list"
-        (cdkDropListDropped)="drop($event)">
-        <div class="dragdrop-box" *ngFor="let item of core" cdkDrag>{{item}}</div>
-      </div>
-    </mat-expansion-panel>
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Core</mat-panel-title>
+      <mat-panel-description>
+        <mat-progress-bar [value]=s1.length*10></mat-progress-bar>
+        33 credits
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div
+      cdkDropList
+      #coreList="cdkDropList"
+      [cdkDropListData]="core"
+      [cdkDropListConnectedTo]="[s1List, s2List]"
+      class="dragdrop-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="dragdrop-box" *ngFor="let item of core" cdkDrag>{{item}}</div>
+    </div>
+  </mat-expansion-panel>
 
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          CS Electives
-        </mat-panel-title>
-        <mat-panel-description>
-          33 credits
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      filter by specialization
-      <div
-        cdkDropList
-        #electiveList="cdkDropList"
-        [cdkDropListData]="electives"
-        [cdkDropListConnectedTo]="[s1List, s2List]"
-        class="dragdrop-list"
-        (cdkDropListDropped)="drop($event)">
-        <div class="dragdrop-box" *ngFor="let item of electives" cdkDrag>{{item}}</div>
-      </div>
-    </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        CS Electives
+      </mat-panel-title>
+      <mat-panel-description>
+        33 credits
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    some courses belong to a specialization
+    <div
+      cdkDropList
+      #electiveList="cdkDropList"
+      [cdkDropListData]="electives"
+      [cdkDropListConnectedTo]="[s1List, s2List]"
+      class="dragdrop-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="dragdrop-box" *ngFor="let item of electives" cdkDrag>{{item}}</div>
+    </div>
+  </mat-expansion-panel>
 
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Math Electives
-        </mat-panel-title>
-        <mat-panel-description>
-          6 credits
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-        only need two math courses
-      <div
-        cdkDropList
-        #mathList="cdkDropList"
-        [cdkDropListData]="maths"
-        [cdkDropListConnectedTo]="[s1List, s2List]"
-        class="dragdrop-list"
-        (cdkDropListDropped)="drop($event)">
-        <div class="dragdrop-box" *ngFor="let item of maths" cdkDrag>{{item}}</div>
-      </div>
-    </mat-expansion-panel>
-  </mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Math Electives
+      </mat-panel-title>
+      <mat-panel-description>
+        6 credits
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div
+      cdkDropList
+      #mathList="cdkDropList"
+      [cdkDropListData]="maths"
+      [cdkDropListConnectedTo]="[s1List, s2List]"
+      class="dragdrop-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="dragdrop-box" *ngFor="let item of maths" cdkDrag>{{item}}</div>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
+
+<div>space me</div>
+<button mat-raised-button color="primary" (click)="resetCalendar()">reset</button>
+<button mat-raised-button color="primary" (click)="addSemester()">add term</button>
