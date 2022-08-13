@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { DevInfoComponent } from './dev-info/dev-info.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SchedulerComponent } from './scheduler/scheduler.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -21,7 +20,6 @@ import { MatButtonModule } from '@angular/material/button';
 @NgModule({
   declarations: [
     AppComponent,
-    DevInfoComponent,
     PageNotFoundComponent,
     SchedulerComponent,
   ],
