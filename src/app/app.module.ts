@@ -16,7 +16,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonModule } from '@angular/material/button';
 import { DevComponent } from './dev/dev.component';
-
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -37,6 +37,7 @@ import { DevComponent } from './dev/dev.component';
     MatProgressBarModule,
     MatExpansionModule,
     MatButtonModule,
+    MatIconModule,
   ],
   providers: [
     LocalService
