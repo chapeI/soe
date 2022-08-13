@@ -8,17 +8,7 @@ import { LocalService } from '../local.service';
 })
 export class DevInfoComponent implements OnInit {
 
-  list = ['i1', 'item2']
-
   constructor(private localService: LocalService) { }
 
   ngOnInit() { }
-
-  push() {
-    this.list.push('i3')
-  }
-
-  pop() {
-    this.list.pop()
-  }
 }
