@@ -15,6 +15,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonModule } from '@angular/material/button';
+import { DevComponent } from './dev/dev.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { MatButtonModule } from '@angular/material/button';
     AppComponent,
     PageNotFoundComponent,
     SchedulerComponent,
+    DevComponent,
   ],
   imports: [
     BrowserModule,

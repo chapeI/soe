@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
     <mat-toolbar color="primary">
       <span routerLink="">scheduler</span>
       <span class="fill-remaining-space"></span>
-      <span routerLink="/dev-info" routerLinkActive="active">dev</span>
+      <span routerLink="/dev" routerLinkActive="active">dev</span>
     </mat-toolbar>
     <div style="padding: 30px;">
       <router-outlet></router-outlet>
