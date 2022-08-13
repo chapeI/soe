@@ -4,5 +4,6 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .rb {
-    border: 1px solid red;
+    margin: 30px 0;
+    /* border: 1px solid red; */
 }

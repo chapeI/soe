@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-    <mat-toolbar>
+    <mat-toolbar color="primary">
       <span routerLink="">scheduler</span>
       <span class="fill-remaining-space"></span>
       <span routerLink="/dev-info" routerLinkActive="active">dev</span>
