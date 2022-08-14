@@ -2,6 +2,12 @@ import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { LocalService } from '../local.service';
 
+
+export interface Course {
+  name: string
+  color: string
+}
+
 @Component({
   selector: 'app-scheduler',
   templateUrl: './scheduler.component.html',
@@ -9,12 +15,12 @@ import { LocalService } from '../local.service';
 })
 export class SchedulerComponent implements OnInit {
 
-  core: string[] = []
-  electives: string[] = []
-  maths: string[] = []
+  core: Course[] = []
+  // electives: string[] = []
+  // maths: string[] = []
 
   terms = [
-    {'courses': ['drop courses here']},
+    {'courses': [{'name': 'add me', 'color': 'grey'}]},
   ]
 
   constructor(private localService: LocalService) { }
@@ -23,7 +29,7 @@ export class SchedulerComponent implements OnInit {
 
   addTerm() {
     this.terms.push(
-      {'courses': ['']},
+      {'courses': [{'name': 'add me', 'color': 'grey'}]},
     )
     this.saveUsersTerms()
    }
@@ -61,7 +67,7 @@ export class SchedulerComponent implements OnInit {
     return (this.localService.get('terms') == null)
   }
 
-  drop(event: CdkDragDrop<string[]>) {
+  drop(event: CdkDragDrop<Course[]>) {
     transferArrayItem(event.previousContainer.data,
                       event.container.data,
                       event.previousIndex,
@@ -72,11 +78,11 @@ export class SchedulerComponent implements OnInit {
   persist() {
     this.saveUsersTerms()
     this.save('core', this.core)
-    this.save('electives', this.electives)
-    this.save('maths', this.maths)
+    // this.save('electives', this.electives)
+    // this.save('maths', this.maths)
   }
 
-  save(name: string, list: string[]) {
+  save(name: string, list: Course[]) {
     let stringifyd = JSON.stringify(list)
     this.localService.save(name, stringifyd)
   }
@@ -92,30 +98,22 @@ export class SchedulerComponent implements OnInit {
 
   setDefaultRequirements() {
     this.core = [
-      'Hardware',
-      'OOP I',
-      'OOP II',
-      'Theory of CS',
-      'Operating Systems',
-      'Programming Languages',
-      'Data Structures and Algorithms',
-      'Intro to Software Engineering',
-      'Probability and Statistics',
-      'Discrete Math',
+      {'name': 'data structures',  'color': 'red'},
+      {'name': 'oop',  'color': 'red'}
     ];
 
-    this.electives = [
-      'Web Programming',
-      'Information Systems Security',
-      'Formal Methods for Software Engineering',
-      'Software Processes and Practices',
-      'Software Architecture and Design',
-    ]
+    // this.electives = [
+    //   'Web Programming',
+    //   'Information Systems Security',
+    //   'Formal Methods for Software Engineering',
+    //   'Software Processes and Practices',
+    //   'Software Architecture and Design',
+    // ]
 
-    this.maths = [
-      'Numerical Methods',
-      'Differentials'
-    ]
+    // this.maths = [
+    //   'Numerical Methods',
+    //   'Differentials'
+    // ]
   }
 
   resetCalendar() {
@@ -146,12 +144,12 @@ export class SchedulerComponent implements OnInit {
 
   loadElectives(){
     let parsed = JSON.parse(this.localService.get('electives'))
-    this.electives = parsed
+    // this.electives = parsed
   }
 
   loadMaths() {
     let parsed = JSON.parse(this.localService.get('maths'))
-    this.maths = parsed
+    // this.maths = parsed
   }
 
   // SAVED DATA

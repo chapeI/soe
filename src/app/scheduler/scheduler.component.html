@@ -14,7 +14,7 @@
           [cdkDropListData]=term.courses
           class="dragdrop-list"
           (cdkDropListDropped)="drop($event)">
-          <div class="dragdrop-box" *ngFor="let item of term.courses" cdkDrag>{{item}}</div>
+          <div class="dragdrop-box" *ngFor="let item of term.courses" cdkDrag>{{ item.name }}</div>
         </div>
       </div>
     </div>
@@ -44,11 +44,11 @@
         [cdkDropListData]="core"
         class="dragdrop-list"
         (cdkDropListDropped)="drop($event)">
-        <div class="dragdrop-box" *ngFor="let item of core" cdkDrag>{{item}}</div>
+        <div class="dragdrop-box" *ngFor="let item of core" cdkDrag>{{ item.name }}</div>
       </div>
     </mat-expansion-panel>
 
-    <mat-expansion-panel>
+    <!-- <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
           Electives
@@ -65,9 +65,9 @@
         (cdkDropListDropped)="drop($event)">
         <div class="dragdrop-box" *ngFor="let item of electives" cdkDrag>{{item}}</div>
       </div>
-    </mat-expansion-panel>
+    </mat-expansion-panel> -->
 
-    <mat-expansion-panel>
+    <!-- <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
           Math
@@ -84,7 +84,7 @@
         (cdkDropListDropped)="drop($event)">
         <div class="dragdrop-box" *ngFor="let item of maths" cdkDrag>{{item}}</div>
       </div>
-    </mat-expansion-panel>
+    </mat-expansion-panel> -->
   </mat-accordion>
 </div>
 
