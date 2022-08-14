@@ -16,11 +16,11 @@ export interface Course {
 export class SchedulerComponent implements OnInit {
 
   core: Course[] = []
-  // electives: string[] = []
-  // maths: string[] = []
+  electives: Course[] = []
+  maths: Course[] = []
 
   terms = [
-    {'courses': [{'name': 'add me', 'color': 'grey'}]},
+    {'courses': [{'name': 'add courses here', 'color': 'grey'}]},
   ]
 
   constructor(private localService: LocalService) { }
@@ -29,7 +29,7 @@ export class SchedulerComponent implements OnInit {
 
   addTerm() {
     this.terms.push(
-      {'courses': [{'name': 'add me', 'color': 'grey'}]},
+      {'courses': []},
     )
     this.saveUsersTerms()
    }
@@ -102,18 +102,16 @@ export class SchedulerComponent implements OnInit {
       {'name': 'oop',  'color': 'red'}
     ];
 
-    // this.electives = [
-    //   'Web Programming',
-    //   'Information Systems Security',
-    //   'Formal Methods for Software Engineering',
-    //   'Software Processes and Practices',
-    //   'Software Architecture and Design',
-    // ]
+    this.electives = [
+      {'name': 'web programming',  'color': 'blue'},
+      {'name': 'information security',  'color': 'blue'},
+      {'name': 'architecture',  'color': 'blue'},
+    ]
 
-    // this.maths = [
-    //   'Numerical Methods',
-    //   'Differentials'
-    // ]
+    this.maths = [
+      {'name': 'probability',  'color': 'purple'},
+      {'name': 'discrete math',  'color': 'purple'},
+    ]
   }
 
   resetCalendar() {
