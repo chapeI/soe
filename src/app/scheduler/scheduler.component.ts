@@ -14,7 +14,7 @@ export class SchedulerComponent implements OnInit {
   maths: string[] = []
 
   terms = [
-    {'courses': ['']},
+    {'courses': ['drag courses into term']},
   ]
 
   constructor(private localService: LocalService) { }

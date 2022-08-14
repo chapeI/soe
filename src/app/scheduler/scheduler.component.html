@@ -1,21 +1,13 @@
 <div cdkDropListGroup class="rb">
 
-<div style="display: flex; justify-content: center; ">
-  <div style="display: flex; justify-content: end; width: 600px; margin-bottom: 20px;">
-    <button mat-fab (click)="resetCalendar()">
-      <mat-icon>refresh</mat-icon>
-    </button>
-    <button mat-fab (click)="addTerm()">
-      <mat-icon>add</mat-icon>
-    </button>
-  </div>
-</div>
 
 <div class="rb" style="display: flex; justify-content: center;">
   <div class="rb" style="display: flex;">
-   <div *ngFor="let term of terms, index as i">
+   <div *ngFor="let term of terms, index as i, last as lastElement">
       <div class="dragdrop-container">
-        <div style="font-weight: bold; padding: 5px 10px; text-align: center;">Term {{i+1}}</div>
+        <div style="font-weight: bold; padding: 5px 10px; text-align: center;">
+          Term {{i+1}}
+        </div>
         <div
           cdkDropList
           [cdkDropListData]=term.courses
@@ -26,6 +18,7 @@
       </div>
     </div>
   </div>
+  <button style="align-self:center;" mat-mini-fab (click)="addTerm()"><mat-icon>add</mat-icon> </button>
 </div>
 
 <div style="margin-top: 40px;"></div>
@@ -57,7 +50,7 @@
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
-          CS Electives
+          Electives
           <mat-progress-bar [value]=100-electives.length*20></mat-progress-bar>
         </mat-panel-title>
         <mat-panel-description>
@@ -76,7 +69,7 @@
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
-          Math Electives
+          Math
           <mat-progress-bar [value]=100-maths.length*50></mat-progress-bar>
         </mat-panel-title>
         <mat-panel-description>
@@ -96,4 +89,10 @@
 
 </div>
 
+</div>
+
+<div style="display: flex; justify-content: center; margin-top: 20px; ">
+  <button mat-mini-fab (click)="resetCalendar()">
+    <mat-icon>refresh</mat-icon>
+  </button>
 </div>
