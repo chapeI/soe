@@ -5,17 +5,14 @@
   }
 
 .dragdrop-list {
-  padding: 3px;
-  border: solid 1px #ccc;
+  padding: 2px;
   text-align: center;
   border-radius: 4px;
-  display: block;
 }
 
 .dragdrop-box {
   border-bottom: solid 1px #ccc;
-  display: flex;
-  flex-direction: row;
+  padding: 5px;
   cursor: move;
 }
 
