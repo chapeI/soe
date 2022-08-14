@@ -14,7 +14,7 @@ export class SchedulerComponent implements OnInit {
   maths: string[] = []
 
   terms = [
-    {'courses': ['drag courses into term']},
+    {'courses': ['drop courses here']},
   ]
 
   constructor(private localService: LocalService) { }
@@ -27,6 +27,12 @@ export class SchedulerComponent implements OnInit {
     )
     this.saveUsersTerms()
    }
+
+  removeTerm() {
+    this.terms.pop()
+    this.saveUsersTerms()
+
+  }
 
   saveUsersTerms() {
     let stringed = JSON.stringify(this.terms)

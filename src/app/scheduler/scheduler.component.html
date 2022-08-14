@@ -2,8 +2,9 @@
 
 
 <div class="rb" style="display: flex; justify-content: center;">
+  <button style="align-self:center;" mat-mini-fab (click)="removeTerm()"><mat-icon>remove</mat-icon> </button>
   <div class="rb" style="display: flex;">
-   <div *ngFor="let term of terms, index as i, last as lastElement">
+    <div *ngFor="let term of terms, index as i, last as lastElement">
       <div class="dragdrop-container">
         <div style="font-weight: bold; padding: 5px 10px; text-align: center;">
           Term {{i+1}}
