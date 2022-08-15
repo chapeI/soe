@@ -42,7 +42,7 @@
           Core
         </mat-panel-title>
         <mat-panel-description>
-          <mat-progress-bar [value]=100-core.length*10></mat-progress-bar>
+          <mat-progress-bar [value]="100-core.length*(100/10)"></mat-progress-bar>
         </mat-panel-description>
       </mat-expansion-panel-header>
       <div
@@ -57,10 +57,10 @@
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
-          Electives
+          CS
         </mat-panel-title>
         <mat-panel-description>
-          <mat-progress-bar [value]="100 - electives.length * 12.5"></mat-progress-bar>
+          <mat-progress-bar [value]="100 - electives.length * (100/8)"></mat-progress-bar>
         </mat-panel-description>
       </mat-expansion-panel-header>
       <div
@@ -78,7 +78,7 @@
           Math
         </mat-panel-title>
         <mat-panel-description>
-          <mat-progress-bar [value]="100-maths.length*50"></mat-progress-bar>
+          <mat-progress-bar [value]="100-maths.length*(100/2)"></mat-progress-bar>
         </mat-panel-description>
       </mat-expansion-panel-header>
       <div
@@ -89,6 +89,7 @@
         <div class="dragdrop-box" [ngStyle]="{border: '1px solid ' + item.color}" *ngFor="let item of maths" cdkDrag>{{ item.name }}</div>
       </div>
     </mat-expansion-panel>
+
   </mat-accordion>
 </div>
 
