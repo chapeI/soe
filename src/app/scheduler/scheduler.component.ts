@@ -18,6 +18,7 @@ export class SchedulerComponent implements OnInit {
   core: Course[] = []
   electives: Course[] = []
   maths: Course[] = []
+  english: Course[] = []
 
   terms = [
     {'courses': [{'name': 'courses go here', 'color': 'grey'}]},
@@ -54,7 +55,7 @@ export class SchedulerComponent implements OnInit {
 
   loadLocallySavedData() {
     this.loadTermsAddedByUser()
-    this.loadAdjustedRequirements()
+    this.loadAlteredRequirements()
   }
 
   loadTermsAddedByUser(){
@@ -83,6 +84,7 @@ export class SchedulerComponent implements OnInit {
     this.locallySave('core', this.core)
     this.locallySave('electives', this.electives)
     this.locallySave('maths', this.maths)
+    this.locallySave('english', this.english)
   }
 
   locallySave(name: string, list: Course[]) {
@@ -132,6 +134,12 @@ export class SchedulerComponent implements OnInit {
       {'name': 'differentials',  'color': 'purple'},
       {'name': 'numerical analysis',  'color': 'purple'},
     ]
+
+    this.english = [
+      {'name': 'learn to argue',  'color': 'orange' },
+      {'name': 'write technically',  'color': 'orange' },
+      {'name': 'ethics',  'color': 'orange' }
+    ]
   }
 
   resetCalendar() {
@@ -145,10 +153,11 @@ export class SchedulerComponent implements OnInit {
 
   // SAVED DATA
 
-  loadAdjustedRequirements() {
+  loadAlteredRequirements() {
     this.loadCores()
     this.loadElectives()
     this.loadMaths()
+    this.loadEnglish()
   }
 
   loadCores(){
@@ -164,6 +173,10 @@ export class SchedulerComponent implements OnInit {
   loadMaths() {
     let parsed = JSON.parse(this.localService.get('maths'))
     this.maths = parsed
+  }
+
+  loadEnglish() {
+    this.english = JSON.parse(this.localService.get('english'))
   }
 
   // SAVED DATA

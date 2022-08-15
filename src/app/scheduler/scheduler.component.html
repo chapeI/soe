@@ -90,6 +90,24 @@
       </div>
     </mat-expansion-panel>
 
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          English
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-progress-bar [value]="100-english.length*(100/3)"></mat-progress-bar>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div
+        cdkDropList
+        [cdkDropListData]="english"
+        class="dragdrop-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="dragdrop-box" [ngStyle]="{border: '1px solid ' + item.color}" *ngFor="let item of english" cdkDrag>{{ item.name }}</div>
+      </div>
+    </mat-expansion-panel>
+
   </mat-accordion>
 </div>
 
