@@ -1,5 +1,5 @@
 <div style="display: flex; justify-content: center; margin-top: 20px; ">
-  <button mat-mini-fab ><mat-icon>settings</mat-icon> </button>
+  <button mat-mini-fab (click)="openDialog()"><mat-icon>settings</mat-icon> </button>
   <button mat-mini-fab (click)="resetCalendar()">
     <mat-icon>refresh</mat-icon>
   </button>
@@ -42,7 +42,7 @@
           Core
         </mat-panel-title>
         <mat-panel-description>
-          <mat-progress-bar [value]="100-core.length*(100/10)"></mat-progress-bar>
+          <mat-progress-bar [value]="(10 - core.length) * 100/10"></mat-progress-bar>
         </mat-panel-description>
       </mat-expansion-panel-header>
       <div
@@ -60,15 +60,15 @@
           CS
         </mat-panel-title>
         <mat-panel-description>
-          <mat-progress-bar [value]="100 - electives.length * (100/8)"></mat-progress-bar>
+          <mat-progress-bar [value]="(8 - cs.length) * 100 / 10"></mat-progress-bar>
         </mat-panel-description>
       </mat-expansion-panel-header>
       <div
         cdkDropList
-        [cdkDropListData]="electives"
+        [cdkDropListData]="cs"
         class="dragdrop-list"
         (cdkDropListDropped)="drop($event)">
-        <div class="dragdrop-box" [ngStyle]="{border: '1px solid ' + item.color}" *ngFor="let item of electives" cdkDrag>{{ item.name }}</div>
+        <div class="dragdrop-box" [ngStyle]="{border: '1px solid ' + item.color}" *ngFor="let item of cs" cdkDrag>{{ item.name }}</div>
       </div>
     </mat-expansion-panel>
 
@@ -78,7 +78,7 @@
           Math
         </mat-panel-title>
         <mat-panel-description>
-          <mat-progress-bar [value]="100-maths.length*(100/2)"></mat-progress-bar>
+          <mat-progress-bar [value]="(6 - maths.length)* (100/2)"></mat-progress-bar>
         </mat-panel-description>
       </mat-expansion-panel-header>
       <div
@@ -96,7 +96,7 @@
           English
         </mat-panel-title>
         <mat-panel-description>
-          <mat-progress-bar [value]="100-english.length*(100/3)"></mat-progress-bar>
+          <mat-progress-bar [value]="(3-english.length)*(100/3)"></mat-progress-bar>
         </mat-panel-description>
       </mat-expansion-panel-header>
       <div
@@ -105,6 +105,24 @@
         class="dragdrop-list"
         (cdkDropListDropped)="drop($event)">
         <div class="dragdrop-box" [ngStyle]="{border: '1px solid ' + item.color}" *ngFor="let item of english" cdkDrag>{{ item.name }}</div>
+      </div>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          General
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-progress-bar [value]="(8 - general.length) * (100/5)"></mat-progress-bar>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div
+        cdkDropList
+        [cdkDropListData]="general"
+        class="dragdrop-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="dragdrop-box" [ngStyle]="{border: '1px solid ' + item.color}" *ngFor="let item of general" cdkDrag>{{ item.name }}</div>
       </div>
     </mat-expansion-panel>
 

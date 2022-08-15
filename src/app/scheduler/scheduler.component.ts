@@ -1,5 +1,6 @@
 import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { LocalService } from '../local.service';
 
 
@@ -9,6 +10,18 @@ export interface Course {
 }
 
 @Component({
+  selector: 'dialog-settings',
+  template: `
+    <h1 mat-dialog-title>Dialog with elements</h1>
+    <div mat-dialog-content>This dialog showcases the title, close, content and actions elements.</div>
+    <div mat-dialog-actions>
+      <button mat-button mat-dialog-close>Close</button>
+    </div>
+  `
+})
+export class DialogSettings {}
+
+@Component({
   selector: 'app-scheduler',
   templateUrl: './scheduler.component.html',
   styleUrls: ['./scheduler.component.css']
@@ -16,17 +29,22 @@ export interface Course {
 export class SchedulerComponent implements OnInit {
 
   core: Course[] = []
-  electives: Course[] = []
+  cs: Course[] = []
   maths: Course[] = []
   english: Course[] = []
+  general: Course[] = []
 
   terms = [
     {'courses': [{'name': 'courses go here', 'color': 'grey'}]},
   ]
 
-  constructor(private localService: LocalService) { }
+  constructor(private localService: LocalService, public dialog: MatDialog) { }
 
   ngOnInit() { this.setup() }
+
+  openDialog() {
+    this.dialog.open(DialogSettings)
+  }
 
   addTerm() {
     this.terms.push(
@@ -82,9 +100,11 @@ export class SchedulerComponent implements OnInit {
 
   persistRequirements() {
     this.locallySave('core', this.core)
-    this.locallySave('electives', this.electives)
+    this.locallySave('cs', this.cs)
     this.locallySave('maths', this.maths)
     this.locallySave('english', this.english)
+    this.locallySave('general', this.general)
+
   }
 
   locallySave(name: string, list: Course[]) {
@@ -115,7 +135,7 @@ export class SchedulerComponent implements OnInit {
       {'name': 'intro to software engineering',  'color': 'red'},
     ];
 
-    this.electives = [
+    this.cs = [
       {'name': 'web development',  'color': 'blue'},
       {'name': 'information security',  'color': 'blue'},
       {'name': 'architecture',  'color': 'blue'},
@@ -127,9 +147,9 @@ export class SchedulerComponent implements OnInit {
     ]
 
     this.maths = [
-      {'name': 'combinatronics',  'color': 'purple'},
+      {'name': 'combinatorics',  'color': 'purple'},
       {'name': 'advanced calc',  'color': 'purple'},
-      {'name': 'multivariate calc',  'color': 'purple'},
+      {'name': 'multivariable calc',  'color': 'purple'},
       {'name': 'lin alg',  'color': 'purple'},
       {'name': 'differentials',  'color': 'purple'},
       {'name': 'numerical analysis',  'color': 'purple'},
@@ -140,24 +160,34 @@ export class SchedulerComponent implements OnInit {
       {'name': 'write technically',  'color': 'orange' },
       {'name': 'ethics',  'color': 'orange' }
     ]
+
+    this.general = [
+      {'name': 'intro to admin',  'color': 'green' },
+      {'name': 'canadian business',  'color': 'green' },
+      {'name': 'contemporary art',  'color': 'green' },
+      {'name': 'genetics',  'color': 'green' },
+      {'name': 'anthropology',  'color': 'green' },
+      {'name': 'philosophy of education',  'color': 'green' },
+      {'name': 'critical reading',  'color': 'green' },
+      {'name': 'thermodynamics',  'color': 'green' },
+    ]
   }
 
-  resetCalendar() {
-    this.localService.clear()
-    this.refreshPage()
-  }
+    resetCalendar() {
+      this.localService.clear()
+      this.refreshPage()
+    }
 
   refreshPage() {
     window.location.reload()
   }
-
-  // SAVED DATA
 
   loadAlteredRequirements() {
     this.loadCores()
     this.loadElectives()
     this.loadMaths()
     this.loadEnglish()
+    this.loadGeneral()
   }
 
   loadCores(){
@@ -166,8 +196,8 @@ export class SchedulerComponent implements OnInit {
   }
 
   loadElectives(){
-    let parsed = JSON.parse(this.localService.get('electives'))
-    this.electives = parsed
+    let parsed = JSON.parse(this.localService.get('cs'))
+    this.cs = parsed
   }
 
   loadMaths() {
@@ -179,5 +209,8 @@ export class SchedulerComponent implements OnInit {
     this.english = JSON.parse(this.localService.get('english'))
   }
 
-  // SAVED DATA
+  loadGeneral() {
+    this.general = JSON.parse(this.localService.get('general'))
+  }
+
 }
