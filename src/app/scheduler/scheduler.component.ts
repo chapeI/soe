@@ -20,7 +20,7 @@ export class SchedulerComponent implements OnInit {
   maths: Course[] = []
 
   terms = [
-    {'courses': [{'name': 'add courses to terms', 'color': 'grey'}]},
+    {'courses': [{'name': 'courses go here', 'color': 'grey'}]},
   ]
 
   constructor(private localService: LocalService) { }
@@ -31,16 +31,15 @@ export class SchedulerComponent implements OnInit {
     this.terms.push(
       {'courses': []},
     )
-    this.saveUsersTerms()
+    this.saveState()
    }
 
   removeTerm() {
     this.terms.pop()
-    this.saveUsersTerms()
-
+    this.persistUsersTerms()
   }
 
-  saveUsersTerms() {
+  persistUsersTerms() {
     let stringed = JSON.stringify(this.terms)
     this.localService.save('terms', stringed)
   }
@@ -54,11 +53,11 @@ export class SchedulerComponent implements OnInit {
   }
 
   loadLocallySavedData() {
-    this.loadUserDefinedTerms()
+    this.loadTermsAddedByUser()
     this.loadAdjustedRequirements()
   }
 
-  loadUserDefinedTerms(){
+  loadTermsAddedByUser(){
     let parsed = JSON.parse(this.localService.get('terms'))
     this.terms = parsed
   }
@@ -72,17 +71,21 @@ export class SchedulerComponent implements OnInit {
                       event.container.data,
                       event.previousIndex,
                       event.currentIndex);
-    this.persist()
+    this.saveState()
   }
 
-  persist() {
-    this.saveUsersTerms()
-    this.save('core', this.core)
-    // this.save('electives', this.electives)
-    // this.save('maths', this.maths)
+  saveState() {
+    this.persistUsersTerms()
+    this.persistRequirements()
   }
 
-  save(name: string, list: Course[]) {
+  persistRequirements() {
+    this.locallySave('core', this.core)
+    this.locallySave('electives', this.electives)
+    this.locallySave('maths', this.maths)
+  }
+
+  locallySave(name: string, list: Course[]) {
     let stringifyd = JSON.stringify(list)
     this.localService.save(name, stringifyd)
   }
@@ -98,19 +101,36 @@ export class SchedulerComponent implements OnInit {
 
   setDefaultRequirements() {
     this.core = [
-      {'name': 'data structures',  'color': 'red'},
-      {'name': 'oop',  'color': 'red'}
+      {'name': 'data structures and algorithms', 'color': 'red'},
+      {'name': 'system hardware',                'color': 'red'},
+      {'name': 'oop',  'color': 'red'},
+      {'name': 'discrete math',  'color': 'red'},
+      {'name': 'probability and stats',  'color': 'red'},
+      {'name': 'oop II',  'color': 'red'},
+      {'name': 'theory of CS',  'color': 'red'},
+      {'name': 'operating systems',  'color': 'red'},
+      {'name': 'programming languages',  'color': 'red'},
+      {'name': 'intro to software engineering',  'color': 'red'},
     ];
 
     this.electives = [
-      {'name': 'web programming',  'color': 'blue'},
+      {'name': 'web development',  'color': 'blue'},
       {'name': 'information security',  'color': 'blue'},
       {'name': 'architecture',  'color': 'blue'},
+      {'name': 'ui design',  'color': 'blue'},
+      {'name': 'distributed computing',  'color': 'blue'},
+      {'name': 'data analytics',  'color': 'blue'},
+      {'name': 'machine learning',  'color': 'blue'},
+      {'name': 'pattern recognition',  'color': 'blue'},
     ]
 
     this.maths = [
-      {'name': 'probability',  'color': 'purple'},
-      {'name': 'discrete math',  'color': 'purple'},
+      {'name': 'combinatronics',  'color': 'purple'},
+      {'name': 'advanced calc',  'color': 'purple'},
+      {'name': 'multivariate calc',  'color': 'purple'},
+      {'name': 'lin alg',  'color': 'purple'},
+      {'name': 'differentials',  'color': 'purple'},
+      {'name': 'numerical analysis',  'color': 'purple'},
     ]
   }
 
@@ -121,10 +141,6 @@ export class SchedulerComponent implements OnInit {
 
   refreshPage() {
     window.location.reload()
-  }
-
-  addSemester() {
-
   }
 
   // SAVED DATA
@@ -142,12 +158,12 @@ export class SchedulerComponent implements OnInit {
 
   loadElectives(){
     let parsed = JSON.parse(this.localService.get('electives'))
-    // this.electives = parsed
+    this.electives = parsed
   }
 
   loadMaths() {
     let parsed = JSON.parse(this.localService.get('maths'))
-    // this.maths = parsed
+    this.maths = parsed
   }
 
   // SAVED DATA

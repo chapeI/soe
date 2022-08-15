@@ -1,8 +1,9 @@
 <div style="display: flex; justify-content: center; margin-top: 20px; ">
-  <button style="align-self:center;" mat-mini-fab (click)="removeTerm()"><mat-icon>remove</mat-icon> </button>
+  <button mat-mini-fab ><mat-icon>settings</mat-icon> </button>
   <button mat-mini-fab (click)="resetCalendar()">
     <mat-icon>refresh</mat-icon>
   </button>
+  <button style="align-self:center;" mat-mini-fab (click)="removeTerm()"><mat-icon>remove</mat-icon> </button>
   <button style="align-self:center;" mat-mini-fab (click)="addTerm()"><mat-icon>add</mat-icon> </button>
 </div>
 
@@ -35,7 +36,7 @@
 <div style="width: 300px;">
   <mat-accordion>
 
-    <mat-expansion-panel expanded="true">
+    <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
           Core
@@ -59,7 +60,7 @@
           Electives
         </mat-panel-title>
         <mat-panel-description>
-          <mat-progress-bar [value]=100-electives.length*20></mat-progress-bar>
+          <mat-progress-bar [value]="100 - electives.length * 12.5"></mat-progress-bar>
         </mat-panel-description>
       </mat-expansion-panel-header>
       <div
@@ -77,7 +78,7 @@
           Math
         </mat-panel-title>
         <mat-panel-description>
-          <mat-progress-bar [value]=100-maths.length*50></mat-progress-bar>
+          <mat-progress-bar [value]="100-maths.length*50"></mat-progress-bar>
         </mat-panel-description>
       </mat-expansion-panel-header>
       <div
