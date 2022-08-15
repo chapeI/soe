@@ -1,8 +1,14 @@
+<div style="display: flex; justify-content: center; margin-top: 20px; ">
+  <button style="align-self:center;" mat-mini-fab (click)="removeTerm()"><mat-icon>remove</mat-icon> </button>
+  <button mat-mini-fab (click)="resetCalendar()">
+    <mat-icon>refresh</mat-icon>
+  </button>
+  <button style="align-self:center;" mat-mini-fab (click)="addTerm()"><mat-icon>add</mat-icon> </button>
+</div>
+
 <div cdkDropListGroup class="rb">
 
-
-<div class="rb" style="display: flex; justify-content: center;">
-  <button style="align-self:center;" mat-mini-fab (click)="removeTerm()"><mat-icon>remove</mat-icon> </button>
+<div class="rb" style="display: flex; justify-content: center; margin-top: 20px;">
   <div class="rb" style="display: flex;">
     <div *ngFor="let term of terms, index as i, last as lastElement">
       <div class="dragdrop-container">
@@ -14,29 +20,28 @@
           [cdkDropListData]=term.courses
           class="dragdrop-list"
           (cdkDropListDropped)="drop($event)">
-          <div *ngFor="let item of term.courses" [ngStyle]="{color: item.color}" class="dragdrop-box"  cdkDrag>{{ item.name }}</div>
+          <div *ngFor="let item of term.courses" [ngStyle]="{border: '1px solid ' + item.color}" class="dragdrop-box"  cdkDrag>{{ item.name }}</div>
         </div>
       </div>
     </div>
   </div>
-  <button style="align-self:center;" mat-mini-fab (click)="addTerm()"><mat-icon>add</mat-icon> </button>
 </div>
+
 
 <div style="margin-top: 40px;"></div>
 
 <div style="justify-content: center; display: flex;">
 
-<div style="width: 600px;">
+<div style="width: 300px;">
   <mat-accordion>
 
     <mat-expansion-panel expanded="true">
       <mat-expansion-panel-header>
         <mat-panel-title>
           Core
-          <mat-progress-bar [value]=100-core.length*10></mat-progress-bar>
         </mat-panel-title>
         <mat-panel-description>
-          33 credits
+          <mat-progress-bar [value]=100-core.length*10></mat-progress-bar>
         </mat-panel-description>
       </mat-expansion-panel-header>
       <div
@@ -44,7 +49,7 @@
         [cdkDropListData]="core"
         class="dragdrop-list"
         (cdkDropListDropped)="drop($event)">
-        <div *ngFor="let item of core" [ngStyle]="{color: item.color}" class="dragdrop-box" cdkDrag>{{ item.name }}</div>
+        <div *ngFor="let item of core" [ngStyle]="{border: '1px solid ' + item.color}" class="dragdrop-box" cdkDrag>{{ item.name }}</div>
       </div>
     </mat-expansion-panel>
 
@@ -52,10 +57,9 @@
       <mat-expansion-panel-header>
         <mat-panel-title>
           Electives
-          <mat-progress-bar [value]=100-electives.length*20></mat-progress-bar>
         </mat-panel-title>
         <mat-panel-description>
-          33 credits
+          <mat-progress-bar [value]=100-electives.length*20></mat-progress-bar>
         </mat-panel-description>
       </mat-expansion-panel-header>
       <div
@@ -63,7 +67,7 @@
         [cdkDropListData]="electives"
         class="dragdrop-list"
         (cdkDropListDropped)="drop($event)">
-        <div class="dragdrop-box" [ngStyle]="{color: item.color}" *ngFor="let item of electives" cdkDrag>{{ item.name }}</div>
+        <div class="dragdrop-box" [ngStyle]="{border: '1px solid ' + item.color}" *ngFor="let item of electives" cdkDrag>{{ item.name }}</div>
       </div>
     </mat-expansion-panel>
 
@@ -71,10 +75,9 @@
       <mat-expansion-panel-header>
         <mat-panel-title>
           Math
-          <mat-progress-bar [value]=100-maths.length*50></mat-progress-bar>
         </mat-panel-title>
         <mat-panel-description>
-          6 credits
+          <mat-progress-bar [value]=100-maths.length*50></mat-progress-bar>
         </mat-panel-description>
       </mat-expansion-panel-header>
       <div
@@ -82,7 +85,7 @@
         [cdkDropListData]="maths"
         class="dragdrop-list"
         (cdkDropListDropped)="drop($event)">
-        <div class="dragdrop-box" [ngStyle]="{color: item.color}" *ngFor="let item of maths" cdkDrag>{{ item.name }}</div>
+        <div class="dragdrop-box" [ngStyle]="{border: '1px solid ' + item.color}" *ngFor="let item of maths" cdkDrag>{{ item.name }}</div>
       </div>
     </mat-expansion-panel>
   </mat-accordion>
@@ -92,8 +95,3 @@
 
 </div>
 
-<div style="display: flex; justify-content: center; margin-top: 20px; ">
-  <button mat-mini-fab (click)="resetCalendar()">
-    <mat-icon>refresh</mat-icon>
-  </button>
-</div>

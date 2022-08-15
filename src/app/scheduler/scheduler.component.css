@@ -11,7 +11,8 @@
 }
 
 .dragdrop-box {
-  border-bottom: solid 1px #ccc;
+  border-radius: 10px;
+  margin: 2px 0;
   padding: 5px;
   cursor: move;
 }
