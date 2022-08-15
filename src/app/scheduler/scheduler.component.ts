@@ -20,7 +20,7 @@ export class SchedulerComponent implements OnInit {
   maths: Course[] = []
 
   terms = [
-    {'courses': [{'name': 'add courses here', 'color': 'grey'}]},
+    {'courses': [{'name': 'add courses to terms', 'color': 'grey'}]},
   ]
 
   constructor(private localService: LocalService) { }
