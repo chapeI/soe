@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "concordia-36c33": {
+      "hosting": {
+        "soe": [
+          "concordia-36c33"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "concordia-36c33"
+  }
+}

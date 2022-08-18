@@ -101,6 +101,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "soe:build:production",
+            "firebaseProject": "concordia-36c33",
+            "firebaseHostingSite": "concordia-36c33"
+          }
         }
       }
     }

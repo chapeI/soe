@@ -43,3 +43,8 @@ Thumbs.db
 
 # logs from emacs i think
 /src/.log
+
+# Firebase
+.firebase
+*-debug.log
+.runtimeconfig.json
