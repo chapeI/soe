@@ -18,6 +18,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { DevComponent } from './dev/dev.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
+    MatSlideToggleModule,
   ],
   providers: [
     LocalService

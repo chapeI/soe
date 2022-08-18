@@ -35,7 +35,7 @@ export class SchedulerComponent implements OnInit {
   general: Course[] = []
 
   terms = [
-    {'courses': [{'name': 'courses go here', 'color': 'grey'}]},
+    {'courses': [{'name': 'add terms, drag courses into terms', 'color': 'grey'}]},
   ]
 
   constructor(private localService: LocalService, public dialog: MatDialog) { }

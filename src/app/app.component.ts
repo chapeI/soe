@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
     <mat-toolbar color="primary">
       <span routerLink="">scheduler</span>
       <span class="fill-remaining-space"></span>
+      <mat-slide-toggle style="margin-right: 1em;"></mat-slide-toggle>
       <span routerLink="/dev" routerLinkActive="active">dev</span>
     </mat-toolbar>
     <div style="padding: 30px;">
@@ -18,5 +19,4 @@ import { Component } from '@angular/core';
     }
   `]
 })
-export class AppComponent {
-}
+export class AppComponent {}
