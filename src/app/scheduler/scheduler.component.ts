@@ -1,6 +1,8 @@
 import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
 import { LocalService } from '../local.service';
 
 
@@ -28,6 +30,8 @@ export class DialogSettings {}
 })
 export class SchedulerComponent implements OnInit {
 
+  itemsFromFirestore: Observable<any[]>;
+
   core: Course[] = []
   cs: Course[] = []
   maths: Course[] = []
@@ -38,7 +42,9 @@ export class SchedulerComponent implements OnInit {
     {'courses': [{'name': 'add terms, drag courses into terms', 'color': 'grey'}]},
   ]
 
-  constructor(private localService: LocalService, public dialog: MatDialog) { }
+  constructor(private localService: LocalService, public dialog: MatDialog, firestore: AngularFirestore) {
+    this.itemsFromFirestore = firestore.collection('test').valueChanges()
+  }
 
   ngOnInit() { this.setup() }
 
@@ -125,51 +131,26 @@ export class SchedulerComponent implements OnInit {
     this.core = [
       {'name': 'data structures and algorithms', 'color': 'red'},
       {'name': 'system hardware',                'color': 'red'},
-      {'name': 'oop',  'color': 'red'},
-      {'name': 'discrete math',  'color': 'red'},
-      {'name': 'probability and stats',  'color': 'red'},
-      {'name': 'oop II',  'color': 'red'},
-      {'name': 'theory of CS',  'color': 'red'},
-      {'name': 'operating systems',  'color': 'red'},
-      {'name': 'programming languages',  'color': 'red'},
-      {'name': 'intro to software engineering',  'color': 'red'},
     ];
 
     this.cs = [
       {'name': 'web development',  'color': 'blue'},
       {'name': 'information security',  'color': 'blue'},
-      {'name': 'architecture',  'color': 'blue'},
-      {'name': 'ui design',  'color': 'blue'},
-      {'name': 'distributed computing',  'color': 'blue'},
-      {'name': 'data analytics',  'color': 'blue'},
-      {'name': 'machine learning',  'color': 'blue'},
-      {'name': 'pattern recognition',  'color': 'blue'},
     ]
 
     this.maths = [
       {'name': 'combinatorics',  'color': 'purple'},
       {'name': 'advanced calc',  'color': 'purple'},
-      {'name': 'multivariable calc',  'color': 'purple'},
-      {'name': 'lin alg',  'color': 'purple'},
-      {'name': 'differentials',  'color': 'purple'},
-      {'name': 'numerical analysis',  'color': 'purple'},
     ]
 
     this.english = [
       {'name': 'learn to argue',  'color': 'orange' },
-      {'name': 'write technically',  'color': 'orange' },
       {'name': 'ethics',  'color': 'orange' }
     ]
 
     this.general = [
       {'name': 'intro to admin',  'color': 'green' },
       {'name': 'canadian business',  'color': 'green' },
-      {'name': 'contemporary art',  'color': 'green' },
-      {'name': 'genetics',  'color': 'green' },
-      {'name': 'anthropology',  'color': 'green' },
-      {'name': 'philosophy of education',  'color': 'green' },
-      {'name': 'critical reading',  'color': 'green' },
-      {'name': 'thermodynamics',  'color': 'green' },
     ]
   }
 
