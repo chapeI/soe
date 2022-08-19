@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +19,9 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
     </mat-slide-toggle>
       <span routerLink="/dev" routerLinkActive="active">dev</span>
     </mat-toolbar>
+
+    {{ items | async | json }}
+
     <div style="padding: 30px;">
       <router-outlet></router-outlet>
     </div>
@@ -28,6 +33,12 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
   `]
 })
 export class AppComponent {
+
+  items: Observable<any[]>;
+
+  constructor(firestore: AngularFirestore) {
+    this.items = firestore.collection('test').valueChanges();
+  }
 
   mode = 'light_mode';
   checked = false;
