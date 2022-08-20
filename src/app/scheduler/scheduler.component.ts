@@ -11,18 +11,6 @@ export interface Course {
 }
 
 @Component({
-  selector: 'dialog-settings',
-  template: `
-    <h1 mat-dialog-title>Dialog with elements</h1>
-    <div mat-dialog-content>This dialog showcases the title, close, content and actions elements.</div>
-    <div mat-dialog-actions>
-      <button mat-button mat-dialog-close>Close</button>
-    </div>
-  `
-})
-export class DialogSettings {}
-
-@Component({
   selector: 'app-scheduler',
   templateUrl: './scheduler.component.html',
   styleUrls: ['./scheduler.component.scss']
@@ -43,10 +31,6 @@ export class SchedulerComponent implements OnInit {
 
   ngOnInit() {
     this.setup()
-  }
-
-  openDialog() {
-    this.dialog.open(DialogSettings)
   }
 
   addTerm() {
