@@ -23,7 +23,7 @@
 
 <div style="margin-top: 40px;"></div>
 
-{{ itemsFromFirestore | async | json }}
+{{ ( item | async)?.name }}
 
 <div style="justify-content: center; display: flex;">
 

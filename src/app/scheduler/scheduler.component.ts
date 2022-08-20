@@ -1,10 +1,9 @@
 import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { LocalService } from '../local.service';
-
 
 export interface Course {
   name: string
@@ -30,7 +29,8 @@ export class DialogSettings {}
 })
 export class SchedulerComponent implements OnInit {
 
-  itemsFromFirestore: Observable<any[]>;
+  item: Observable<any>;
+  private itemDoc: AngularFirestoreDocument;
 
   core: Course[] = []
   cs: Course[] = []
@@ -43,7 +43,8 @@ export class SchedulerComponent implements OnInit {
   ]
 
   constructor(private localService: LocalService, public dialog: MatDialog, firestore: AngularFirestore) {
-    this.itemsFromFirestore = firestore.collection('test').valueChanges()
+    this.itemDoc = firestore.doc('items/1')
+    this.item = this.itemDoc.valueChanges();
   }
 
   ngOnInit() { this.setup() }
