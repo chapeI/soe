@@ -22,10 +22,6 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { provideFunctions,getFunctions } from '@angular/fire/functions';
-import { provideStorage,getStorage } from '@angular/fire/storage';
-import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 @NgModule({
   declarations: [
@@ -49,12 +45,8 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
     MatIconModule,
     MatDialogModule,
     MatSlideToggleModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
-    provideFunctions(() => getFunctions()),
-    provideStorage(() => getStorage()),
   ],
   providers: [
     LocalService
