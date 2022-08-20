@@ -1,7 +1,4 @@
-import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
-import { FirebaseyService } from '../firebasey.service';
-import { LocalService } from '../local.service';
 
 @Component({
   selector: 'app-scheduler',
@@ -13,58 +10,40 @@ export class SchedulerComponent implements OnInit {
   calendar = []
   requirements = []
 
-  constructor(private localService: LocalService, private firebaseService: FirebaseyService) { }
+  constructor() { }
 
-  ngOnInit() {
-    this.setup()
+  noLocalData(): boolean {
+    return true;
   }
 
-  setup() {
+  ngOnInit() {
     if(this.noLocalData()) {
       this.findRequirements()
     } else {
-      this.loadLocalData()
+      this.setLocalData()
     }
   }
 
-  loadLocalData() {
+  setLocalData() {
     console.log('setting local data');
-    this.grabLocalCalendar()
-    this.grabLocalRequirements()
+    this.setLocalCalendar()
+    this.setLocalRequirements()
   }
 
-  grabLocalRequirements() {
-    this.loadCores()
+  setLocalRequirements() { }
+  setLocalCalendar(){ }
+
+  drop() {
+    this.saveCurrentState()
   }
 
-  loadCores(){
-    let parsed = JSON.parse(this.localService.get('core'))
+  saveCurrentState() {
+    this.saveCalendar()
+    this.saveRequirements()
   }
 
-  grabLocalCalendar(){
-    let parsed = JSON.parse(this.localService.get('calendar'))
-  }
-
-  noLocalData(): boolean {
-    return (this.localService.get('calendar') == null)
-  }
-
-  drop(event: CdkDragDrop<any[]>) {
-    transferArrayItem(event.previousContainer.data,
-                      event.container.data,
-                      event.previousIndex,
-                      event.currentIndex);
-    this.persistCalendar()
-    this.persistRequirements()
-  }
-
-  persistRequirements() { }
-  persistCalendar() {}
-
-  persist(name: string, list: string[]) {
-    let stringifyd = JSON.stringify(list)
-    this.localService.save(name, stringifyd)
-  }
+  saveRequirements() { }
+  saveCalendar() {}
 
   findRequirements() {
     console.log('FIND REQUIREMENTS');
