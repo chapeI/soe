@@ -1,19 +1,21 @@
 import { Injectable } from '@angular/core';
-import { doc, docSnapshots, DocumentReference, Firestore } from '@angular/fire/firestore';
-import { onSnapshot } from '@firebase/firestore';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
+import { Observable } from 'rxjs/internal/Observable';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseyService {
-  docy: DocumentReference;
+  item: Observable<any>;
+  private itemDoc: AngularFirestoreDocument;
 
-  constructor(firestore: Firestore) {
-    console.log('firebasey constr');
+  constructor(firestore: AngularFirestore) {
+    this.itemDoc = firestore.doc('items/1')
+    this.item = this.itemDoc.valueChanges();
+  }
 
-    this.docy = doc(firestore, 'foo/1');
-    onSnapshot(this.docy, snapshot => {
-      console.log(snapshot.data());
-    })
+  getItem() {
+    return this.item;
   }
 }

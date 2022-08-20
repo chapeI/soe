@@ -1,7 +1,7 @@
 import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
+import { filter, map, Observable } from 'rxjs';
 import { FirebaseyService } from '../firebasey.service';
 import { LocalService } from '../local.service';
 
@@ -39,11 +39,11 @@ export class SchedulerComponent implements OnInit {
     {'courses': [{'name': 'add terms, drag courses into terms', 'color': 'grey'}]},
   ]
 
-  constructor(private localService: LocalService, public dialog: MatDialog, firebasey: FirebaseyService) {
-    firebasey;
-   }
+  constructor(private localService: LocalService, public dialog: MatDialog, private firebaseService: FirebaseyService) { }
 
-  ngOnInit() { this.setup() }
+  ngOnInit() {
+    this.setup()
+  }
 
   openDialog() {
     this.dialog.open(DialogSettings)
@@ -76,7 +76,7 @@ export class SchedulerComponent implements OnInit {
 
   loadLocallySavedData() {
     this.loadTermsAddedByUser()
-    this.loadAlteredRequirements()
+    this.loadLocalRequirements()
   }
 
   loadTermsAddedByUser(){
@@ -151,16 +151,16 @@ export class SchedulerComponent implements OnInit {
     ]
   }
 
-    resetCalendar() {
-      this.localService.clear()
-      this.refreshPage()
-    }
+  resetCalendar() {
+    this.localService.clear()
+    this.refreshPage()
+  }
 
   refreshPage() {
     window.location.reload()
   }
 
-  loadAlteredRequirements() {
+  loadLocalRequirements() {
     this.loadCores()
     this.loadElectives()
     this.loadMaths()
