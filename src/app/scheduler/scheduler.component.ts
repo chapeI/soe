@@ -107,7 +107,6 @@ export class SchedulerComponent implements OnInit {
     this.locallySave('maths', this.maths)
     this.locallySave('english', this.english)
     this.locallySave('general', this.general)
-
   }
 
   locallySave(name: string, list: Course[]) {
@@ -116,15 +115,18 @@ export class SchedulerComponent implements OnInit {
   }
 
   setDefaults() {
-    this.setTerm1()
-    this.setDefaultRequirements()
+    this.setASingleTerm()
+    this.setRequirements()
   }
 
-  setTerm1() {
+  setASingleTerm() {
     // variable definition does this by default
   }
 
-  setDefaultRequirements() {
+  setRequirements() {
+    console.log('entered defaults');
+    // loadFromDatabase()
+
     this.core = [
       {'name': 'data structures and algorithms', 'color': 'red'},
       {'name': 'system hardware',                'color': 'red'},
