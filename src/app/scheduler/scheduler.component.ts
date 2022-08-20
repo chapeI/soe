@@ -2,6 +2,7 @@ import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
+import { FirebaseyService } from '../firebasey.service';
 import { LocalService } from '../local.service';
 
 export interface Course {
@@ -28,7 +29,6 @@ export class DialogSettings {}
 })
 export class SchedulerComponent implements OnInit {
 
-
   core: Course[] = []
   cs: Course[] = []
   maths: Course[] = []
@@ -39,7 +39,9 @@ export class SchedulerComponent implements OnInit {
     {'courses': [{'name': 'add terms, drag courses into terms', 'color': 'grey'}]},
   ]
 
-  constructor(private localService: LocalService, public dialog: MatDialog) { }
+  constructor(private localService: LocalService, public dialog: MatDialog, firebasey: FirebaseyService) {
+    firebasey;
+   }
 
   ngOnInit() { this.setup() }
 
