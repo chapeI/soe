@@ -1,130 +1,54 @@
 
 <div cdkDropListGroup class="rb">
 
-<div class="rb" style="display: flex; justify-content: center; margin-top: 20px;">
-  <div class="rb" style="display: flex;">
-    <div *ngFor="let term of terms, index as i, last as lastElement">
-      <div class="dragdrop-container">
-        <div style="font-weight: bold; padding: 5px 10px; text-align: center;">
-          Term {{i+1}}
-        </div>
-        <div
-          cdkDropList
-          [cdkDropListData]=term.courses
-          class="dragdrop-list"
-          (cdkDropListDropped)="drop($event)">
-          <div *ngFor="let item of term.courses" [ngStyle]="{border: '1px solid ' + item.color}" class="dragdrop-box"  cdkDrag>{{ item.name }}</div>
+  <div class="rb" style="display: flex; justify-content: center; margin-top: 20px;">
+    <div class="rb" style="display: flex;">
+      <div *ngFor="let term of terms, index as i, last as lastElement">
+        <div class="dragdrop-container">
+          <div style="font-weight: bold; padding: 5px 10px; text-align: center;">
+            Term {{i+1}}
+          </div>
+          <div
+            cdkDropList
+            [cdkDropListData]=term.courses
+            class="dragdrop-list"
+            (cdkDropListDropped)="drop($event)">
+            <div *ngFor="let item of term.courses" [ngStyle]="{border: '1px solid ' + item.color}" class="dragdrop-box"  cdkDrag>{{ item.name }}</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
+  <div style="margin-top: 40px;"></div>
 
-<div style="margin-top: 40px;"></div>
-
-<div style="justify-content: center; display: flex;">
-
-<div style="width: 400px;">
-  <mat-accordion>
-
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Core
-        </mat-panel-title>
-        <mat-panel-description>
-          <mat-progress-bar [value]="(10 - core.length) * 100/10"></mat-progress-bar>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
+  <div
+    cdkDropList
+    [cdkDropListData]="core"
+    class="dragdrop-list"
+    (cdkDropListDropped)="drop($event)">
       <div
-        cdkDropList
-        [cdkDropListData]="core"
-        class="dragdrop-list"
-        (cdkDropListDropped)="drop($event)">
-        <div *ngFor="let item of core" [ngStyle]="{border: '1px solid ' + item.color}" class="dragdrop-box" cdkDrag>{{ item.name }}</div>
+        *ngFor="let item of core"
+        class="dragdrop-box"
+        cdkDrag>
+        {{ item.name }}
       </div>
-    </mat-expansion-panel>
+  </div>
 
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          CS
-        </mat-panel-title>
-        <mat-panel-description>
-          <mat-progress-bar [value]="(8 - cs.length) * 100 / 10"></mat-progress-bar>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
+  <div
+    cdkDropList
+    [cdkDropListData]="cs"
+    class="dragdrop-list"
+    (cdkDropListDropped)="drop($event)">
       <div
-        cdkDropList
-        [cdkDropListData]="cs"
-        class="dragdrop-list"
-        (cdkDropListDropped)="drop($event)">
-        <div class="dragdrop-box" [ngStyle]="{border: '1px solid ' + item.color}" *ngFor="let item of cs" cdkDrag>{{ item.name }}</div>
+        *ngFor="let item of cs"
+        class="dragdrop-box"
+        cdkDrag>
+        {{ item.name }}
       </div>
-    </mat-expansion-panel>
-
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Math
-        </mat-panel-title>
-        <mat-panel-description>
-          <mat-progress-bar [value]="(6 - maths.length)* (100/2)"></mat-progress-bar>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <div
-        cdkDropList
-        [cdkDropListData]="maths"
-        class="dragdrop-list"
-        (cdkDropListDropped)="drop($event)">
-        <div class="dragdrop-box" [ngStyle]="{border: '1px solid ' + item.color}" *ngFor="let item of maths" cdkDrag>{{ item.name }}</div>
-      </div>
-    </mat-expansion-panel>
-
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          English
-        </mat-panel-title>
-        <mat-panel-description>
-          <mat-progress-bar [value]="(3-english.length)*(100/3)"></mat-progress-bar>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <div
-        cdkDropList
-        [cdkDropListData]="english"
-        class="dragdrop-list"
-        (cdkDropListDropped)="drop($event)">
-        <div class="dragdrop-box" [ngStyle]="{border: '1px solid ' + item.color}" *ngFor="let item of english" cdkDrag>{{ item.name }}</div>
-      </div>
-    </mat-expansion-panel>
-
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          General
-        </mat-panel-title>
-        <mat-panel-description>
-          <mat-progress-bar [value]="(8 - general.length) * (100/5)"></mat-progress-bar>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <div
-        cdkDropList
-        [cdkDropListData]="general"
-        class="dragdrop-list"
-        (cdkDropListDropped)="drop($event)">
-        <div class="dragdrop-box" [ngStyle]="{border: '1px solid ' + item.color}" *ngFor="let item of general" cdkDrag>{{ item.name }}</div>
-      </div>
-    </mat-expansion-panel>
-
-  </mat-accordion>
-</div>
+  </div>
 
 </div>
-
-</div>
-
 
 <div style="display: flex; justify-content: center; margin-top: 20px; ">
   <button mat-mini-fab (click)="resetCalendar()">
