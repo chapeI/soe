@@ -1,18 +1,37 @@
-<div cdkDropList>
-  calendar
-</div>
-
-
-<br>
+<button mat-mini-fab (click)="reset()">
+  <mat-icon>refresh</mat-icon>
+</button>
+<button mat-mini-fab (click)="remove()">
+  <mat-icon>remove</mat-icon>
+</button>
+<button mat-mini-fab (click)="add()">
+  <mat-icon>add</mat-icon>
+</button>
+<button mat-mini-fab (click)="openSettingsDialog()">
+  <mat-icon>settings</mat-icon>
+</button>
 
 <div cdkDropListGroup>
+  <div style="float: right;">
+    <b> calendar </b>
+    <div
+    cdkDropList
+    [cdkDropListData]="calendar"
+    (cdkDropListDropped)="drop($event)">
+      <div
+      cdkDrag
+      *ngFor="let c of calendar">
+        {{ c.name }}
+      </div>
+    </div>
+  </div>
+
   <div *ngFor="let r of requirements">
     <b> {{ r }} </b>
     <div
     cdkDropList
     [cdkDropListData]="data[r]"
-    (cdkDropListDropped)="drop($event)"
-    >
+    (cdkDropListDropped)="drop($event)">
       <div
       cdkDrag
       *ngFor="let c of data[r]">
@@ -21,5 +40,3 @@
     </div>
   </div>
 </div>
-
-<button mat-raised-button (click)="reset()">reset</button>

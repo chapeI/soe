@@ -11,6 +11,9 @@ import { RequirementsService } from '../requirements.service';
 export class SchedulerComponent implements OnInit {
   data: any = {}
   requirements: any = []
+  calendar: any = [
+    {'name': 'dropme', 'what': 't1'},
+  ]
 
   constructor(
     private requirementsService: RequirementsService,
@@ -20,7 +23,6 @@ export class SchedulerComponent implements OnInit {
   noLocalData(): boolean {
     return (this.localService.get('data') == null )
    }
-
 
   ngOnInit() {
     if(this.noLocalData()) {
@@ -47,6 +49,7 @@ export class SchedulerComponent implements OnInit {
                   event.container.data,
                   event.previousIndex,
                   event.currentIndex)
+    console.log(event);
     this.saveCurrentState()
   }
 
@@ -84,5 +87,9 @@ export class SchedulerComponent implements OnInit {
     this.localService.clear()
     window.location.reload()
   }
+
+  add() { }
+  remove() { }
+  openSettingsDialog() {}
 
 }

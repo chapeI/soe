@@ -22,7 +22,6 @@ export class RequirementsService {
     {'name': 'anthropology', 'requirement': 'general' },
   ]
 
-
   constructor() { }
 
   getRequirements() {
