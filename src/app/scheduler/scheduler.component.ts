@@ -1,3 +1,4 @@
+import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { RequirementsService } from '../requirements.service';
 
@@ -24,7 +25,14 @@ export class SchedulerComponent implements OnInit {
 
   setupWithLocalData() {}
 
-  drop() { this.saveCurrentState() }
+  drop(event: CdkDragDrop<any[]>) {
+    transferArrayItem(event.previousContainer.data,
+                  event.container.data,
+                  event.previousIndex,
+                  event.currentIndex);
+                  console.log(event);
+
+  }
 
   saveCurrentState() { }
 
@@ -43,7 +51,5 @@ export class SchedulerComponent implements OnInit {
       this.requirements.push(requirement)
     })
   }
-
-  buildRequirementContainer(requirement: string) { }
 
 }

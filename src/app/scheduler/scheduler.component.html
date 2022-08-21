@@ -1,10 +1,23 @@
+<div cdkDropList>
+  calendar
+</div>
 
-<div *ngFor="let r of requirements">
-  <b> {{ r }} </b>
 
-    <div *ngFor="let c of this.data[r]">
-      {{ c.name }}
+<br>
+
+<div cdkDropListGroup>
+  <div *ngFor="let r of requirements">
+    <b> {{ r }} </b>
+    <div
+    cdkDropList
+    [cdkDropListData]="data[r]"
+    (cdkDropListDropped)="drop($event)"
+    >
+      <div
+      cdkDrag
+      *ngFor="let c of data[r]">
+        {{ c.name }}
+      </div>
     </div>
-
-  <p>
+  </div>
 </div>
