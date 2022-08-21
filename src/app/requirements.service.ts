@@ -18,7 +18,8 @@ export class RequirementsService {
     {'name': 'data structures', 'requirement': 'core'},
     {'name': 'operating systems', 'requirement': 'core'},
     {'name': 'calculus', 'requirement': 'math'},
-    {'name': 'ethics', 'requirement': 'english' }
+    {'name': 'ethics', 'requirement': 'english' },
+    {'name': 'anthropology', 'requirement': 'general' },
   ]
 
 
