@@ -22,6 +22,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { RequirementsService } from './requirements.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
     AngularFirestoreModule,
   ],
   providers: [
-    LocalService
+    RequirementsService,
+    LocalService,
   ],
   bootstrap: [AppComponent]
 })

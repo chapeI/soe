@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RequirementsService } from '../requirements.service';
 
 @Component({
   selector: 'app-scheduler',
@@ -6,47 +7,42 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./scheduler.component.scss']
 })
 export class SchedulerComponent implements OnInit {
+  o: any = {}
 
-  calendar = []
-  requirements = []
+  constructor(private requirementsService: RequirementsService) { }
 
-  constructor() { }
-
-  noLocalData(): boolean {
-    return true;
-  }
+  noLocalData(): boolean { return true }
 
   ngOnInit() {
     if(this.noLocalData()) {
-      this.findRequirements()
+      this.setRequirements()
     } else {
-      this.setLocalData()
+      this.setupWithLocalData()
     }
   }
 
-  setLocalData() {
-    console.log('setting local data');
+  setupWithLocalData() {
     this.setLocalCalendar()
     this.setLocalRequirements()
   }
 
-  setLocalRequirements() { }
-  setLocalCalendar(){ }
+    setLocalRequirements() { }
+    setLocalCalendar(){ }
 
-  drop() {
-    this.saveCurrentState()
+  drop() { this.saveCurrentState() }
+
+  saveCurrentState() { }
+
+  setRequirements() {
+    this.o = this.requirementsService.getSortedRequirements()
+    let requirements = Object.keys(this.o)
+    requirements.forEach(requirement => {
+      this.buildRequirementContainer(requirement)
+    })
   }
 
-  saveCurrentState() {
-    this.saveCalendar()
-    this.saveRequirements()
-  }
-
-  saveRequirements() { }
-  saveCalendar() {}
-
-  findRequirements() {
-    console.log('FIND REQUIREMENTS');
+  buildRequirementContainer(requirement: string) {
+    console.log(this.o[requirement]);
   }
 
 }
