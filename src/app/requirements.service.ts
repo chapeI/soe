@@ -18,6 +18,7 @@ export class RequirementsService {
     {'name': 'data structures', 'requirement': 'core'},
     {'name': 'operating systems', 'requirement': 'core'},
     {'name': 'calculus', 'requirement': 'math'},
+    {'name': 'ethics', 'requirement': 'english' }
   ]
 
 
@@ -29,9 +30,9 @@ export class RequirementsService {
 
   getSortedRequirements() {
     let o: any = {}
-    this.courses.map(course => {  // clever way of sorting
-      o[course.requirement] = o[course.requirement] || [] // undefined ? [] : [lstSoFar]   // value undefined only on seeing a category for the first time
-      o[course.requirement] = [...o[course.requirement], course]   // unwrap [], append course
+    this.courses.map(c => {
+      o[c.requirement] = o[c.requirement] || []     // undefined ? [] : [lstSoFar]   // value undefined only on seeing a category for the first time
+      o[c.requirement] = [...o[c.requirement], c]   // unwrap [], append course
     })
     return o
   }

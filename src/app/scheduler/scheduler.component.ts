@@ -7,7 +7,8 @@ import { RequirementsService } from '../requirements.service';
   styleUrls: ['./scheduler.component.scss']
 })
 export class SchedulerComponent implements OnInit {
-  o: any = {}
+  data: any = {}
+  requirements: any = []
 
   constructor(private requirementsService: RequirementsService) { }
 
@@ -15,34 +16,34 @@ export class SchedulerComponent implements OnInit {
 
   ngOnInit() {
     if(this.noLocalData()) {
-      this.setRequirements()
+      this.setupWithStartingConditions()
     } else {
       this.setupWithLocalData()
     }
   }
 
-  setupWithLocalData() {
-    this.setLocalCalendar()
-    this.setLocalRequirements()
-  }
-
-    setLocalRequirements() { }
-    setLocalCalendar(){ }
+  setupWithLocalData() {}
 
   drop() { this.saveCurrentState() }
 
   saveCurrentState() { }
 
-  setRequirements() {
-    this.o = this.requirementsService.getSortedRequirements()
-    let requirements = Object.keys(this.o)
+  setupWithStartingConditions() {
+    this.setData()
+    this.setRequirementsArray()
+  }
+
+  setData() {
+    this.data = this.requirementsService.getSortedRequirements()
+  }
+
+  setRequirementsArray() {
+    let requirements = Object.keys(this.data)
     requirements.forEach(requirement => {
-      this.buildRequirementContainer(requirement)
+      this.requirements.push(requirement)
     })
   }
 
-  buildRequirementContainer(requirement: string) {
-    console.log(this.o[requirement]);
-  }
+  buildRequirementContainer(requirement: string) { }
 
 }
