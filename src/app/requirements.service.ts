@@ -20,6 +20,7 @@ export class RequirementsService {
     {'name': 'calculus', 'requirement': 'math'},
     {'name': 'ethics', 'requirement': 'english' },
     {'name': 'anthropology', 'requirement': 'general' },
+    {'name': 'philosophy', 'requirement': 'general' },
   ]
 
   constructor() { }

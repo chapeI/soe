@@ -9,11 +9,16 @@ import { RequirementsService } from '../requirements.service';
   styleUrls: ['./scheduler.component.scss']
 })
 export class SchedulerComponent implements OnInit {
-  data: any = {}
   requirements: any = []
-  calendar: any = [
-    {'name': 'dropme', 'what': 't1'},
+  data: any = {}
+  terms: any = [
+    {"courses": []}
   ]
+
+  add() {
+    this.terms.push({'courses': []})
+    this.saveCurrentState()
+  }
 
   constructor(
     private requirementsService: RequirementsService,
@@ -21,7 +26,7 @@ export class SchedulerComponent implements OnInit {
     ) { }
 
   noLocalData(): boolean {
-    return (this.localService.get('data') == null )
+    return (this.localService.get('data') == null)
    }
 
   ngOnInit() {
@@ -33,7 +38,9 @@ export class SchedulerComponent implements OnInit {
   }
 
   useLocalData() {
-    console.log('using local data');
+    let terms_str = this.localService.get('terms')
+    let parsed_terms_str = JSON.parse(terms_str)
+    this.terms = parsed_terms_str
 
     let data_str = this.localService.get('data')
     let parsed_data_str = JSON.parse(data_str)
@@ -49,25 +56,21 @@ export class SchedulerComponent implements OnInit {
                   event.container.data,
                   event.previousIndex,
                   event.currentIndex)
-    console.log(event);
     this.saveCurrentState()
   }
 
   saveCurrentState() {
-    console.log('saving state');
+    let terms_str = JSON.stringify(this.terms)
+    this.localService.save('terms', terms_str)
 
     let requirements_str = JSON.stringify(this.requirements)
     this.localService.save('requirements', requirements_str)
 
     let data_str = JSON.stringify(this.data)
     this.localService.save('data', data_str)
-    console.log(data_str);
-
   }
 
   useDatabase() {
-    console.log('using database to find requirements');
-
     this.setData()
     this.setRequirementsArray()
   }
@@ -88,7 +91,6 @@ export class SchedulerComponent implements OnInit {
     window.location.reload()
   }
 
-  add() { }
   remove() { }
   openSettingsDialog() {}
 
