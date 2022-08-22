@@ -1,5 +1,6 @@
 import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
+import { FirestoreService } from '../firestore.service';
 import { LocalService } from '../local.service';
 import { RequirementsService } from '../requirements.service';
 
@@ -19,7 +20,7 @@ export class SchedulerComponent implements OnInit {
   }
 
   constructor(
-    private requirementsService: RequirementsService,
+    private firestoreService: FirestoreService,
     private localService: LocalService
     ) { }
 
@@ -29,7 +30,7 @@ export class SchedulerComponent implements OnInit {
 
   ngOnInit() {
     if(this.noLocalData()) {
-      this.useDatabase()
+      this.setupWithFirestore()
     } else {
       this.useLocalData()
     }
@@ -55,13 +56,12 @@ export class SchedulerComponent implements OnInit {
     this.localService.save('data', JSON.stringify(this.data))
   }
 
-  useDatabase() {
-    this.setData()
-    this.setRequirements()
-  }
 
-  setData() {
-    this.data = this.requirementsService.getSortedRequirements()
+  setupWithFirestore() {
+    this.firestoreService.firestoreDocument.subscribe(doc => {
+      this.data = doc.data()
+      this.setRequirements()
+    })
   }
 
   setRequirements() {

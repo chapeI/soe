@@ -23,6 +23,7 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { RequirementsService } from './requirements.service';
+import { FirestoreService } from './firestore.service';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { RequirementsService } from './requirements.service';
     AngularFirestoreModule,
   ],
   providers: [
+    FirestoreService,
     RequirementsService,
     LocalService,
   ],
