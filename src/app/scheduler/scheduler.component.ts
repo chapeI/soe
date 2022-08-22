@@ -2,7 +2,6 @@ import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from '../firestore.service';
 import { LocalService } from '../local.service';
-import { RequirementsService } from '../requirements.service';
 
 @Component({
   selector: 'app-scheduler',
@@ -55,7 +54,6 @@ export class SchedulerComponent implements OnInit {
     this.localService.save('reqs', JSON.stringify(this.reqs))
     this.localService.save('data', JSON.stringify(this.data))
   }
-
 
   setupWithFirestore() {
     this.firestoreService.firestoreDocument.subscribe(doc => {

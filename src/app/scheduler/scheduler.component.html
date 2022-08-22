@@ -1,13 +1,13 @@
-<button mat-mini-fab (click)="reset()">
+<button mat-raised-button (click)="reset()">
   <mat-icon>refresh</mat-icon>
 </button>
-<button mat-mini-fab (click)="remove()">
+<button mat-raised-button (click)="remove()">
   <mat-icon>remove</mat-icon>
 </button>
-<button mat-mini-fab (click)="add()">
+<button mat-raised-button (click)="add()">
   <mat-icon>add</mat-icon>
 </button>
-<button mat-mini-fab (click)="openSettingsDialog()">
+<button mat-raised-button (click)="openSettingsDialog()">
   <mat-icon>settings</mat-icon>
 </button>
 
@@ -37,6 +37,7 @@
     cdkDropList
     [cdkDropListData]="data[r]"
     (cdkDropListDropped)="drop($event)">
+      <div *ngIf="data[r].length == 0">complete</div>
       <div
       cdkDrag
       *ngFor="let c of data[r]">
