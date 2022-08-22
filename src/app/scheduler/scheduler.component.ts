@@ -31,11 +31,11 @@ export class SchedulerComponent implements OnInit {
     if(this.noLocalData()) {
       this.setupWithFirestore()
     } else {
-      this.useLocalData()
+      this.setupWithLocalData()
     }
   }
 
-  useLocalData() {
+  setupWithLocalData() {
     this.trms = JSON.parse(this.localService.get('trms'))
     this.data = JSON.parse(this.localService.get('data'))
     this.reqs = JSON.parse(this.localService.get('reqs'))
