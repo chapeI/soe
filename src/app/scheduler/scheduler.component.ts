@@ -9,15 +9,13 @@ import { RequirementsService } from '../requirements.service';
   styleUrls: ['./scheduler.component.scss']
 })
 export class SchedulerComponent implements OnInit {
-  requirements: any = []
+  reqs: any = []
   data: any = {}
-  terms: any = [
-    {"courses": []}
-  ]
+  trms: any = [ {"courses": []} ]
 
   add() {
-    this.terms.push({'courses': []})
-    this.saveCurrentState()
+    this.trms.push({'courses': []})
+    this.save()
   }
 
   constructor(
@@ -26,7 +24,7 @@ export class SchedulerComponent implements OnInit {
     ) { }
 
   noLocalData(): boolean {
-    return (this.localService.get('data') == null)
+    return (this.localService.get('trms') == null)
    }
 
   ngOnInit() {
@@ -38,17 +36,9 @@ export class SchedulerComponent implements OnInit {
   }
 
   useLocalData() {
-    let terms_str = this.localService.get('terms')
-    let parsed_terms_str = JSON.parse(terms_str)
-    this.terms = parsed_terms_str
-
-    let data_str = this.localService.get('data')
-    let parsed_data_str = JSON.parse(data_str)
-    this.data = parsed_data_str
-
-    let requirements_str = this.localService.get('requirements')
-    let parsed_str = JSON.parse(requirements_str)
-    this.requirements = parsed_str
+    this.trms = JSON.parse(this.localService.get('trms'))
+    this.data = JSON.parse(this.localService.get('data'))
+    this.reqs = JSON.parse(this.localService.get('reqs'))
   }
 
   drop(event: CdkDragDrop<any[]>) {
@@ -56,33 +46,28 @@ export class SchedulerComponent implements OnInit {
                   event.container.data,
                   event.previousIndex,
                   event.currentIndex)
-    this.saveCurrentState()
+    this.save()
   }
 
-  saveCurrentState() {
-    let terms_str = JSON.stringify(this.terms)
-    this.localService.save('terms', terms_str)
-
-    let requirements_str = JSON.stringify(this.requirements)
-    this.localService.save('requirements', requirements_str)
-
-    let data_str = JSON.stringify(this.data)
-    this.localService.save('data', data_str)
+  save() {
+    this.localService.save('trms', JSON.stringify(this.trms))
+    this.localService.save('reqs', JSON.stringify(this.reqs))
+    this.localService.save('data', JSON.stringify(this.data))
   }
 
   useDatabase() {
     this.setData()
-    this.setRequirementsArray()
+    this.setRequirements()
   }
 
   setData() {
     this.data = this.requirementsService.getSortedRequirements()
   }
 
-  setRequirementsArray() {
+  setRequirements() {
     let requirements = Object.keys(this.data)
     requirements.forEach(requirement => {
-      this.requirements.push(requirement)
+      this.reqs.push(requirement)
     })
   }
 

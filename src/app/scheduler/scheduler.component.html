@@ -13,7 +13,7 @@
 
 <div cdkDropListGroup>
   <div
-  *ngFor="let t of terms, index as i">
+  *ngFor="let t of trms, index as i">
     <b>term {{i + 1}} </b>
     <div
     class="dragdrop-list"
@@ -30,7 +30,7 @@
 
   <hr>
 
-  <div *ngFor="let r of requirements">
+  <div *ngFor="let r of reqs">
     <b> {{ r }} </b>
     <div
     class="dragdrop-list"
