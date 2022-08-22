@@ -58,13 +58,13 @@ export class SchedulerComponent implements OnInit {
   setupWithFirestore() {
     this.firestoreService.firestoreDocument.subscribe(doc => {
       this.data = doc.data()
-      this.setRequirements()
+      this.createReqsArrayUsingKeys()
     })
   }
 
-  setRequirements() {
-    let requirements = Object.keys(this.data)
-    requirements.forEach(requirement => {
+  createReqsArrayUsingKeys() {
+    let keys = Object.keys(this.data)
+    keys.forEach(requirement => {
       this.reqs.push(requirement)
     })
   }

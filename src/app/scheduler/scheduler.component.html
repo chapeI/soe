@@ -32,16 +32,17 @@
 
   <div *ngFor="let r of reqs">
     <b> {{ r }} </b>
+    {{ data[r].weight }}
     <div
     class="dragdrop-list"
     cdkDropList
-    [cdkDropListData]="data[r]"
+    [cdkDropListData]="data[r].courses"
     (cdkDropListDropped)="drop($event)">
-      <div *ngIf="data[r].length == 0">complete</div>
+      <div *ngIf="data[r].courses.length == 0">complete</div>
       <div
       cdkDrag
-      *ngFor="let c of data[r]">
-        {{ c.name }}
+      *ngFor="let c of data[r].courses">
+        {{ c | json }}
       </div>
     </div>
   </div>
