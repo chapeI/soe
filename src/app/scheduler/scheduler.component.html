@@ -31,18 +31,16 @@
 <button mat-raised-button (click)="add()">
   <mat-icon>add</mat-icon>
 </button>
-<button mat-raised-button (click)="openSettingsDialog()">
+<button disabled mat-raised-button (click)="openSettingsDialog()">
   <mat-icon>settings</mat-icon>
 </button>
-<button disabled="true" color="warn" mat-raised-button (click)="createDocument()">create cs doc</button>
-
-<hr>
 
 <div cdkDropListGroup>
   <div
   style="display: flex">
     <div
-    style="min-width: 150px;"
+    class="terms"
+    style="width: 150px;"
     *ngFor="let t of trms, index as i">
       <b>term {{i + 1}} </b>
       <div
@@ -60,7 +58,6 @@
     </div>
   </div>
 
-
   <mat-accordion>
     <mat-expansion-panel *ngFor="let r of reqs">
       <mat-expansion-panel-header>
@@ -69,7 +66,7 @@
           'text-decoration': data[r].size - data[r].courses.length >= data[r].required ? 'line-through' : null,
           'color': data[r].color
           }">
-          <b> {{ r }} </b>
+          {{ r }}
         </mat-panel-title>
         <mat-panel-description>
           {{data[r].size - data[r].courses.length}}/{{data[r].required}}
@@ -89,8 +86,10 @@
     </div>
     </mat-expansion-panel>
   </mat-accordion>
+</div>
 
   <br>
 
-
-<a style="float: right;" href="https://github.com/chapei/oldsoe">make a pull request</a>
+<a style="float: right;" href="https://github.com/chapeI/soe/edit/main/src/assets/cs.json">add a missing course</a>
+<br>
+<a style="float: right;" href="https://github.com/chapeI/soe/blob/main/src/app/scheduler/scheduler.component.ts">see code</a>
