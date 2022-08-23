@@ -12,7 +12,7 @@ export class SchedulerComponent implements OnInit {
   reqs: any = []
   data: any = {}
   trms: any = [ {"courses": []} ]
-  cols: any = ['red', 'orange', 'yellow', 'green', 'blue']
+  cols: any = ['red', 'blue', 'green', 'orange', 'purple']
 
   add() {
     this.trms.push({'courses': []})

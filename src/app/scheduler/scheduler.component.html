@@ -15,17 +15,21 @@
 
 <div cdkDropListGroup>
   <div
-  *ngFor="let t of trms, index as i">
-    <b>term {{i + 1}} </b>
+  style="display: flex">
     <div
-    class="dragdrop-list"
-    cdkDropList
-    [cdkDropListData]="t.courses"
-    (cdkDropListDropped)="drop($event)">
+    style="min-width: 150px;"
+    *ngFor="let t of trms, index as i">
+      <b>term {{i + 1}} </b>
       <div
-      cdkDrag
-      *ngFor="let c of t.courses, index as j">
-        {{ c.name }}
+      class="dragdrop-list"
+      cdkDropList
+      [cdkDropListData]="t.courses"
+      (cdkDropListDropped)="drop($event)">
+        <div
+        cdkDrag
+        *ngFor="let c of t.courses, index as j">
+          {{ c.name }}
+        </div>
       </div>
     </div>
   </div>
@@ -35,13 +39,11 @@
   <div
   *ngFor="let r of reqs"
   [ngStyle]= "{
-    'text-decoration': data[r].size - data[r].courses.length >= data[r].weight ? 'line-through' : null,
+    'text-decoration': data[r].size - data[r].courses.length >= data[r].required ? 'line-through' : null,
     'color' : data[r].color
     }">
     <b> {{ r }} </b>
-    {{ data[r].size - data[r].courses.length }}
-    /
-    {{ data[r].weight }}
+    {{data[r].size - data[r].courses.length}}/{{data[r].required}}
     <div
     class="dragdrop-list"
     cdkDropList

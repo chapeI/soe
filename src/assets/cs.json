@@ -1,18 +1,25 @@
 {
   "core": {
-    "weight": "10",
+    "required": "10",
     "courses": [
       {"name": "data structures"},
       {"name": "operating systems"}
     ]
   },
   "math": {
-    "weight": "2",
+    "required": "2",
     "courses": [
       {"name": "calculus"},
       {"name": "linear algebra"},
       {"name": "statistics"},
       {"name": "combinatronics"}
+    ]
+  },
+  "cs": {
+    "required": "10",
+    "courses": [
+      {"name": "web dev"},
+      {"name": "security"}
     ]
   }
 }
