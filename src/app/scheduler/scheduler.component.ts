@@ -107,6 +107,6 @@ export class SchedulerComponent implements OnInit {
   openSettingsDialog() {}
 
   createDocument() {
-    this.firestoreService.createFirestoreDoc();
+    this.firestoreService.createCSFirestoreDoc();
   }
 }

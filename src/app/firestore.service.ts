@@ -17,9 +17,11 @@ export class FirestoreService {
         this.csDocument = firestore.doc('data/cs')
       }
 
-  createFirestoreDoc()
+  createCSFirestoreDoc()
   {
-    this.cs = this.requirementsService.cs
+    console.log('creating CS firestore doc for');
+    this.cs = this.requirementsService.getCS()
+    console.log(this.cs);
     this.csDocument.set(this.cs)
   }
 }

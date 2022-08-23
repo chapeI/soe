@@ -21,5 +21,19 @@
       {"name": "web dev"},
       {"name": "security"}
     ]
+  },
+  "general": {
+    "required": "5",
+    "courses": [
+      {"name": "thermodynamics"},
+      {"name": "anthropology"}
+    ]
+  },
+  "english": {
+    "required": "2",
+    "courses": [
+      {"name": "ethics"},
+      {"name": "technical writing"}
+    ]
   }
 }

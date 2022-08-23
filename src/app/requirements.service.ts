@@ -13,4 +13,8 @@ export class RequirementsService {
       this.cs = x
     })
   }
+
+  getCS () {
+    return this.cs
+  }
 }
