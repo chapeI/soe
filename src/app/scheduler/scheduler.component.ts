@@ -56,7 +56,7 @@ export class SchedulerComponent implements OnInit {
   }
 
   setupWithFirestore() {
-    this.firestoreService.csDocument.subscribe(doc => {
+    this.firestoreService.csDocument.get().subscribe(doc => {
       this.data = doc.data()
       this.createReqsArrayUsingKeys()
     })

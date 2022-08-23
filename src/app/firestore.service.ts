@@ -6,15 +6,30 @@ import { Observable } from 'rxjs/internal/Observable';
   providedIn: 'root'
 })
 export class FirestoreService {
-  csDocument: Observable<any>;
-  firestoreDoc: AngularFirestoreDocument<any>;
+  csDocument: AngularFirestoreDocument<any>;
 
-  constructor(private firestore: AngularFirestore) {
-    this.csDocument = firestore.doc('data/cs').get()
-    this.firestoreDoc = firestore.doc('col/firestoreDoc');
+  constructor(firestore: AngularFirestore) {
+    this.csDocument = firestore.doc('data/cs')
   }
 
   createFirestoreDoc() {
-    this.firestoreDoc.set({'foo': 'bar'})
+    this.csDocument.set(
+      {
+        'core': {
+          'weight': '10',
+          'courses': [
+            {'name': 'data structures'},
+            {'name': 'operating systems'},
+          ],
+        },
+        'math': {
+          'weight': '2',
+          'courses': [
+            {'name': 'calculus'},
+            {'name': 'linear algebra'},
+          ],
+        },
+      }
+    )
   }
 }

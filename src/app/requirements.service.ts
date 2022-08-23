@@ -29,7 +29,7 @@ export class RequirementsService {
     return this.courses;
   }
 
-  getSortedRequirements() {
+  getSortedCourses() {
     let o: any = {}
     this.courses.map(c => {
       o[c.requirement] = o[c.requirement] || []     // undefined ? [] : [lstSoFar]   // value undefined only on seeing a category for the first time
