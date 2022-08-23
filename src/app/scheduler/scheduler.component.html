@@ -30,15 +30,16 @@
 
   <hr>
 
-  <div *ngFor="let r of reqs">
+  <div *ngFor="let r of reqs" [ngStyle]= "{'color': (data[r].courses.length == 0) ? 'green' : null}" >
     <b> {{ r }} </b>
+    {{ data[r].weight - data[r].courses.length }}
+    /
     {{ data[r].weight }}
     <div
     class="dragdrop-list"
     cdkDropList
     [cdkDropListData]="data[r].courses"
     (cdkDropListDropped)="drop($event)">
-      <div *ngIf="data[r].courses.length == 0">complete</div>
       <div
       cdkDrag
       *ngFor="let c of data[r].courses">
