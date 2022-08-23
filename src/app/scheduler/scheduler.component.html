@@ -11,6 +11,8 @@
   <mat-icon>settings</mat-icon>
 </button>
 
+<hr>
+
 <div cdkDropListGroup>
   <div
   *ngFor="let t of trms, index as i">
@@ -43,10 +45,13 @@
       <div
       cdkDrag
       *ngFor="let c of data[r].courses">
-        {{ c | json }}
+        {{ c.name }}
       </div>
     </div>
   </div>
 </div>
 
-<button mat-raised-button (click)="createDocument()">write</button>
+<hr>
+<button color="warn" mat-raised-button (click)="createDocument()">create cs doc</button>
+<br>
+<a href="github.com/chapei/soe">make a pull request</a>

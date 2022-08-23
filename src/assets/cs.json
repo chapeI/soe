@@ -1,0 +1,18 @@
+{
+  "core": {
+    "weight": "10",
+    "courses": [
+      {"name": "data structures"},
+      {"name": "operating systems"}
+    ]
+  },
+  "math": {
+    "weight": "2",
+    "courses": [
+      {"name": "calculus"},
+      {"name": "linear algebra"},
+      {"name": "statistics"},
+      {"name": "combinatronics"}
+    ]
+  }
+}
