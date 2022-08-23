@@ -29,7 +29,7 @@ export class SchedulerComponent implements OnInit {
 
   ngOnInit() {
     if(this.noLocalData()) {
-      this.setupWithFirestore()
+      this.setupWithFirestoreData()
     } else {
       this.setupWithLocalData()
     }
@@ -42,10 +42,11 @@ export class SchedulerComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<any[]>) {
-    transferArrayItem(event.previousContainer.data,
-                  event.container.data,
-                  event.previousIndex,
-                  event.currentIndex)
+    transferArrayItem(
+      event.previousContainer.data,
+      event.container.data,
+      event.previousIndex,
+      event.currentIndex)
     this.save()
   }
 
@@ -55,14 +56,22 @@ export class SchedulerComponent implements OnInit {
     this.localService.save('data', JSON.stringify(this.data))
   }
 
-  setupWithFirestore() {
+  setupWithFirestoreData() {
     this.firestoreService.csDocument.get().subscribe(doc => {
       this.data = doc.data()
-      this.createReqsArrayUsingKeys()
+      this.pushNamesToAnArray()
+      this.appendArraySize()
     })
   }
 
-  createReqsArrayUsingKeys() {
+  appendArraySize() {
+    this.reqs.forEach((r: any) => {
+      this.data[r].size = this.data[r].courses.length
+      console.log(this.data[r]);
+    })
+  }
+
+  pushNamesToAnArray() {
     let keys = Object.keys(this.data)
     keys.forEach(requirement => {
       this.reqs.push(requirement)
