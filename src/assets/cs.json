@@ -26,7 +26,8 @@
     "required": "5",
     "courses": [
       {"name": "thermodynamics"},
-      {"name": "anthropology"}
+      {"name": "anthropology"},
+      {"name": "fluid dynamics"},
     ]
   },
   "english": {
