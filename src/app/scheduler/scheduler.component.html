@@ -1,4 +1,4 @@
-<button mat-button [matMenuTriggerFor]="school">Choose a degree</button>
+<button mat-button [matMenuTriggerFor]="school">Concordia Computer Science</button>
 
 <mat-menu #school="matMenu">
   <button mat-menu-item [matMenuTriggerFor]="concordia">Concordia</button>
@@ -22,7 +22,7 @@
   <button mat-menu-item disabled>Computer Science</button>
 </mat-menu>
 
-<button mat-raised-button (click)="reset()">
+<button [disabled]="noLocalData()" mat-raised-button (click)="reset()">
   <mat-icon>refresh</mat-icon>
 </button>
 <button mat-raised-button (click)="remove()">
