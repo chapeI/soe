@@ -12,6 +12,7 @@ export class SchedulerComponent implements OnInit {
   reqs: any = []
   data: any = {}
   trms: any = [ {"courses": []} ]
+  cols: any = ['red', 'orange', 'yellow', 'green', 'blue']
 
   add() {
     this.trms.push({'courses': []})
@@ -62,6 +63,7 @@ export class SchedulerComponent implements OnInit {
         this.data = doc.data()
         this.pushNamesToAnArray()
         this.appendArraySize()
+        this.appendColors()
     })
   }
 
@@ -69,6 +71,14 @@ export class SchedulerComponent implements OnInit {
     this.reqs.forEach(
       (r: any) => {
         this.data[r].size = this.data[r].courses.length
+      }
+    )
+  }
+
+  appendColors() {
+    this.reqs.forEach(
+      (r: any, i: number) => {
+        this.data[r].color = this.cols[i]
       }
     )
   }

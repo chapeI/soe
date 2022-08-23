@@ -34,7 +34,10 @@
 
   <div
   *ngFor="let r of reqs"
-  [ngStyle]= "{'text-decoration': data[r].size - data[r].courses.length >= data[r].weight ? 'line-through' : null}">
+  [ngStyle]= "{
+    'text-decoration': data[r].size - data[r].courses.length >= data[r].weight ? 'line-through' : null,
+    'color' : data[r].color
+    }">
     <b> {{ r }} </b>
     {{ data[r].size - data[r].courses.length }}
     /
