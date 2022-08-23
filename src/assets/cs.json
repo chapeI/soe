@@ -33,7 +33,8 @@
     "required": "2",
     "courses": [
       {"name": "ethics"},
-      {"name": "technical writing"}
+      {"name": "technical writing"},
+      {"name": "can you english"}
     ]
   }
 }
