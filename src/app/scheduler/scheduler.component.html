@@ -1,4 +1,4 @@
-<button mat-button [matMenuTriggerFor]="school">Concordia Computer Science</button>
+<button mat-raised-button [matMenuTriggerFor]="school">Concordia Computer Science</button>
 
 <mat-menu #school="matMenu">
   <button mat-menu-item [matMenuTriggerFor]="concordia">Concordia</button>
@@ -34,6 +34,7 @@
 <button mat-raised-button (click)="openSettingsDialog()">
   <mat-icon>settings</mat-icon>
 </button>
+<button disabled="true" color="warn" mat-raised-button (click)="createDocument()">create cs doc</button>
 
 <hr>
 
@@ -59,21 +60,26 @@
     </div>
   </div>
 
-  <hr>
 
-  <div
-  *ngFor="let r of reqs"
-  [ngStyle]= "{
-    'text-decoration': data[r].size - data[r].courses.length >= data[r].required ? 'line-through' : null,
-    'color': data[r].color
-    }">
-    <b> {{ r }} </b>
-    {{data[r].size - data[r].courses.length}}/{{data[r].required}}
-    <div
-    class="dragdrop-list"
-    cdkDropList
-    [cdkDropListData]="data[r].courses"
-    (cdkDropListDropped)="drop($event)">
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let r of reqs">
+      <mat-expansion-panel-header>
+        <mat-panel-title
+        [ngStyle]= "{
+          'text-decoration': data[r].size - data[r].courses.length >= data[r].required ? 'line-through' : null,
+          'color': data[r].color
+          }">
+          <b> {{ r }} </b>
+        </mat-panel-title>
+        <mat-panel-description>
+          {{data[r].size - data[r].courses.length}}/{{data[r].required}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div
+      class="dragdrop-list"
+      cdkDropList
+      [cdkDropListData]="data[r].courses"
+      (cdkDropListDropped)="drop($event)">
       <div
       [ngStyle]="{'color': c.color}"
       cdkDrag
@@ -81,10 +87,10 @@
         {{ c.name }}
       </div>
     </div>
-  </div>
-</div>
+    </mat-expansion-panel>
+  </mat-accordion>
 
-<hr>
-<button color="warn" mat-raised-button (click)="createDocument()">create cs doc</button>
-<br>
-<a href="https://github.com/chapei/oldsoe">make a pull request</a>
+  <br>
+
+
+<a style="float: right;" href="https://github.com/chapei/oldsoe">make a pull request</a>
