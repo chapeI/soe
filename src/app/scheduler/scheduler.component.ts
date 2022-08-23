@@ -79,6 +79,12 @@ export class SchedulerComponent implements OnInit {
     this.reqs.forEach(
       (r: any, i: number) => {
         this.data[r].color = this.cols[i]
+
+        this.data[r].courses.forEach(
+          (c: any) => {
+            c.color = this.cols[i]
+          }
+        )
       }
     )
   }

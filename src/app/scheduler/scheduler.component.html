@@ -26,6 +26,7 @@
       [cdkDropListData]="t.courses"
       (cdkDropListDropped)="drop($event)">
         <div
+        [ngStyle]="{'color': c.color}"
         cdkDrag
         *ngFor="let c of t.courses, index as j">
           {{ c.name }}
@@ -50,6 +51,7 @@
     [cdkDropListData]="data[r].courses"
     (cdkDropListDropped)="drop($event)">
       <div
+      [ngStyle]="{'color': c.color}"
       cdkDrag
       *ngFor="let c of data[r].courses">
         {{ c.name }}

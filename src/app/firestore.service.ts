@@ -9,11 +9,16 @@ export class FirestoreService {
   csDocument: AngularFirestoreDocument<any>
   cs: any
 
-  constructor(firestore: AngularFirestore, private requirementsService: RequirementsService) {
-    this.csDocument = firestore.doc('data/cs')
-  }
+  constructor(
+    firestore: AngularFirestore,
+    private requirementsService: RequirementsService,
+    )
+      {
+        this.csDocument = firestore.doc('data/cs')
+      }
 
-  createFirestoreDoc() {
+  createFirestoreDoc()
+  {
     this.cs = this.requirementsService.cs
     this.csDocument.set(this.cs)
   }
