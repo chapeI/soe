@@ -1,3 +1,27 @@
+<button mat-button [matMenuTriggerFor]="school">Choose a degree</button>
+
+<mat-menu #school="matMenu">
+  <button mat-menu-item [matMenuTriggerFor]="concordia">Concordia</button>
+  <button mat-menu-item [matMenuTriggerFor]="mcGill">McGill</button>
+  <button mat-menu-item [matMenuTriggerFor]="waterloo">Waterloo</button>
+</mat-menu>
+
+<mat-menu #concordia="matMenu">
+  <button mat-menu-item disabled>Software Engineering</button>
+  <button mat-menu-item>Computer Science</button>
+</mat-menu>
+
+<mat-menu #mcGill="matMenu">
+  <button mat-menu-item disabled>Software Engineering</button>
+  <button mat-menu-item disabled>Applied Math</button>
+  <button mat-menu-item disabled>Computer Science</button>
+</mat-menu>
+
+<mat-menu #waterloo="matMenu">
+  <button mat-menu-item disabled>Software Engineering</button>
+  <button mat-menu-item disabled>Computer Science</button>
+</mat-menu>
+
 <button mat-raised-button (click)="reset()">
   <mat-icon>refresh</mat-icon>
 </button>
@@ -41,7 +65,7 @@
   *ngFor="let r of reqs"
   [ngStyle]= "{
     'text-decoration': data[r].size - data[r].courses.length >= data[r].required ? 'line-through' : null,
-    'color' : data[r].color
+    'color': data[r].color
     }">
     <b> {{ r }} </b>
     {{data[r].size - data[r].courses.length}}/{{data[r].required}}

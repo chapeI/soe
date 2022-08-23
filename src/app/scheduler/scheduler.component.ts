@@ -6,7 +6,7 @@ import { LocalService } from '../local.service';
 @Component({
   selector: 'app-scheduler',
   templateUrl: './scheduler.component.html',
-  styleUrls: ['./scheduler.component.scss']
+  styleUrls: ['./scheduler.component.scss'],
 })
 export class SchedulerComponent implements OnInit {
   reqs: any = []

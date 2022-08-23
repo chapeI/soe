@@ -24,6 +24,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { RequirementsService } from './requirements.service';
 import { FirestoreService } from './firestore.service';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { FirestoreService } from './firestore.service';
     MatSlideToggleModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    MatMenuModule,
   ],
   providers: [
     FirestoreService,
