@@ -57,25 +57,29 @@ export class SchedulerComponent implements OnInit {
   }
 
   setupWithFirestoreData() {
-    this.firestoreService.csDocument.get().subscribe(doc => {
-      this.data = doc.data()
-      this.pushNamesToAnArray()
-      this.appendArraySize()
+    this.firestoreService.csDocument.get().subscribe(
+      doc => {
+        this.data = doc.data()
+        this.pushNamesToAnArray()
+        this.appendArraySize()
     })
   }
 
   appendArraySize() {
-    this.reqs.forEach((r: any) => {
-      this.data[r].size = this.data[r].courses.length
-      console.log(this.data[r]);
-    })
+    this.reqs.forEach(
+      (r: any) => {
+        this.data[r].size = this.data[r].courses.length
+      }
+    )
   }
 
   pushNamesToAnArray() {
     let keys = Object.keys(this.data)
-    keys.forEach(requirement => {
-      this.reqs.push(requirement)
-    })
+    keys.forEach(
+      requirement => {
+        this.reqs.push(requirement)
+      }
+    )
   }
 
   reset() {
