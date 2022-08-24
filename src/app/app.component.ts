@@ -5,16 +5,45 @@ import { LocalService } from './local.service';
   selector: 'app-root',
   template: `
     <mat-toolbar color="primary">
-      <span routerLink="">scheduler</span>
-      <span class="fill-remaining-space"></span>
-      <mat-slide-toggle style="margin-right: 1em;"
-      [(ngModel)]="checked"
-      (change)="changed($event)">
-        <mat-icon>
-          {{ mode }}
-        </mat-icon>
-      </mat-slide-toggle>
-      <span routerLink="/dev" routerLinkActive="active">dev</span>
+      <mat-toolbar-row>
+        <span routerLink="">scheduler</span>
+        <span class="fill-remaining-space"></span>
+        <span routerLink="/dev" routerLinkActive="active">dev</span>
+        <span routerLink="/sandbox" routerLinkActive="active" style="margin-left: 10px;">sandbox</span>
+      </mat-toolbar-row>
+      <mat-toolbar-row>
+        <button color="accent" mat-raised-button [matMenuTriggerFor]="school">Concordia Computer Science</button>
+
+        <mat-menu #school="matMenu">
+          <button mat-menu-item [matMenuTriggerFor]="concordia">Concordia</button>
+          <button mat-menu-item [matMenuTriggerFor]="mcGill">McGill</button>
+          <button mat-menu-item [matMenuTriggerFor]="waterloo">Waterloo</button>
+        </mat-menu>
+
+        <mat-menu #concordia="matMenu">
+          <button mat-menu-item disabled>Software Engineering</button>
+          <button mat-menu-item>Computer Science</button>
+        </mat-menu>
+
+        <mat-menu #mcGill="matMenu">
+          <button mat-menu-item disabled>Software Engineering</button>
+          <button mat-menu-item disabled>Applied Math</button>
+          <button mat-menu-item disabled>Computer Science</button>
+        </mat-menu>
+
+        <mat-menu #waterloo="matMenu">
+          <button mat-menu-item disabled>Software Engineering</button>
+          <button mat-menu-item disabled>Computer Science</button>
+        </mat-menu>
+        <span class="fill-remaining-space"></span>
+        <mat-slide-toggle style="margin-right: 1em;"
+        [(ngModel)]="checked"
+        (change)="changed($event)">
+          <mat-icon>
+            {{ mode }}
+          </mat-icon>
+        </mat-slide-toggle>
+      </mat-toolbar-row>
     </mat-toolbar>
 
     <div style="padding: 30px;">

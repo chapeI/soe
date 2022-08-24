@@ -25,6 +25,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { RequirementsService } from './requirements.service';
 import { FirestoreService } from './firestore.service';
 import { MatMenuModule } from '@angular/material/menu';
+import { SandboxComponent } from './sandbox/sandbox.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { MatMenuModule } from '@angular/material/menu';
     PageNotFoundComponent,
     SchedulerComponent,
     DevComponent,
+    SandboxComponent,
   ],
   imports: [
     BrowserModule,

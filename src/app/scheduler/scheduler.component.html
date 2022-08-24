@@ -1,67 +1,6 @@
-<button mat-raised-button [matMenuTriggerFor]="school">Concordia Computer Science</button>
-
-<mat-menu #school="matMenu">
-  <button mat-menu-item [matMenuTriggerFor]="concordia">Concordia</button>
-  <button mat-menu-item [matMenuTriggerFor]="mcGill">McGill</button>
-  <button mat-menu-item [matMenuTriggerFor]="waterloo">Waterloo</button>
-</mat-menu>
-
-<mat-menu #concordia="matMenu">
-  <button mat-menu-item disabled>Software Engineering</button>
-  <button mat-menu-item>Computer Science</button>
-</mat-menu>
-
-<mat-menu #mcGill="matMenu">
-  <button mat-menu-item disabled>Software Engineering</button>
-  <button mat-menu-item disabled>Applied Math</button>
-  <button mat-menu-item disabled>Computer Science</button>
-</mat-menu>
-
-<mat-menu #waterloo="matMenu">
-  <button mat-menu-item disabled>Software Engineering</button>
-  <button mat-menu-item disabled>Computer Science</button>
-</mat-menu>
-
-<button disabled="true" mat-raised-button color="accent">build</button>
-
-<br>
-
-<button [disabled]="noLocalData()" mat-raised-button (click)="reset()">
-  <mat-icon>refresh</mat-icon>
-</button>
-<button disabled="true" mat-raised-button (click)="remove()">
-  <mat-icon>remove</mat-icon>
-</button>
-<button mat-raised-button (click)="add()">
-  <mat-icon>add</mat-icon>
-</button>
-<button disabled mat-raised-button (click)="openSettingsDialog()">
-  <mat-icon>settings</mat-icon>
-</button>
-
 <div cdkDropListGroup>
-  <div
-  style="display: flex">
-    <div
-    class="terms"
-    style="width: 150px;"
-    *ngFor="let t of trms, index as i">
-      <b>term {{i + 1}} </b>
-      <div
-      class="dragdrop-list"
-      cdkDropList
-      [cdkDropListData]="t.courses"
-      (cdkDropListDropped)="drop($event)">
-        <div
-        [ngStyle]="{'color': c.color}"
-        cdkDrag
-        *ngFor="let c of t.courses, index as j">
-          {{ c.name }}
-        </div>
-      </div>
-    </div>
-  </div>
 
+<div class="" style="float: right">
   <mat-accordion>
     <mat-expansion-panel *ngFor="let r of reqs">
       <mat-expansion-panel-header>
@@ -90,10 +29,43 @@
     </div>
     </mat-expansion-panel>
   </mat-accordion>
+
+  <button [disabled]="noLocalData()" mat-raised-button (click)="reset()">
+    <mat-icon>refresh</mat-icon>
+  </button>
+  <button disabled="true" mat-raised-button (click)="remove()">
+    <mat-icon>remove</mat-icon>
+  </button>
+  <button color="accent" mat-raised-button (click)="add()">
+    <mat-icon>add</mat-icon>
+  </button>
+  <button disabled mat-raised-button (click)="openSettingsDialog()">
+    <mat-icon>settings</mat-icon>
+  </button>
 </div>
 
-  <br>
+  <div
+  style="display: flex">
+    <div
+    class="terms"
+    style="width: 150px;"
+    *ngFor="let t of trms, index as i">
+      <b>term {{i + 1}} </b>
+      <div
+      class="dragdrop-list"
+      cdkDropList
+      [cdkDropListData]="t.courses"
+      (cdkDropListDropped)="drop($event)">
+        <div
+        [ngStyle]="{'color': c.color}"
+        cdkDrag
+        *ngFor="let c of t.courses, index as j">
+          {{ c.name }}
+        </div>
+      </div>
+    </div>
+  </div>
 
-<a style="float: right;" href="https://github.com/chapeI/soe/edit/main/src/assets/cs.json">add a missing course</a>
-<br>
-<a style="float: right;" href="https://github.com/chapeI/soe/blob/main/src/app/scheduler/scheduler.component.ts">see code</a>
+</div>
+
+
