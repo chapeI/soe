@@ -1,6 +1,33 @@
 <div cdkDropListGroup>
 
 <div class="" style="float: right">
+
+    <button mat-raised-button [matMenuTriggerFor]="school">Concordia Computer Science</button>
+    <mat-menu #school="matMenu">
+      <button mat-menu-item [matMenuTriggerFor]="concordia">Concordia</button>
+      <button mat-menu-item [matMenuTriggerFor]="mcGill">McGill</button>
+      <button mat-menu-item [matMenuTriggerFor]="waterloo">Waterloo</button>
+    </mat-menu>
+
+    <mat-menu #concordia="matMenu">
+      <button mat-menu-item disabled>Software Engineering</button>
+      <button mat-menu-item>Computer Science</button>
+    </mat-menu>
+
+    <mat-menu #mcGill="matMenu">
+      <button mat-menu-item disabled>Software Engineering</button>
+      <button mat-menu-item disabled>Applied Math</button>
+      <button mat-menu-item disabled>Computer Science</button>
+    </mat-menu>
+
+    <mat-menu #waterloo="matMenu">
+      <button mat-menu-item disabled>Software Engineering</button>
+      <button mat-menu-item disabled>Computer Science</button>
+    </mat-menu>
+
+  <button [disabled]="noLocalData()" mat-raised-button (click)="reset()">
+    <mat-icon>refresh</mat-icon>
+  </button>
   <mat-accordion>
     <mat-expansion-panel *ngFor="let r of reqs">
       <mat-expansion-panel-header>
@@ -30,9 +57,6 @@
     </mat-expansion-panel>
   </mat-accordion>
 
-  <button [disabled]="noLocalData()" mat-raised-button (click)="reset()">
-    <mat-icon>refresh</mat-icon>
-  </button>
   <button disabled="true" mat-raised-button (click)="remove()">
     <mat-icon>remove</mat-icon>
   </button>
