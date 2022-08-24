@@ -5,7 +5,49 @@ import { LocalService } from './local.service';
   selector: 'app-root',
   template: `
     <mat-toolbar color="primary">
-      <span routerLink="">scheduler</span>
+      <span routerLink="scheduler" routerLinkActive="active">scheduler</span>
+
+      <button color="accent" style="margin-left: 30px" mat-raised-button [matMenuTriggerFor]="school">
+        Concordia Computer Science
+      </button>
+
+      <mat-menu #school="matMenu">
+        <button mat-menu-item [matMenuTriggerFor]="concordia">Concordia</button>
+        <button mat-menu-item [matMenuTriggerFor]="mcGill">McGill</button>
+        <button mat-menu-item [matMenuTriggerFor]="waterloo">Waterloo</button>
+      </mat-menu>
+
+      <mat-menu #concordia="matMenu">
+        <button mat-menu-item disabled>Software Engineering</button>
+        <button mat-menu-item>Computer Science</button>
+      </mat-menu>
+
+      <mat-menu #mcGill="matMenu">
+        <button mat-menu-item disabled>Software Engineering</button>
+        <button mat-menu-item disabled>Applied Math</button>
+        <button mat-menu-item disabled>Computer Science</button>
+      </mat-menu>
+
+      <mat-menu #waterloo="matMenu">
+        <button mat-menu-item disabled>Software Engineering</button>
+        <button mat-menu-item disabled>Computer Science</button>
+      </mat-menu>
+
+      <button
+      color="accent"
+      style="margin-left: 10px"
+      [matMenuTriggerFor]="schedule"
+      mat-mini-fab>
+        <mat-icon>
+          hardware
+        </mat-icon>
+      </button>
+
+      <mat-menu #schedule="matMenu">
+        <button disabled="true" mat-menu-item>Build Recommended Schedule</button>
+        <button disabled="true" mat-menu-item>Build Fall Start</button>
+      </mat-menu>
+
       <span class="fill-remaining-space"></span>
       <mat-slide-toggle style="margin-right: 1em;"
       [(ngModel)]="checked"

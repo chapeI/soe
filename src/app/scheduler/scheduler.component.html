@@ -1,75 +1,55 @@
 <div cdkDropListGroup>
 
-<div class="" style="float: right">
-
-    <button mat-raised-button [matMenuTriggerFor]="school">Concordia Computer Science</button>
-    <mat-menu #school="matMenu">
-      <button mat-menu-item [matMenuTriggerFor]="concordia">Concordia</button>
-      <button mat-menu-item [matMenuTriggerFor]="mcGill">McGill</button>
-      <button mat-menu-item [matMenuTriggerFor]="waterloo">Waterloo</button>
-    </mat-menu>
-
-    <mat-menu #concordia="matMenu">
-      <button mat-menu-item disabled>Software Engineering</button>
-      <button mat-menu-item>Computer Science</button>
-    </mat-menu>
-
-    <mat-menu #mcGill="matMenu">
-      <button mat-menu-item disabled>Software Engineering</button>
-      <button mat-menu-item disabled>Applied Math</button>
-      <button mat-menu-item disabled>Computer Science</button>
-    </mat-menu>
-
-    <mat-menu #waterloo="matMenu">
-      <button mat-menu-item disabled>Software Engineering</button>
-      <button mat-menu-item disabled>Computer Science</button>
-    </mat-menu>
-
-  <button [disabled]="noLocalData()" mat-raised-button (click)="reset()">
-    <mat-icon>refresh</mat-icon>
-  </button>
-  <mat-accordion>
-    <mat-expansion-panel *ngFor="let r of reqs">
-      <mat-expansion-panel-header>
-        <mat-panel-title
-        [ngStyle]= "{
-          'text-decoration': data[r].size - data[r].courses.length >= data[r].required ? 'line-through' : null,
-          'color': data[r].color
-          }">
-          {{ r }}
-        </mat-panel-title>
-        <mat-panel-description>
-          {{data[r].size - data[r].courses.length}}/{{data[r].required}}
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <div
-      class="dragdrop-list"
-      cdkDropList
-      [cdkDropListData]="data[r].courses"
-      (cdkDropListDropped)="drop($event)">
-      <div
-      [ngStyle]="{'color': c.color}"
-      cdkDrag
-      *ngFor="let c of data[r].courses">
-        {{ c.name }}
-      </div>
+  <div class="" style="float: left">
+    <div class="" style="display: flex; flex-direction:column; float: left; margin-right: 10px;">
+      <button [disabled]="noLocalData()" mat-mini-fab (click)="reset()">
+        <mat-icon>refresh</mat-icon>
+      </button>
+      <button color="accent" mat-mini-fab (click)="add()">
+        <mat-icon>add</mat-icon>
+      </button>
+      <button disabled="true" mat-mini-fab (click)="remove()">
+        <mat-icon>remove</mat-icon>
+      </button>
+      <button disabled mat-mini-fab (click)="openSettingsDialog()">
+        <mat-icon>build</mat-icon>
+      </button>
     </div>
-    </mat-expansion-panel>
-  </mat-accordion>
 
-  <button disabled="true" mat-raised-button (click)="remove()">
-    <mat-icon>remove</mat-icon>
-  </button>
-  <button color="accent" mat-raised-button (click)="add()">
-    <mat-icon>add</mat-icon>
-  </button>
-  <button disabled mat-raised-button (click)="openSettingsDialog()">
-    <mat-icon>settings</mat-icon>
-  </button>
-</div>
+    <div style="width: 300px;"></div>
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let r of reqs">
+        <mat-expansion-panel-header>
+          <mat-panel-title
+          [ngStyle]=
+           "{
+            'text-decoration': data[r].size - data[r].courses.length >= data[r].required ? 'line-through' : null,
+            'color': data[r].color
+            }">
+            {{ r }}
+          </mat-panel-title>
+          <mat-panel-description>
+            {{data[r].size - data[r].courses.length}}/{{data[r].required}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div
+        class="dragdrop-list"
+        cdkDropList
+        [cdkDropListData]="data[r].courses"
+        (cdkDropListDropped)="drop($event)">
+        <div
+        [ngStyle]="{'color': c.color}"
+        cdkDrag
+        *ngFor="let c of data[r].courses">
+          {{ c.name }}
+        </div>
+      </div>
+      </mat-expansion-panel>
+    </mat-accordion>
 
-  <div
-  style="display: flex">
+  </div>
+
+  <div style="display: flex; flex-wrap: wrap; padding: 20px 40px">
     <div
     class="terms"
     style="width: 150px;"

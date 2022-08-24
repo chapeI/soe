@@ -11,8 +11,13 @@ import { LocalService } from '../local.service';
 export class SchedulerComponent implements OnInit {
   reqs: any = []
   data: any = {}
-  trms: any = [ {"courses": [{"name": "add courses into terms"}]}, {"courses": []} ]
+  trms: any = [ {"courses": [{"name": this.t1Message()}]}, {"courses": []} ]
   cols: any = ['red', 'blue', 'green', 'orange', 'purple']
+
+
+  t1Message(): string {
+    return "DRAG COURSES FROM REQUIREMENTS INTO TERMS"
+  }
 
   add() {
     this.trms.push({'courses': []})
@@ -48,7 +53,18 @@ export class SchedulerComponent implements OnInit {
       event.container.data,
       event.previousIndex,
       event.currentIndex)
+    this.removeT1Message()
     this.save()
+  }
+
+  removeT1Message() {
+    let y = this.trms[0].courses.findIndex(
+      (x: { name: string; }) => x.name === this.t1Message()
+    )
+
+    if(y != -1) {
+      this.trms[0].courses.splice(y, 1)
+    }
   }
 
   save() {
