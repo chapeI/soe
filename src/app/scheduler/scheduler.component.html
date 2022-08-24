@@ -22,10 +22,14 @@
   <button mat-menu-item disabled>Computer Science</button>
 </mat-menu>
 
+<button disabled="true" mat-raised-button color="accent">build</button>
+
+<br>
+
 <button [disabled]="noLocalData()" mat-raised-button (click)="reset()">
   <mat-icon>refresh</mat-icon>
 </button>
-<button mat-raised-button (click)="remove()">
+<button disabled="true" mat-raised-button (click)="remove()">
   <mat-icon>remove</mat-icon>
 </button>
 <button mat-raised-button (click)="add()">
