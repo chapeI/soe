@@ -9,12 +9,11 @@ import { LocalService } from './local.service';
       <span class="fill-remaining-space"></span>
       <mat-slide-toggle style="margin-right: 1em;"
       [(ngModel)]="checked"
-      (change)="changed($event)"
-      >
-      <mat-icon>
-        {{ mode }}
-      </mat-icon>
-    </mat-slide-toggle>
+      (change)="changed($event)">
+        <mat-icon>
+          {{ mode }}
+        </mat-icon>
+      </mat-slide-toggle>
       <span routerLink="/dev" routerLinkActive="active">dev</span>
     </mat-toolbar>
 

@@ -11,7 +11,7 @@ import { LocalService } from '../local.service';
 export class SchedulerComponent implements OnInit {
   reqs: any = []
   data: any = {}
-  trms: any = [ {"courses": []} ]
+  trms: any = [ {"courses": [{"name": "add courses into terms"}]}, {"courses": []} ]
   cols: any = ['red', 'blue', 'green', 'orange', 'purple']
 
   add() {
