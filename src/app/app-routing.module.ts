@@ -6,8 +6,7 @@ import { SandboxComponent } from './sandbox/sandbox.component';
 import { SchedulerComponent } from './scheduler/scheduler.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/scheduler', pathMatch: 'full' },
-  {path: 'scheduler', component: SchedulerComponent},
+  {path: '', component: SchedulerComponent},
   {path: 'dev', component: DevComponent},
   {path: 'sandbox', component: SandboxComponent},
   {path: '**', component: PageNotFoundComponent},

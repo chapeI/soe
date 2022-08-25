@@ -5,7 +5,7 @@ import { LocalService } from './local.service';
   selector: 'app-root',
   template: `
     <mat-toolbar color="primary">
-      <span routerLink="scheduler" routerLinkActive="active">scheduler</span>
+      <span routerLink="/">scheduler</span>
 
       <button color="accent" style="margin-left: 30px" mat-raised-button [matMenuTriggerFor]="school">
         Concordia Computer Science

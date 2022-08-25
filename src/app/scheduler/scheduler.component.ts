@@ -14,7 +14,6 @@ export class SchedulerComponent implements OnInit {
   trms: any = [ {"courses": [{"name": this.t1Message(), "color": "lightgrey"}]}, {"courses": []} ]
   cols: any = ['red', 'blue', 'green', 'orange', 'purple']
 
-
   t1Message(): string {
     return "DROP COURSES HERE"
   }
