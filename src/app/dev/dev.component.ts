@@ -20,4 +20,7 @@ export class DevComponent implements OnInit {
     console.log("https://github.com/chapeI/soe/edit/main/src/assets/cs.json");
   }
 
+  goToUrl(url: string) {
+    window.open(url, "_blank")
+  }
 }

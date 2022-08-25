@@ -1,9 +1,9 @@
-the goal is to build a simple scheduler with the following aims in mind
+Build a scheduler with the following aims
 
 <ul>
-  <li>easy to follow code code</li>
+  <li>understandable code</li>
     <ul>
-      <li>good naming convention</li>
+      <li>good naming conventions</li>
       <li>refactor into functions</li>
     </ul>
   <li><b>simple</b> UI</li>
@@ -12,20 +12,28 @@ the goal is to build a simple scheduler with the following aims in mind
       <li>no weights (ie. 2 courses from math to complete this requirement)</li>
       <li>simplified requirement headings</li>
     </ul>
-  <li>powered by </li>
+  <li>maintained by</li>
     <ul>
-      <li>open source code</li>
-      <li>simple json to hold data</li>
-      <li>firestore document updates courses</li>
+      <li>open source</li>
+      <li>simple json structure</li>
     </ul>
-  <li>respond to screen size changes with FlexBox</li>
+  <li>firestore docs</li>
   <li>persistence</li>
+  <li>responsive</li>
   <li>dark mode</li>
 </ul>
 
 <div>
-  <button color="accent" class="m" mat-raised-button>view code</button>
-  <button color="accent" class="m" mat-raised-button>add missing courses</button>
+  <button color="accent" class="m" mat-raised-button
+  (click)="goToUrl(
+    'https://github.com/chapeI/soe/blob/main/src/app/scheduler/scheduler.component.ts'
+    )">view code</button>
+  <button color="accent" class="m" mat-raised-button
+  (click)="goToUrl('
+   https://github.com/chapeI/soe/edit/main/src/assets/cs.json')"
+  >add missing courses</button>
+  <button color="accent" class="m" mat-raised-button
+  (click)="goToUrl('https://soehub.com')"
+  >visit soehub (previous scheduler)</button>
   <button color="accent" class="m" mat-raised-button>contact</button>
-  <button color="accent" class="m" mat-raised-button>visit previously built scheduler</button>
 </div>
