@@ -11,12 +11,12 @@ import { LocalService } from '../local.service';
 export class SchedulerComponent implements OnInit {
   reqs: any = []
   data: any = {}
-  trms: any = [ {"courses": [{"name": this.t1Message()}]}, {"courses": []} ]
+  trms: any = [ {"courses": [{"name": this.t1Message(), "color": "lightgrey"}]}, {"courses": []} ]
   cols: any = ['red', 'blue', 'green', 'orange', 'purple']
 
 
   t1Message(): string {
-    return "DRAG COURSES FROM REQUIREMENTS INTO TERMS"
+    return "DROP COURSES HERE"
   }
 
   add() {

@@ -12,4 +12,12 @@ export class DevComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  goToCode() {
+    console.log("https://github.com/chapeI/soe/blob/main/src/app/scheduler/scheduler.component.ts");
+  }
+
+  addMissingCourses() {
+    console.log("https://github.com/chapeI/soe/edit/main/src/assets/cs.json");
+  }
+
 }
