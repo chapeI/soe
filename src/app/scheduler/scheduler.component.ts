@@ -30,7 +30,7 @@ export class SchedulerComponent implements OnInit {
 
   noLocalData(): boolean {
     return (this.localService.get('trms') == null)
-   }
+  }
 
   ngOnInit() {
     if(this.noLocalData()) {
