@@ -3,7 +3,9 @@
     "required": "10",
     "courses": [
       {"name": "data structures"},
-      {"name": "operating systems"}
+      {"name": "operating systems"},
+      {"name": "probability and statistics"},
+      {"name": "discrete math"}
     ]
   },
   "math": {
