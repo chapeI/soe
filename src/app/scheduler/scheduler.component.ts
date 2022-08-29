@@ -14,6 +14,12 @@ export class SchedulerComponent implements OnInit {
   trms: any = [ {"courses": [{"name": this.t1Message(), "color": "lightgrey"}]}, {"courses": []} ]
   cols: any = ['red', 'blue', 'green', 'orange', 'purple']
 
+  year = 22
+
+  ceil(num: number) {
+    return Math.ceil(num)
+  }
+
   t1Message(): string {
     return "DROP COURSES HERE"
   }

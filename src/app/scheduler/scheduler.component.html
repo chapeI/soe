@@ -57,7 +57,7 @@
     class="terms"
     style="width: 150px;"
     *ngFor="let t of trms, index as i">
-      <b>term {{i + 1}} </b>
+      <b>{{ i % 3 == 0 ? 'F' : i % 3 == 1 ? 'W' : 'S' }}</b>{{ year + ceil(i*0.33)}}
       <div
       class="dragdrop-list"
       cdkDropList
