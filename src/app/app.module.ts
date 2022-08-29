@@ -26,7 +26,7 @@ import { RequirementsService } from './requirements.service';
 import { FirestoreService } from './firestore.service';
 import { MatMenuModule } from '@angular/material/menu';
 import { SandboxComponent } from './sandbox/sandbox.component';
-import { SettingsDialogComponent } from './settings-dialog/settings-dialog.component';
+import { SettingsDialogComponent } from './scheduler/settings-dialog/settings-dialog.component';
 
 @NgModule({
   declarations: [

@@ -1,7 +1,9 @@
 import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { FirestoreService } from '../firestore.service';
 import { LocalService } from '../local.service';
+import { SettingsDialogComponent } from './settings-dialog/settings-dialog.component';
 
 @Component({
   selector: 'app-scheduler',
@@ -31,7 +33,8 @@ export class SchedulerComponent implements OnInit {
 
   constructor(
     private firestoreService: FirestoreService,
-    private localService: LocalService
+    private localService: LocalService,
+    private dialog: MatDialog
     ) { }
 
   noLocalData(): boolean {
@@ -125,7 +128,18 @@ export class SchedulerComponent implements OnInit {
   }
 
   remove() { }
-  openSettingsDialog() {}
+  openSettingsDialog() {
+    const dialogRef = this.dialog.open(SettingsDialogComponent, {
+      data: {title: "hello, anoop"},
+      position: {'bottom': '0'},
+      // direction: 'rtl'
+      width: '100%'
+      })
+
+    dialogRef.afterClosed().subscribe(
+      result => console.log('result', result)
+    )
+  }
 
   createDocument() {
     this.firestoreService.createCSFirestoreDoc();
