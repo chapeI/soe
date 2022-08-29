@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { DevComponent } from './dev/dev.component';
 import { LocalService } from './local.service';
 @Component({
   selector: 'app-root',
@@ -56,8 +58,9 @@ import { LocalService } from './local.service';
           {{ mode }}
         </mat-icon>
       </mat-slide-toggle>
-      <span routerLink="/dev" routerLinkActive="active">dev</span>
-      <span routerLink="/sandbox" routerLinkActive="active" style="margin-left: 10px;">sandbox</span>
+      <!-- <span routerLink="/dev" routerLinkActive="active" style="margin-right: 20px;">dev</span> -->
+      <span (click)="openDevDialog()">about</span>
+      <!-- <span routerLink="/sandbox" routerLinkActive="active" style="margin-left: 10px;">sandbox</span> -->
     </mat-toolbar>
 
     <div style="padding: 30px;">
@@ -72,7 +75,8 @@ import { LocalService } from './local.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private localService: LocalService) { }
+  constructor(private localService: LocalService, public dialog: MatDialog) { }
+
   ngOnInit() {
     this.getMode()
     if(this.mode == 'nightlight_round') {
@@ -106,5 +110,9 @@ export class AppComponent implements OnInit {
     else {
       this.mode = localData
     }
+  }
+
+  openDevDialog() {
+    this.dialog.open(DevComponent)
   }
 }
