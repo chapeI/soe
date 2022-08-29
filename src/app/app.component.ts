@@ -60,7 +60,7 @@ import { LocalService } from './local.service';
       </mat-slide-toggle>
       <!-- <span routerLink="/dev" routerLinkActive="active" style="margin-right: 20px;">dev</span> -->
       <span (click)="openDevDialog()">about</span>
-      <!-- <span routerLink="/sandbox" routerLinkActive="active" style="margin-left: 10px;">sandbox</span> -->
+      <span routerLink="/sandbox" routerLinkActive="active" style="margin-left: 10px;">sandbox</span>
     </mat-toolbar>
 
     <div style="padding: 30px;">
