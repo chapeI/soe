@@ -4,7 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -26,7 +25,9 @@ import { RequirementsService } from './requirements.service';
 import { FirestoreService } from './firestore.service';
 import { MatMenuModule } from '@angular/material/menu';
 import { SandboxComponent } from './sandbox/sandbox.component';
-import { SettingsDialogComponent } from './scheduler/settings-dialog/settings-dialog.component';
+import { SettingsComponent } from './scheduler/settings/settings.component';
+import {MatSelectModule} from '@angular/material/select';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { SettingsDialogComponent } from './scheduler/settings-dialog/settings-di
     SchedulerComponent,
     DevComponent,
     SandboxComponent,
-    SettingsDialogComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,6 +56,8 @@ import { SettingsDialogComponent } from './scheduler/settings-dialog/settings-di
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     MatMenuModule,
+    MatSelectModule,
+    ReactiveFormsModule,
   ],
   providers: [
     FirestoreService,

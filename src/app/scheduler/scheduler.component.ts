@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FirestoreService } from '../firestore.service';
 import { LocalService } from '../local.service';
-import { SettingsDialogComponent } from './settings-dialog/settings-dialog.component';
+import { SettingsComponent } from './settings/settings.component';
 
 @Component({
   selector: 'app-scheduler',
@@ -129,7 +129,7 @@ export class SchedulerComponent implements OnInit {
 
   remove() { }
   openSettingsDialog() {
-    const dialogRef = this.dialog.open(SettingsDialogComponent, {
+    const dialogRef = this.dialog.open(SettingsComponent, {
       data: {title: "hello, anoop"},
       position: {'bottom': '0'},
       // direction: 'rtl'

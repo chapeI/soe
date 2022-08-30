@@ -1,0 +1,22 @@
+
+
+<mat-form-field appearance="fill" style="margin-left: 20px; width: 100px;">
+  <mat-label>{{ selected }}</mat-label>
+  <mat-select [(value)]="selected">
+    <mat-option value="fall">Fall</mat-option>
+    <mat-option value="winter">Winter</mat-option>
+    <mat-option value="spring">Spring</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field appearance="fill" style="margin-left: 20px; width: 100px;">
+  <mat-label>{{ year }}</mat-label>
+  <mat-select [(value)]="year">
+    <mat-option value=18>2018</mat-option>
+    <mat-option value=19>2019</mat-option>
+    <mat-option value=20>2020</mat-option>
+    <mat-option value=21>2021</mat-option>
+    <mat-option value=22>2022</mat-option>
+    <mat-option value=23>2023</mat-option>
+  </mat-select>
+</mat-form-field>
