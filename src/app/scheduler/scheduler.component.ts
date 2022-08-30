@@ -16,10 +16,14 @@ export class SchedulerComponent implements OnInit {
   trms: any = [ {"courses": [{"name": this.t1Message(), "color": "lightgrey"}]}, {"courses": []} ]
   cols: any = ['red', 'blue', 'green', 'orange', 'purple']
 
-  year = 22
+  year: number = 22
 
   ceil(num: number) {
     return Math.ceil(num)
+  }
+
+  parse(num: any) {
+    return parseInt(num)
   }
 
   t1Message(): string {
@@ -132,7 +136,6 @@ export class SchedulerComponent implements OnInit {
     const dialogRef = this.dialog.open(SettingsComponent, {
       data: {title: "hello, anoop"},
       position: {'bottom': '0'},
-      // direction: 'rtl'
       width: '100%'
       })
 

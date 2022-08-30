@@ -28,7 +28,6 @@ import { SandboxComponent } from './sandbox/sandbox.component';
 import { SettingsComponent } from './scheduler/settings/settings.component';
 import {MatSelectModule} from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SettingsTestComponent } from './sandbox/settings-test/settings-test.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +37,6 @@ import { SettingsTestComponent } from './sandbox/settings-test/settings-test.com
     DevComponent,
     SandboxComponent,
     SettingsComponent,
-    SettingsTestComponent,
   ],
   imports: [
     BrowserModule,

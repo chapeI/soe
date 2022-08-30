@@ -57,7 +57,7 @@ import { LocalService } from './local.service';
       <button
       (click)="goToUrl('https://soehub.com')"
       mat-raised-button color="accent">
-        go to soehub<mat-icon>trending_up</mat-icon>
+        visit old scheduler <mat-icon>trending_up</mat-icon>
       </button>
 
       <mat-slide-toggle style="margin-left: 2em;"

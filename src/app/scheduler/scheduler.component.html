@@ -55,9 +55,10 @@
   <div style="display: flex; flex-wrap: wrap; padding: 20px 40px">
     <div
     class="terms"
-    style="width: 150px;"
+    style="width: 150px; border: 1px solid lightgray;"
+    [ngStyle]="{'border': (parse(year) + ceil(i*0.33)) % 2 == 0 ?  '1px solid #bcbcbc' : '1px solid #5e5e5e'}"
     *ngFor="let t of trms, index as i">
-      <b>{{ i % 3 == 0 ? 'F' : i % 3 == 1 ? 'W' : 'S' }}</b>{{ year + ceil(i*0.33)}}
+      {{ i % 3 == 0 ? 'F' : i % 3 == 1 ? 'W' : 'S' }}{{ parse(year) + ceil(i*0.33) }}
       <div
       class="dragdrop-list"
       cdkDropList
@@ -72,5 +73,20 @@
       </div>
     </div>
   </div>
+
+
+  <div style="position: fixed; bottom: 0;" >
+    <mat-form-field appearance="fill" >
+      <mat-label>change starting year</mat-label>
+      <mat-select [(value)]="year">
+        <mat-option value=18>18</mat-option>
+        <mat-option value=19>19</mat-option>
+        <mat-option value=20>20</mat-option>
+        <mat-option value=21>21</mat-option>
+        <mat-option value=22>22</mat-option>
+        <mat-option value=23>23</mat-option>
+      </mat-select>
+    </mat-form-field>
+  <div>
 
 </div>

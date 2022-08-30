@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { SettingsTestComponent } from './settings-test/settings-test.component';
 
 @Component({
   selector: 'app-sandbox',
@@ -14,8 +13,5 @@ export class SandboxComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  open() {
-    this.dialog.open(SettingsTestComponent)
-  }
 
 }
