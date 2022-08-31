@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
-import { DevComponent } from './dev/dev.component';
+import { AboutComponent } from './about/about.component';
 import { LocalService } from './local.service';
 @Component({
   selector: 'app-root',
@@ -113,7 +113,7 @@ export class AppComponent implements OnInit {
   }
 
   openAbout() {
-    this.dialog.open(DevComponent)
+    this.dialog.open(AboutComponent)
   }
 
 }
