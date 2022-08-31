@@ -2,42 +2,102 @@
   "core": {
     "required": "10",
     "courses": [
-      {"name": "data structures"},
-      {"name": "operating systems"},
-      {"name": "probability and statistics"},
-      {"name": "discrete math"}
+
+      {"cid": "COMP 228", "name": "System Hardware"},
+      {"cid": "COMP 232", "name": "Discrete Math"},
+      {"cid": "COMP 233", "name": "Probability and Statistics"},
+      {"cid": "COMP 248", "name": "Object Oriented Programming I"},
+      {"cid": "COMP 249", "name": "Object Oriented Programming II"},
+      {"cid": "COMP 335", "name": "Intro to Theoretical Computer Science"},
+      {"cid": "COMP 346", "name": "Operating Systems"},
+      {"cid": "COMP 348", "name": "Programming Languages"},
+      {"cid": "COMP 352", "name": "Data Structures and Algorithms"},
+      {"cid": "COMP 354", "name": "Intro to Software Engineering"}
+
     ]
   },
   "math": {
     "required": "2",
     "courses": [
-      {"name": "calculus"},
-      {"name": "linear algebra"},
-      {"name": "statistics"},
-      {"name": "combinatronics"}
+
+      {"cid": "COMP 213", "name": "Applied Ordinary Differential Equations"},
+      {"cid": "COMP 233", "name": "Applied Advanced Calculus"},
+      {"cid": "COMP 251", "name": "Linear Algebra"},
+      {"cid": "COMP 219", "name": "Multivariable Calculus I"}
+
     ]
   },
   "cs": {
     "required": "10",
     "courses": [
-      {"name": "web dev"},
-      {"name": "security"}
+
+      {"cid": "SOEN 287", "name": "Web Programming"},
+      {"cid": "SOEN 321", "name": "Information Systems Security"},
+      {"cid": "SOEN 331", "name": "Intro to Formal Methods for Software Engineering"},
+      {"cid": "SOEN 341", "name": "Software Processes and Practices"},
+      {"cid": "SOEN 342", "name": "Software Architecture and Design I"},
+      {"cid": "SOEN 344", "name": "Software Architecture and Design II"},
+      {"cid": "SOEN 345", "name": "Software Testing, Verification and Quality Assurance"},
+      {"cid": "SOEN 357", "name": "User Interface Design"},
+      {"cid": "SOEN 363", "name": "Data Systems for Software Engineers"},
+      {"cid": "SOEN 384", "name": "Management, Measurement and Quality Control"},
+      {"cid": "SOEN 385", "name": "Control Systems and Applications"},
+      {"cid": "SOEN 387", "name": "Web Enterprise Application Design"},
+      {"cid": "SOEN 422", "name": "Embedded Systems and Software"},
+      {"cid": "SOEN 423", "name": "Distributed Systems"},
+      {"cid": "SOEN 471", "name": "Big Data Analytics"},
+      {"cid": "SOEN 487", "name": "Web Services and Applications"},
+      {"cid": "COMP 326", "name": "Computer Architecture"},
+      {"cid": "COMP 333", "name": "Data Analytics"},
+      {"cid": "COMP 339", "name": "Combinatorics"},
+      {"cid": "COMP 345", "name": "Advanced Programming in C++"},
+      {"cid": "COMP 353", "name": "Databases"},
+      {"cid": "COMP 361", "name": "Elementary Numerical Methods"},
+      {"cid": "COMP 367", "name": "Techniques in Symbolic Computing"},
+      {"cid": "COMP 371", "name": "Computer Graphics"},
+      {"cid": "COMP 376", "name": "Intro to Game Development"},
+      {"cid": "COMP 425", "name": "Computer Vision"},
+      {"cid": "COMP 426", "name": "Multicore Programming"},
+      {"cid": "COMP 428", "name": "Parallel Programming"},
+      {"cid": "COMP 432", "name": "Machine Learning"},
+      {"cid": "COMP 442", "name": "Compiler Design"},
+      {"cid": "COMP 444", "name": "Systems Software Design"},
+      {"cid": "COMP 445", "name": "Data Communication and Networks"},
+      {"cid": "COMP 465", "name": "Design and Analysis of Algorithms"},
+      {"cid": "COMP 472", "name": "Artificial Intelligence"},
+      {"cid": "COMP 473", "name": "Pattern Recognition"},
+      {"cid": "COMP 474", "name": "Intelligent Systems"},
+      {"cid": "COMP 475", "name": "Immersive Technologies"},
+      {"cid": "COMP 476", "name": "Advanced Game Development"},
+      {"cid": "COMP 477", "name": "Animation for Computer Games"},
+      {"cid": "COMP 478", "name": "Image Processing"},
+      {"cid": "COMP 479", "name": "Information Retrieval and Web Search"}
+
     ]
   },
   "general": {
     "required": "5",
     "courses": [
-      {"name": "thermodynamics"},
-      {"name": "anthropology"},
-      {"name": "fluid dynamics"}
+
+      {"cid": "ENGR 242", "name": "Statics"},
+      {"cid": "ENGR 251", "name": "Thermodynamics I"},
+      {"cid": "ENGR 361", "name": "Fluid Mechanics I"},
+      {"cid": "MECH 351", "name": "Thermodynamics II"},
+      {"cid": "PHIL 225", "name": "Biomedical Ethics"},
+      {"cid": "MECH 221", "name": "Material Science"},
+      {"cid": "BIOL 206", "name": "Elementary Genetics"},
+      {"cid": "ENGR 243", "name": "Dynamics"}
+
     ]
   },
   "english": {
-    "required": "2",
+    "required": "3",
     "courses": [
-      {"name": "ethics"},
-      {"name": "technical writing"},
-      {"name": "can you english"}
+
+      {"cid": "ENCS 272", "name": "Composition and Argumentation for Engineers"},
+      {"cid": "ENCS 282", "name": "Technical Writing and Communication"},
+      {"cid": "ENCS 393", "name": "Social and Ethical Dimensions of Technology"}
+
     ]
   }
 }

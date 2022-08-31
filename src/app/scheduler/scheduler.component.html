@@ -44,7 +44,7 @@
         [ngStyle]="{'color': c.color}"
         cdkDrag
         *ngFor="let c of data[r].courses">
-          {{ c.name }}
+          {{ c.cid }} {{ c.name }}
         </div>
       </div>
       </mat-expansion-panel>
@@ -68,7 +68,7 @@
         [ngStyle]="{'color': c.color}"
         cdkDrag
         *ngFor="let c of t.courses, index as j">
-          {{ c.name }}
+          {{ c.cid }} {{ c.name }}
         </div>
       </div>
     </div>
@@ -87,6 +87,8 @@
         <mat-option value=23>23</mat-option>
       </mat-select>
     </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="createDocument()">create firestore doc</button>
   <div>
 
 </div>
