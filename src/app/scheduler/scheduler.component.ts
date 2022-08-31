@@ -148,4 +148,8 @@ export class SchedulerComponent implements OnInit {
     this.firestoreService.createCSFirestoreDoc();
   }
 
+  goToUrl(url: string) {
+    window.open(url, "_blank")
+  }
+
 }

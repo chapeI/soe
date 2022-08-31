@@ -9,7 +9,7 @@ import { LocalService } from './local.service';
     <mat-toolbar color="primary">
       <span routerLink="/">scheduler</span>
 
-      <button color="accent" style="margin-left: 30px" mat-raised-button [matMenuTriggerFor]="school">
+      <button color="" style="margin-left: 10px" mat-stroked-button [matMenuTriggerFor]="school">
         Concordia Computer Science
       </button>
 
@@ -51,16 +51,10 @@ import { LocalService } from './local.service';
       </mat-menu>
 
       <span class="fill-remaining-space"></span>
-      <!-- <span routerLink="/dev" routerLinkActive="active" style="margin-right: 20px;">dev</span> -->
-      <span (click)="openDevDialog()">about</span>
-      <span routerLink="/sandbox" routerLinkActive="active" style="margin: 0 30px;">sandbox</span>
-      <button
-      (click)="goToUrl('https://soehub.com')"
-      mat-raised-button color="accent">
-        visit old scheduler <mat-icon>trending_up</mat-icon>
-      </button>
 
-      <mat-slide-toggle style="margin-left: 2em;"
+      <span (click)="openAbout()">about</span>
+
+      <mat-slide-toggle style="margin-left: 1em;"
       [(ngModel)]="checked"
       (change)="changed($event)">
         <mat-icon>
@@ -118,12 +112,8 @@ export class AppComponent implements OnInit {
     }
   }
 
-  openDevDialog() {
+  openAbout() {
     this.dialog.open(DevComponent)
-  }
-
-  goToUrl(url: string) {
-    window.open(url, "_blank")
   }
 
 }

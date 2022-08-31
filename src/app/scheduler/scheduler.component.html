@@ -1,7 +1,7 @@
 <div cdkDropListGroup>
 
   <div class="" style="float: left">
-    <div class="" style="display: flex; flex-direction:column; float: left; margin-right: 10px;">
+    <div class="" style="display: flex; flex-direction:column; float: left; margin-right: 20px; gap: 20px;">
       <button [disabled]="noLocalData()" mat-mini-fab (click)="reset()">
         <mat-icon>refresh</mat-icon>
       </button>
@@ -40,23 +40,23 @@
         cdkDropList
         [cdkDropListData]="data[r].courses"
         (cdkDropListDropped)="drop($event)">
-        <div
-        [ngStyle]="{'color': c.color}"
-        cdkDrag
-        *ngFor="let c of data[r].courses">
-          {{ c.cid }} {{ c.name }}
+          <div
+          [ngStyle]="{'color': c.color}"
+          cdkDrag
+          *ngFor="let c of data[r].courses">
+            {{ c.cid }} {{ c.name }}
+          </div>
         </div>
-      </div>
       </mat-expansion-panel>
     </mat-accordion>
 
   </div>
 
-  <div style="display: flex; flex-wrap: wrap; padding: 20px 40px">
+  <div style="display: flex; flex-wrap: wrap; padding: 0px 40px">
+
     <div
-    class="terms"
-    style="width: 150px; border: 1px solid lightgray;"
-    [ngStyle]="{'border': (parse(year) + ceil(i*0.33)) % 2 == 0 ?  '1px solid #bcbcbc' : '1px solid #5e5e5e'}"
+    style="width: 150px; border: 0.2px solid #EAECEE; padding: 3px"
+    [ngStyle]="{'margin': (i) % 3 == 0 ? '10px 20px 0 0': '10px 0px 0 0'}"
     *ngFor="let t of trms, index as i">
       {{ i % 3 == 0 ? 'F' : i % 3 == 1 ? 'W' : 'S' }}{{ parse(year) + ceil(i*0.33) }}
       <div
@@ -88,7 +88,14 @@
       </mat-select>
     </mat-form-field>
 
-    <button mat-raised-button color="primary" (click)="createDocument()">create firestore doc</button>
+
+    <button
+    style="margin-left: 10px;"
+    (click)="goToUrl('https://soehub.com')"
+    mat-raised-button color="primary">
+      visit old scheduler <mat-icon>trending_up</mat-icon>
+    </button>
+
   <div>
 
 </div>
