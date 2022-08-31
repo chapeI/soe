@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SchedulerComponent } from './scheduler/scheduler.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { LocalService } from './local.service';
@@ -32,7 +31,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent,
     SchedulerComponent,
     DevComponent,
     SandboxComponent,
