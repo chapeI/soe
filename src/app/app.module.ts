@@ -23,7 +23,6 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { RequirementsService } from './requirements.service';
 import { FirestoreService } from './firestore.service';
 import { MatMenuModule } from '@angular/material/menu';
-import { SandboxComponent } from './sandbox/sandbox.component';
 import { SettingsComponent } from './scheduler/settings/settings.component';
 import {MatSelectModule} from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -33,7 +32,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppComponent,
     SchedulerComponent,
     DevComponent,
-    SandboxComponent,
     SettingsComponent,
   ],
   imports: [
