@@ -1,44 +1,37 @@
-<div class="r" style="display: flex; flex-direction: column; float: right; padding: 30px;">
-  <button color="accent" mat-raised-button
-  (click)="goToUrl(
-    'https://github.com/chapeI/soe/blob/main/src/app/scheduler/scheduler.component.ts'
-    )">view code</button>
-  <br>
-  <button color="accent" mat-raised-button
-  (click)="goToUrl('
-    https://github.com/chapeI/soe/edit/main/src/assets/cs.json')"
-  >add missing courses</button>
-</div>
 
 <h1>about</h1>
-Scheduler is for computer science students at Concordia University
+<li>scheduler schedules your computer science degree</li>
+<li>currently only for Concordia</li>
+<li>use this to quickly build a schedule</li>
+<b> <li>you should still consult myConcordia</li> </b>
 
-<br><br>
-Eventually, it will be for anyone interested in a degree in software - from any institution.
-To follow a particular schools cirriculum or build their own schedule.
-<ul>
-  <li>what are the requirements from different schools?</li>
-</ul>
+<br>
+
+<h1>plan</h1>
+<li>include other institutions</li>
+<li>compare requirements from different schools</li>
+<li>help anyone interested in computer science follow their preferred schools cirriculum</li>
+
+<br>
 
 <h1>design</h1>
-Simplicity for the UI and writing code
-<ul>
-  <li>simplest possible UI</li>
-    <ul>
-      <li>no course codes</li>
-      <li>general heading names</li>
-      <li>no weights (ie. 2 courses from math to complete this requirement)</li>
-    </ul>
-  <li>load data with firestore</li>
-    <ul>
-      <li>convert a JSON object into a firestore doc</li>
-      <li>open source for pull requests</li>
-    </ul>
-  <li>persist without having to create an account</li>
-  <li>dark mode</li>
-  <li>responsive to screen size changes</li>
-  <li>writing simple code is not simple</li>
-  <ul>
-    <li>good naming conventions</li>
-  </ul>
-</ul>
+<li>minimal UI</li>
+<li>persist</li>
+<li>remove registering</li>
+<li>load through firestore</li>
+<li>open source</li>
+<li>dark mode</li>
+<li>responsive</li>
+<li>I've tried to make the code minimal but if you have trouble after forking, @chapei</li>
+
+<br>
+
+<button color="primary" mat-raised-button
+(click)="goToUrl(
+  'https://github.com/chapeI/soe/blob/main/src/app/scheduler/scheduler.component.ts'
+  )">view code</button>
+<button color="primary" mat-raised-button
+style="margin-left: 20px;"
+(click)="goToUrl('
+  https://github.com/chapeI/soe/edit/main/src/assets/cs.json')"
+>add missing courses</button>
