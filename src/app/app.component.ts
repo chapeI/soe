@@ -7,7 +7,9 @@ import { LocalService } from './local.service';
   selector: 'app-root',
   template: `
     <mat-toolbar color="primary">
-      <span routerLink="/">scheduler</span>
+      <span
+      [class.bolden]=entered (mouseover)="changeStyle($event)" (mouseout)="changeStyle($event)"
+      routerLink="/">scheduler</span>
 
       <button color="" style="margin-left: 10px" mat-stroked-button [matMenuTriggerFor]="school">
         Concordia Computer Science
@@ -52,8 +54,9 @@ import { LocalService } from './local.service';
 
       <span class="fill-remaining-space"></span>
 
-      <span (click)="openAbout()">about</span>
-      <span routerLink="/sandbox" routerLinkActive="active" style="margin: 0 30px;">sandbox</span>
+      <span
+      [class.bolden]=entered (mouseover)="changeStyle($event)" (mouseout)="changeStyle($event)"
+      (click)="openAbout()">about</span>
 
       <mat-slide-toggle style="margin-left: 1em;"
       [(ngModel)]="checked"
@@ -72,9 +75,22 @@ import { LocalService } from './local.service';
     .fill-remaining-space {
       flex: 1 1 auto;
     }
+
+    .bolden {
+      font-weight: bold;
+      cursor: pointer;
+    }
+
   `]
 })
 export class AppComponent implements OnInit {
+
+  entered = false
+
+changeStyle($event: any){
+  this.entered = $event.type == 'mouseover' ? true : false
+}
+
 
   constructor(private localService: LocalService, public dialog: MatDialog) { }
 

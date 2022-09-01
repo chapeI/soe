@@ -16,7 +16,6 @@
       </button>
     </div>
 
-    <div style="width: 300px;"></div>
     <mat-accordion>
       <mat-expansion-panel *ngFor="let r of reqs">
         <mat-expansion-panel-header>
@@ -75,7 +74,16 @@
     </div>
   </div>
 
-  <div style="position: fixed; bottom: 0;" >
+  <div style="position: fixed; bottom: 10px;" >
+
+    <button
+    (click)="goToUrl('https://soehub.com')"
+    mat-raised-button color="primary">
+      visit old scheduler <mat-icon>trending_up</mat-icon>
+    </button>
+
+    <br><br>
+
     <mat-form-field appearance="fill" >
       <mat-label>change starting year</mat-label>
       <mat-select [(value)]="year">
@@ -88,11 +96,5 @@
       </mat-select>
     </mat-form-field>
 
-    <button
-    style="margin-left: 10px;"
-    (click)="goToUrl('https://soehub.com')"
-    mat-raised-button color="primary">
-      visit old scheduler <mat-icon>trending_up</mat-icon>
-    </button>
   <div>
 </div>
