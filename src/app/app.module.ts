@@ -26,6 +26,7 @@ import { SettingsComponent } from './scheduler/settings/settings.component';
 import {MatSelectModule} from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AboutComponent } from './about/about.component';
+import { SandboxComponent } from './sandbox/sandbox.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { AboutComponent } from './about/about.component';
     SchedulerComponent,
     AboutComponent,
     SettingsComponent,
+    SandboxComponent,
   ],
   imports: [
     BrowserModule,

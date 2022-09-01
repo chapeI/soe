@@ -53,6 +53,7 @@ import { LocalService } from './local.service';
       <span class="fill-remaining-space"></span>
 
       <span (click)="openAbout()">about</span>
+      <span routerLink="/sandbox" routerLinkActive="active" style="margin: 0 30px;">sandbox</span>
 
       <mat-slide-toggle style="margin-left: 1em;"
       [(ngModel)]="checked"
