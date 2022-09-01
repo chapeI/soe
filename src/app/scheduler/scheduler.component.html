@@ -38,6 +38,7 @@
         [cdkDropListData]="data[r].courses"
         (cdkDropListDropped)="drop($event)">
           <div
+          class="box"
           [ngStyle]="{'color': c.color}"
           cdkDrag
           *ngFor="let c of data[r].courses">
@@ -52,16 +53,19 @@
   <div style="display: flex; flex-wrap: wrap; padding: 0px 40px">
 
     <div
-    style="width: 150px; border: 0.2px solid #EAECEE; padding: 3px"
-    [ngStyle]="{'margin': (i) % 3 == 0 ? '10px 20px 0 0': '10px 0px 0 0'}"
+    class="term"
+    [ngStyle]="{'margin': (i) % 3 == 0 ? '10px 20px 0 0': '10px 3px 0 0'}"
     *ngFor="let t of trms, index as i">
+    <h2>
       {{ i % 3 == 0 ? 'F' : i % 3 == 1 ? 'W' : 'S' }}{{ parse(year) + ceil(i*0.33) }}
+    </h2>
       <div
       class="dragdrop-list"
       cdkDropList
       [cdkDropListData]="t.courses"
       (cdkDropListDropped)="drop($event)">
         <div
+        class="box-terms"
         [ngStyle]="{'color': c.color}"
         cdkDrag
         *ngFor="let c of t.courses, index as j">
@@ -70,7 +74,6 @@
       </div>
     </div>
   </div>
-
 
   <div style="position: fixed; bottom: 0;" >
     <mat-form-field appearance="fill" >
@@ -85,14 +88,11 @@
       </mat-select>
     </mat-form-field>
 
-
     <button
     style="margin-left: 10px;"
     (click)="goToUrl('https://soehub.com')"
     mat-raised-button color="primary">
       visit old scheduler <mat-icon>trending_up</mat-icon>
     </button>
-
   <div>
-
 </div>
